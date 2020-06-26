@@ -4,10 +4,6 @@
 
 import requests
 
-financial_api_key = 'c69c0e1c9f3b70a951441dc376b6d400'
-
-api_method='profile'
-symbol = 'AAPL'
 
 #A URL that returns an HTTP response in Json format is called API endpoint
 #Financial_api_endpoint = 'https://financialmodelingprep.com/api/v3/'+api_method+'/'+symbol+'?apikey='+financial_api_key
@@ -19,7 +15,7 @@ def Get_data_from_api(document,symbol,period,api_key):
 	api_endpoint_head ='https://financialmodelingprep.com/api/v3/'
 	if (document == 'income_statement'):
 		api_endpoint_body = api_endpoint_head+'income-statement/'
-        elif (document == 'balance_sheet'):
+	elif (document == 'balance_sheet'):
 		api_endpoint_body = api_endpoint_head+'balance-sheet-statement/'
 	elif (document == 'cash_flow'):
 		api_endpoint_body = api_endpoint_head+'cash-flow-statement/'
@@ -41,5 +37,7 @@ def Get_data_from_api(document,symbol,period,api_key):
 	return r.text
 
 
-#print(Get_data_from_api(metrics,'AAPL','0', financial_api_key))
+financial_api_key = 'c69c0e1c9f3b70a951441dc376b6d400'
+document = 'metrics'
+print(Get_data_from_api(document,'AAPL','0', financial_api_key))
 
