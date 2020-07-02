@@ -115,7 +115,7 @@ class GUI:
 		entered_tickers=self.textTicker.get()
 		entered_years = self.buttonYears_var.get()
 		print('\n~~~~ CLICK EVENT BV_DEBT ~~~~ Selected ticker is/are: '+entered_tickers)
-		bv_analysis = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey,statistic='BV_DEBT')
+		bv_analysis = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey,statistic='Company_key_metrics')
 		self.Click()
 		bv_analysis.Plot()
 	
@@ -128,23 +128,24 @@ class GUI:
 		ticker_list = entered_tickers.split(',')
 		if (len(ticker_list) > 1):
 			print('-- You selected '+str(len(ticker_list))+' tickers \n')
-			print('---- Collecting EPS and BD and DEBT data for '+ticker_list[0])
 			for ticker in ticker_list:
 				print('---- Collecting data for '+str(ticker))
 				a = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey, statistic = 'ESP')
-				b = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey,statistic='BV_DEBT')
-				(x_eps,y1_eps,y2_eps) = a.EPS(ticker,entered_years, financial_api_key) 
-				(x_debt,y1_debt,y2_debt) =  b.BV_DEBT(ticker,entered_years, financial_api_key) 
+				(x_eps,y1_eps,y2_eps) = a.Income_statement(ticker) 
+				(x_debt,y1_debt,y2_debt) =  a.Company_key_metrics(ticker) 
 				tickers_dict_eps[ticker] = { 'x' : x_eps , 'y1' : y1_eps, 'y2' : y2_eps} 
 				tickers_dict_debt[ticker] = { 'x' : x_debt , 'y1' : y1_debt, 'y2' : y2_debt}
+				#self.Click()
+			print(tickers_dict_eps)
+			plot = a.Multiple_plots(ticker_list, tickers_dict_eps, tickers_dict_debt)
 		else:
 			
 			print('-- You selected '+str(len(ticker_list))+' tickers \n')
 			print('---- Collecting EPS and BD and DEBT data for '+ticker_list[0])
 			a = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey, statistic = 'ESP')
 			b = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey,statistic='BV_DEBT')
-			(x_eps,y1_eps,y2_eps) = a.EPS() 
-			(x_debt,y1_debt,y2_debt) =  b.BV_DEBT() 
+			(x_eps,y1_eps,y2_eps) = a.Income_statement(ticker_list[0]) 
+			(x_debt,y1_debt,y2_debt) =  b.Company_key_metrics(ticker_list[0]) 
 			tickers_dict_eps[ticker_list[0]] = { 'x' : x_eps , 'y1' : y1_eps, 'y2' : y2_eps} 
 			tickers_dict_debt[ticker_list[0]] = { 'x' : x_debt , 'y1' : y1_debt, 'y2' : y2_debt}
 			print(str(a.title_data + b.title_data))

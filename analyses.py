@@ -7,6 +7,9 @@ import matplotlib.pyplot as plt
 plt.rcParams['axes.grid'] = True
 import numpy as np
 import requests
+from random import random
+import matplotlib.dates as mdates
+
 
 
 class Analyses:
@@ -28,6 +31,7 @@ class Analyses:
 # Retrieve data from API endpoint
 #
 #de
+	
 	def Get_data_from_api(self, density = None):
 		symbol = self.ticker
 		api_key = self.api_key
@@ -59,14 +63,17 @@ class Analyses:
 			print('**** EXCEPTION in Get_data_from_api :: message from API endopoint: '+r.text)
 		return r.text
 
+
+#UNUSED
+#This need the statistic and the document set (name on the API and /*/blabla path ). The function function get the json from the api and convert the dataframe into ordered lists.
 	def Get_list(self):
 		text = self.Get_data_from_api('quarter') #it is a string json format
-		#print(text)
+		print(text)
 		load = json.loads(text) #list
 		#print('I m in')
 		df = pd.DataFrame(load)
 		print('\n-- Single data function Dataframe loaded, Selecting '+self.statistic)
-		x_ax = df['date'].to_numpy()
+		x_ax = df[x_ax_name].to_numpy()
 		y_ax = df[self.statistic].to_numpy()
 		x_ax_order,y_ax_order = self.Time_and_statistic_sorter(x_ax,y1_ax)		
 		self.title_data = [self.statistic]
@@ -90,38 +97,49 @@ class Analyses:
 		print('-- Selected data for '+self.period+' years')
 		return (x_ax_order,y1_ax_order,y2_ax_order)
 	
+	
+	def Random_color(self):
+		r = random()
+		b = random()
+		g = random()
+		color = (r, g, b)
+		return color
+	
+	
 	#
-	# Create dataframe with EPS data from income_statement (x,y1 and y2 axis)
+	# Create dataframe with Income_statement data from income_statement (x,y1 and y2 axis)
 	#
 	
 	
-	def EPS(self):
-		print('\n---- Starting the EPS function...')
+	def Income_statement(self,single_ticker):
+		print('\n---- Starting the Income_statement function...')
 		self.document = 'income_statement'
 		self.statistic = 'ESP'
+		self.ticker = single_ticker
 		print('-- Requested document is '+self.document+' for'+self.ticker)
 		eps_data = self.Get_data_from_api('quarter') #it is a string json format
 		#print(eps_data)
 		load = json.loads(eps_data) #list
 		#print('I m in')
 		df = pd.DataFrame(load)
-		print('-- Income Statement Loaded , Dataframe loaded, Selecting EPS and EPS diluted')
+		print('-- Income Statement Loaded , Dataframe loaded, Selecting Income_statement and Income_statement diluted')
 		x_ax = df['date'].to_numpy()
 		y1_ax = df['eps'].to_numpy()
 		y2_ax = df['netIncomeRatio'].to_numpy()
 		x_ax_order,y1_ax_order,y2_ax_order = self.Time_and_statistic_sorter(x_ax,y1_ax,y2_ax)
-		self.title_data = ['EPS','netIncomeRatio']
+		self.title_data = ['Earning Per Share','netIncomeRatio']
 		#print(x_ax_order)
-		print('--- Closing the EPS function...')
+		print('--- Closing the Income_statement function...')
 		return x_ax_order.tolist(), y1_ax_order.tolist(), y2_ax_order.tolist()  
 	
 	#
 	# Create dataframe with book vlue and debt per earning data from metrics (x,y1 and y2 axis)
 	#
-	def BV_DEBT(self):
-		print('\n---- Starting the BV_DEBT function...')
+	def Company_key_metrics(self,single_ticker):
+		print('\n---- Starting the Company_key_metrics function...')
 		self.document = 'metrics'
-		self.statistic = 'BV_DEBT'
+		self.statistic = 'Company_key_metrics'
+		self.ticker = single_ticker
 		print('-- Requested document is '+self.document+' for'+self.ticker)
 		bv_data = self.Get_data_from_api('quarter') #it is a string json format
 		load = json.loads(bv_data) #list
@@ -135,9 +153,9 @@ class Analyses:
 			x_ax_order,y1_ax_order,y2_ax_order = self.Time_and_statistic_sorter(x_ax,y1_ax,y2_ax)
 			self.title_data = ['bookValuePerShare','debtToEquity']
 			print(x_ax_order)
-			print('--- Closing the BD_DEBT function...')
+			print('--- Closing the Company_key_metrics function...')
 		except:
-			print('**** EXCEPTION in BV_DEBT function :: message from API endopoint: '+eps_data)
+			print('**** EXCEPTION in Company_key_metrics function :: message from API endopoint: '+eps_data)
 			exit
 	
 		return  x_ax_order.tolist(), y1_ax_order.tolist(), y2_ax_order.tolist()
@@ -165,14 +183,7 @@ class Analyses:
 		y3_ax = df['priceEarningsToGrowthRatio'].to_numpy()
 		y4_ax = df['dividendYield'].to_numpy()
 		y5_ax = df['returnOnEquity'].to_numpy()
-		#price, shares, peg, roe, yeld, = self.Price()
 		print('-- Latest data is date on: '+str(x_ax[0]))
-		#print('-- Price:'+str(price))
-		#print('-- SHares:'+str(shares))
-		#print('-- PE/Grow:'+str(peg))
-		#print('-- Div Yeld:'+str(yeld))
-		#print('-- ROE:'+str(roe))
-		#print('\n')
 		pe = str(y1_ax[0])
 		pbv = str(y2_ax[0])
 		peg = str(y3_ax[0])
@@ -183,27 +194,10 @@ class Analyses:
 		print('-- PEG: '+str(y3_ax[0]))
 		print('-- DividentYeld: '+str(y4_ax[0]))
 		print('-- ROE: '+str(y5_ax[0]))
-		#self.title_data = ['EPS','netIncomeRatio']
+		#self.title_data = ['Income_statement','netIncomeRatio']
 		#print(x_ax_order)
 		print('--- Closing the RATIOS function...')
 		return  pe, pbv, peg,div,roe  
-	
-	def Price(self):
-		print('\n---- Starting the Price function...')
-		self.document = 'enterprise_value'
-		print('-- Requested Ratios. Selected document is '+self.document+' for'+self.ticker)
-		self.statistic = 'Stock Price'
-		x, price = self.Get_list()
-		self.statistic = 'Number of Shares'
-		a , shares = self.Get_list()
-		self.statistic = 'priceEarningsToGrowthRatio'
-		m ,peg = self.Get_list()
-		self.statistic = 'returnOnEquity'
-		f ,roe = self.Get_list()
-		self.statistic = 'dividendYield'
-		v ,yeld = self.Get_list()
-		print('--- Closing the  Price function...')
-		return price,shares,peg,roe,yeld 
 
 
 ######################################
@@ -219,21 +213,21 @@ class Analyses:
 			for ticker in ticker_list:
 				self.ticker = ticker
 				print('\n---- Collecting data for '+str(self.ticker))
-				if (self.statistic == 'BV_DEBT'):
-					(x_ax_order,y1_ax_order,y2_ax_order) = self.BV_DEBT()
+				if (self.statistic == 'Company_key_metrics'):
+					(x_ax_order,y1_ax_order,y2_ax_order) = self.Company_key_metrics(ticker_list[0])
 
 				else:
-					(x_ax_order,y1_ax_order,y2_ax_order) = self.EPS()
+					(x_ax_order,y1_ax_order,y2_ax_order) = self.Income_statement(ticker_list[0])
 				tickers_dict[ticker] = { 'x' : x_ax_order , 'y1' : y1_ax_order, 'y2' : y2_ax_order}
 				print(str(self.title_data))
 				self.Plot_statistic(tickers_dict)
 
 		else:
 			print('---- Collecting data for '+ticker_list[0])
-			if (self.statistic == 'BV_DEBT'):
-				(x_ax_order,y1_ax_order,y2_ax_order) = self.BV_DEBT()
+			if (self.statistic == 'Company_key_metrics'):
+				(x_ax_order,y1_ax_order,y2_ax_order) = self.Company_key_metrics(ticker_list[0])
 			else:
-				(x_ax_order,y1_ax_order,y2_ax_order) = self.EPS()
+				(x_ax_order,y1_ax_order,y2_ax_order) = self.Income_statement(ticker_list[0])
 			print(str(self.title_data))
 			#print(x_ax_order)
 			tickers_dict[ticker_list[0]] = { 'x' : x_ax_order , 'y1' : y1_ax_order, 'y2' : y2_ax_order}
@@ -245,43 +239,135 @@ class Analyses:
 #
 # Plot wanted statitics for 2x1 or 2x2 suplots
 #
-#def Plot_statistic(company,title_data, x_data, y1_data, y2_data, y3_data = None,y4_data = None):
-	def Plot_statistic(self,tickers_dict, tickers_dict_2 = None ):
+	def Plot_statistic(self,tickers_dict, tickers_dict_2 = None, ticker_gui_list = None ):
 		print('\n---- Trying to plot statistics ')
 		ticker_list = self.ticker.split(',')
 		if (len(ticker_list) == 1):
 			print('--Plotting statics for: '+str(ticker_list))
 			if (len(self.title_data) == 2):
+				#self.set_draw_settings()
 				fig, axs = plt.subplots(nrows=2,ncols=1, num=str(ticker_list)+' retrieved data')
 				for ticker in ticker_list:
 					#print(str(ticker))
 					#print(tickers_dict)
-					axs[0].plot(tickers_dict[str(ticker)]['x'],tickers_dict[str(ticker)]['y1'], 
-									'tab:green',label = ticker)
-					axs[0].set_title(str(self.title_data[0]))
-					axs[1].plot(tickers_dict[str(ticker)]['x'],tickers_dict[str(ticker)]['y2'], 
-								'tab:blue', label = ticker)
-					axs[1].set_title(str(self.title_data[1]))
-			else:
+					for i in range(0,2):
+						color = self.Random_color()
+						t = tickers_dict[str(ticker)]['x'];
+						y = tickers_dict[str(ticker)]['y'+str(i+1)]
+						y_mean = [np.mean(y)]*len(t)
+						axs[i].plot(t,y,c=color,label = ticker)
+						axs[i].plot(t,y_mean,color='red',label = ticker,linestyle='--')
+						axs[i].set_title(str(self.title_data[i]))
+			else: #All four drawings
 				ticker = ticker_list[0]
+				#self.set_draw_settings()
 				fig, axs = plt.subplots(nrows=2,ncols=2, num=str(ticker)+' retrieved data')
-				axs[0,0].plot(tickers_dict[str(ticker)]['x'],tickers_dict[str(ticker)]['y1'], 'tab:green')
-				axs[0,0].set_title(str(self.title_data[0]))
-				axs[0,1].plot(tickers_dict[str(ticker)]['x'],tickers_dict[str(ticker)]['y2'], 'tab:blue')
-				axs[0,1].set_title(str(self.title_data[1]))
-				axs[1,0].plot(tickers_dict_2[str(ticker)]['x'],tickers_dict_2[str(ticker)]['y1'],'tab:red')
-				axs[1,0].set_title(str(self.title_data[2]))
-				axs[1,1].plot(tickers_dict_2[str(ticker)]['x'],tickers_dict_2[str(ticker)]['y2'], 'tab:orange')
-				axs[1,1].set_title(str(self.title_data[3]))
+				for i in range(0,2):
+					for j in range(0,2):
+						color = self.Random_color()
+						t = tickers_dict[str(ticker)]['x'];
+						y1 = tickers_dict[str(ticker)]['y'+str(j+1)]
+						y1_mean = [np.mean(y1)]*len(t)
+						y2 = tickers_dict_2[str(ticker)]['y'+str(j+1)]
+						y2_mean = [np.mean(y2)]*len(t)
+						#print(str(int(str(i)+str(j), base= 2)))
+						if ( int(str(i)+str(j),2) < 2 ):
+							axs[i,j].plot(t,y1,c=color)
+							axs[i,j].plot(t,y1_mean,c='red',label = ticker,linestyle='--')
+							#print('y'+str(j+1))
+							axs[i,j].set_title(str(self.title_data[int(str(i)+str(j), base= 2)]))
+						else:
+							axs[i,j].plot(t,y2,c=color)
+							axs[i,j].plot(t,y2_mean,c='red',label = ticker,linestyle='--')
+							axs[i,j].set_title(str(self.title_data[int(str(i)+str(j), base= 2)]))
 		else:
-			print('--Plotting statics for: '+str(ticker_list))
-			pass
+			print('-- Use the Multiple_plots function for '+str(ticker_list))
 		fig.autofmt_xdate()
 		print(' -- --- Plotting the graphs over time')
 		plt.show()
 		return 
 
-		
+	
+
+
+
+
+
+
+
+
+	def Multiple_plots(self,ticker_list, tickers_dict, tickers_dict_2 ):
+		print('-- TRYING MULTI PLOT OPERATION '+str(ticker_list))
+		self.title_data = ['Earning Per Share','bookValuePerShare','netIncomeRatio','debtToEquity']
+		self.set_draw_settings()
+		fig, axs = plt.subplots(nrows=2,ncols=2, num=str(ticker_list)+' retrieved data')
+		#print(tickers_dict)
+		myFmt = mdates.DateFormatter('%Y-%m-%d')
+		for ticker in ticker_list:
+			for i in range(0,2):
+				for j in range(0,2):
+					axs[i,j].xaxis.set_major_formatter(myFmt)
+					color = self.Random_color()
+					t1_list = tickers_dict[str(ticker)]['x'];
+					y1 = tickers_dict[str(ticker)]['y'+str(j+1)]
+					y1_mean = [np.mean(y1)]*len(t1_list)
+					t2_list = tickers_dict_2[str(ticker)]['x'];
+					y2 = tickers_dict_2[str(ticker)]['y'+str(j+1)]
+					y2_mean = [np.mean(y2)]*len(t2_list)
+					t1 =pd.to_datetime(pd.Series(t1_list), format='%Y-%m-%d')
+					t2 =pd.to_datetime(pd.Series(t2_list), format='%Y-%m-%d')
+					#print(str(int(str(i)+str(j), base= 2)))
+					if ( int(str(i)+str(j),2) < 2 ):
+						axs[i,j].plot(t1,y1,c=color)
+						axs[i,j].plot(t1,y1_mean,c=color,label = ticker,linestyle='--')
+						#print('y'+str(j+1))
+						axs[i,j].set_title(str(self.title_data[int(str(i)+str(j), base= 2)]))
+					else:
+						axs[i,j].plot(t2,y2,c=color)
+						axs[i,j].plot(t2,y2_mean,c=color,label = ticker,linestyle='--')
+						axs[i,j].set_title(str(self.title_data[int(str(i)+str(j), base= 2)]))
+					leg = axs[i,j].legend();
+					fig.autofmt_xdate()
+					#print('........................y1 \n')
+					#print(t1)
+					#print('........................t1 \n')
+					#print(y1)
+					#print('........................t2 \n')
+					#print(t2)
+					#print('........................y2 \n')
+					#print(y2)
+		print(' -- --- Plotting the graphs over time')
+		plt.show()
+
+		return 
+
+
+
+
+
+
+
+
+
+	def set_draw_settings(self):
+		params = {"figure.facecolor": "#cad9e1",
+		"axes.facecolor": "#cad9e1",
+		"axes.grid" : True,
+		"axes.grid.axis" : "y",
+		"grid.color"    : "#ffffff",
+		"grid.linewidth": 2,
+		"axes.spines.left" : False,
+		"axes.spines.right" : False,
+		"axes.spines.top" : False,
+		"ytick.major.size": 0,     
+		"ytick.minor.size": 0,
+		"xtick.direction" : "in",
+		"xtick.major.size" : 7,
+		"xtick.color"      : "#191919",
+		"axes.edgecolor"    :"#191919",
+		"axes.prop_cycle" : plt.cycler('color',['#006767', '#ff7f0e', '#2ca02c', '#d62728','#9467bd', '#8c564b', '#e377c2', '#7f7f7f','#bcbd22', '#17becf'])}
+		plt.rcParams.update(params)
+
 
 
 def main():
