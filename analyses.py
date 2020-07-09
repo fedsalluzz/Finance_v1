@@ -32,7 +32,7 @@ class Analyses:
 #
 #de
 	
-	def Get_data_from_api(self, density = None):
+	def Get_data_from_api(self, density = None ):
 		symbol = self.ticker
 		api_key = self.api_key
 		print('\n---- GET DATA FROM API starting...')
@@ -172,11 +172,11 @@ class Analyses:
 		self.document = 'ratios'
 		print('-- Requested Ratios. Selected document is '+self.document+' for'+self.ticker)
 		ratios_data = self.Get_data_from_api('quarter') #it is a string json format
-		#print(ratios_data)
 		load = json.loads(ratios_data) #list
-		print('I m in')
+		print('Ratios json loaded')
 		df = pd.DataFrame(load)
 		print('-- Income Statement Loaded , Dataframe loaded, Selecting Ratios')
+		#print(df)
 		x_ax = df['date'].to_numpy()
 		y1_ax = df['priceBookValueRatio'].to_numpy()
 		y2_ax = df['priceEarningsRatio'].to_numpy()

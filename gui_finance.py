@@ -5,6 +5,7 @@ sys.path.append(".")
 from analyses import Analyses
 import tkinter as tk
 from tkinter import *
+import pandas as pd
 
 ##################################################
 ####### WINDOW with TKINTER ######################
@@ -135,8 +136,8 @@ class GUI:
 				(x_debt,y1_debt,y2_debt) =  a.Company_key_metrics(ticker) 
 				tickers_dict_eps[ticker] = { 'x' : x_eps , 'y1' : y1_eps, 'y2' : y2_eps} 
 				tickers_dict_debt[ticker] = { 'x' : x_debt , 'y1' : y1_debt, 'y2' : y2_debt}
-				#self.Click()
-			print(tickers_dict_eps)
+				self.Click()
+			#print(tickers_dict_eps)
 			plot = a.Multiple_plots(ticker_list, tickers_dict_eps, tickers_dict_debt)
 		else:
 			
@@ -155,20 +156,27 @@ class GUI:
 			c.Plot_statistic(tickers_dict_eps,tickers_dict_debt)
 
 	def Click(self):
+		print('-- CLICK FUNCTION, got bunch of values for tickers')
 		self.text_real_time.delete("1.0","end")
 		entered_tickers=self.textTicker.get()
 		entered_years = self.buttonYears_var.get()
-		c = Analyses(ticker=entered_tickers,period = entered_years, api_key =self.apikey)
-		pe, pbv, peg,div,roe =  c.Ratios()
-		print('-- Price:'+pe)
-		print('-- SHares:'+pbv)
-		print('-- PE/Grow:'+peg)
-		print('-- Div Yeld:'+div)
-		print('-- ROE:'+roe)
-		self.prova = pe+'\n'+pbv+'\n'+peg+'\n'+div+'\n'+roe
-		print('////// STAMPO ///////')
+		data = {}
+		for ticker in entered_tickers.split(","):
+			print(ticker)
+			c = Analyses(ticker=ticker,period = entered_years, api_key =self.apikey)
+			pe, pbv, peg,div,roe =  c.Ratios()
+			self.prova = pe+'\n'+pbv+'\n'+peg+'\n'+div+'\n'+roe
+			print('////// STAMPO RATIOS ///////')
+			print(type(pe))
+			data[ticker] = [pe[:4],pbv[:4],peg[:4],div[:4],roe[:4]]
+		frame = pd.DataFrame(data, columns = entered_tickers.split(","), index=['PE','PBV','PEG','DIV YiELD','ROE'])
+		if(len(entered_tickers) > 1):
+			f = open("saved_data/"+entered_tickers.replace(',','_')+"_datalog.log","w")
+			print(frame,file = f)
+		print('-- RATIOS printed on files for: '+entered_tickers)
+		csv =frame.to_csv(r'datalog.log', header=True, index=['PE','PBV','PEG','DIV YiELD','ROE'], sep='\t', mode='a')
 		self.text_real_time.insert(tk.END,self.prova, 'blue')
-		
+		f.close()	
 		
 
 def main ():
