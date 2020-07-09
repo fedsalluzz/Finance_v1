@@ -3,7 +3,8 @@ This is the readme changed
 OK!
 
 How to use this tool:
-- Run gui_finance.py from your terminal
+- Clone the folder
+- From inside the folder run gui_finance.py from your terminal
 - Add the tickers comma-spaced e.g. JNJ,QCOM
 - Select years NOTE: MAX is not always present for all the stocks
 - Click ANALYZE
