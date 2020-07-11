@@ -39,7 +39,7 @@ NOTE: buttons EPS and BV can plot data for just one share
 
 > Limitation of Net Income Ratio : Net income ratio can be boosted by one time sale or other factors. It is used usually with Gross profit margin and operative profit margin
 ### From the Balance sheet:
-- Book value per share:
+- Book value per share: ((Asset - Intangible assets - Liabilities)/Outstanding shares).  Also called "Net Book Value" or "Net asset value" , calculate what is the asset the shareholders would receive if the company were liquidated. When compared to market price it can tell you if a company is over or under priced.
 - Debt to equity:
 
 
