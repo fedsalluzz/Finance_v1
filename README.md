@@ -13,11 +13,33 @@
 
 NOTE: buttons EPS and BV can plot data for just one share
 
-## Income Statement Data
+## Company key metrics
 
-## Balance Sheet Data
+> This section contains data retrieved from the financial documents published by the companies (Income statement, Cash Flow, Balance sheet)
 
-## Ratios
+### From the Income statement:
+- Earnings x share (EPS):
+- Net Income Ratio :
+### From the Balance sheet:
+- Book value per share:
+- Debt to equity:
+
+
+## Current Ratios
+
+> This section contains ratios calculated over the actual price of the stock
+
+- Price per earnings ratio (PE):
+- Price per book value ration (PBV):
+- Price earnings to growth ratio (PEG):
+- Divident Yield (DIV):
+- Return on Equity (ROE):
+
+## To be added:
+
+- Beta:
+- Liquidity indicators:
+- Net Debt:
 
 
 
