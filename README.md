@@ -1,8 +1,8 @@
-This is the readme changed
+# FINANCE V1
 
-OK!
+> Financial analysis on companies
 
-How to use this tool:
+## How to use this tool:
 - Clone the folder
 - From inside the folder run gui_finance.py from your terminal
 - Add the tickers comma-spaced e.g. JNJ,QCOM
@@ -12,3 +12,13 @@ How to use this tool:
 - log files wit Ratios (PBV,PE,ROE etc) for selected companies are in the data folder
 
 NOTE: buttons EPS and BV can plot data for just one share
+
+## Income Statement Data
+
+## Balance Sheet Data
+
+## Ratios
+
+
+
+
