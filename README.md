@@ -54,10 +54,15 @@ NOTE: buttons EPS and BV can plot data for just one share
 
 > This section contains ratios calculated over the actual price of the stock
 
-- Price per earnings ratio (PE):
-- Price per book value ration (PBV):
-- Price earnings to growth ratio (PEG):
+- Price per earnings ratio (PE): = Market Value/ EPS . It gives what is the ammount of dollar you need to pay to expect a 1$ return one year later. HIgher PE than secotr average means comapny is overpriced or that high growth rates are expected in the future.Trailing PE gives you the current price over 12month period and is the most widely used.
+The inverse of PE is giving you the expected earnings over one year period. To more accurate analysis use the PEG.
+
+- Price per book value ration (PBV): Market Value/BV . It gives you the ammount of dollar you need to pay to own 1$ in the company.
+
+- Price earnings to growth ratio (PEG):= PE / EPS-growth . PEG is used have a valueable metric to both take into account current price and EPS while using the expected growth on a specific time period. It gives a more specific view on the company than the PE itself. The lower PEG the company has the more this company could be undervalueated give its expected growth. Some may say the PEG > 1 indicate overvalued stocks, while PEG < 1 undervalued.
+
 - Divident Yield (DIV):
+
 - Return on Equity (ROE):
 
 ## To be added:
