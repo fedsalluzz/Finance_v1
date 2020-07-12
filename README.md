@@ -35,12 +35,19 @@ NOTE: buttons EPS and BV can plot data for just one share
 
 > where Discontinued operation = gain or loss related to specific operation valid in the period (e.g. part of the stores closed)
 
-- Net Income Ratio : =(Net Income/Revenue). It is also called Net Margin or Net Profit margin and it is expressed in percentage of the revenue. It describes how much of a given dollar in Revenue is translated into profit. Net profit margin is one of the most important indicators of a company's financial health.
+- Net Income Ratio : =(Net Income/Revenue). It is also called Net Margin or Net Profit margin and it is expressed as percentage of the revenue. It describes how much of a given dollar in Revenue is translated into profit. Net profit margin is one of the most important indicators of a company's financial health.
 
 > Limitation of Net Income Ratio : Net income ratio can be boosted by one time sale or other factors. It is used usually with Gross profit margin and operative profit margin
+
 ### From the Balance sheet:
-- Book value per share: ((Asset - Intangible assets - Liabilities)/Outstanding shares).  Also called "Net Book Value" or "Net asset value" , calculate what is the asset the shareholders would receive if the company were liquidated. When compared to market price it can tell you if a company is over or under priced.
-- Debt to equity:
+- Book value per share: =((Asset - Intangible assets - Liabilities)/Outstanding shares).  Also called "Net Book Value" or "Net asset value" , calculate what is the asset the shareholders would receive if the company were liquidated. When compared to market price it can tell you if a company is over or under priced.
+
+- Debt to equity: = Liabilities / Equities . This metric compares the ammount of leverage the company is using, both in long and short term debt. In general the higher is the D/E the mor ethe company is a risky investment because it is financing it gowth with the debt. However this metric needs to be compared with others like the expected growth and the current ratio for a better view. Factors could be Current Ratio or Cash Ratio
+
+- Current Ratio: Short-term Assets/Short-term Liabilites .  
+
+- Cash Ratio: = (Cash + Securities)/Short term Liabilites . MEasure the short term liquidity or solvency.
+
 
 
 ## Current Ratios
