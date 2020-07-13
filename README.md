@@ -19,8 +19,10 @@ NOTE: buttons EPS and BV can plot data for just one share
 
 ### Basic terms
 - Revenue = Ammount of money the company make.
-- Net Income = Net Profits = Revenue−COGS−Operating and other expenses−Interests−Taxes
+- Net Income = Earnings = Net Profits = Revenue−COGS−Operating and other expenses−Interests−Taxes
 - COGS = The cost of goods sold
+- EBIT = Earnings before income tax
+- EBITDA = Earnings before income tax, depreciation and ammortization.
 	
 ### From the Income statement:
 - **Earnings x share (EPS)**: =((Net Income - preferred dividends) /shares outstanding). It is used as an indicator for company profitability. Higher number means company is more profitable. EPS diluted is often used, considering as the shares outstanging number the one calculated over the assumpion that all option,warranty etc. were converted immediatelly in stocks.
@@ -69,7 +71,7 @@ The inverse of PE is giving you the expected earnings over one year period. To m
 
 > This section contains indication to evaluate different types of flexibility
 
--**Investment Flexibility** :=*Revenues/Invested Capital*
+-**Investment Flexibility** :=*Revenues/Invested Capital* . This parameter describes the ammount of investments the company shoud make to have a given level of growth. This measure drops if the earnings 
 
 -**Operating Flexibility** :=*Gross Margin*
 
