@@ -18,11 +18,12 @@ NOTE: buttons EPS and BV can plot data for just one share
 > This section contains data retrieved from the financial documents published by the companies (Income statement, Cash Flow, Balance sheet)
 
 ### Basic terms
-- Revenue = Ammount of money the company make.
-- Net Income = Earnings = Net Profits = Revenue−COGS−Operating and other expenses−Interests−Taxes
-- COGS = The cost of goods sold
-- EBIT = Earnings before income tax
-- EBITDA = Earnings before income tax, depreciation and ammortization.
+- **Revenue** = Ammount of money the company make.
+- **Net Income** = Earnings = Net Profits = Revenue−COGS−Operating and other expenses−Interests−Taxes
+- **Operating Income** = Operative profit = Revenue - Operating expenses . Operative expenses are the day-to-day expenses to run the business and excludes items such as investments in other firms (non-operating income), taxes, and interest expenses. Also, nonrecurring items such as cash paid for a lawsuit settlement are not included.
+- **COGS** = The cost of goods sold
+- **EBIT** = Earnings before income tax
+- **EBITDA** = Earnings before income tax, depreciation and ammortization.
 	
 ### From the Income statement:
 - **Earnings x share (EPS)**: =((Net Income - preferred dividends) /shares outstanding). It is used as an indicator for company profitability. Higher number means company is more profitable. EPS diluted is often used, considering as the shares outstanging number the one calculated over the assumpion that all option,warranty etc. were converted immediatelly in stocks.
@@ -71,9 +72,9 @@ The inverse of PE is giving you the expected earnings over one year period. To m
 
 > This section contains indication to evaluate different types of flexibility
 
--**Investment Flexibility** :=*Revenues/Invested Capital* . This parameter describes the ammount of investments the company shoud make to have a given level of growth. This measure drops if the earnings 
+-**Investment Flexibility** :=*Revenues/Invested Capital* . This parameter describes the ammount of investments the company should make to have a given level of growth. This measure drops if the earnings drop. As en example telecom companies has low flexibility due to heavy infrastructure, while services or consulting busineses have high investment flexibility.
 
--**Operating Flexibility** :=*Gross Margin*
+-**Operating Flexibility** :=*Gross profit Margin* . This parameter measures how much a change in revenues effects the operative income. The lower the revenues are the lower the operating flexibility is. In general losses effect businesses and the effect is more heavy when those businesses have lots of fixed costs. As an example airlines and industrial companies has low operating flexibility, while online retailing companies have high operating flexibility. 
 
 -**Financial Flexibility** :=*Net Debt/EBTDA*
 
