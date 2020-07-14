@@ -24,6 +24,7 @@ NOTE: buttons EPS and BV can plot data for just one share
 - **COGS** = The cost of goods sold
 - **EBIT** = Earnings before income tax
 - **EBITDA** = Earnings before income tax, depreciation and ammortization.
+- **Gross profit margin** = (REVENUEs - COGS)/REVENUEs
 	
 ### From the Income statement:
 - **Earnings x share (EPS)**: =((Net Income - preferred dividends) /shares outstanding). It is used as an indicator for company profitability. Higher number means company is more profitable. EPS diluted is often used, considering as the shares outstanging number the one calculated over the assumpion that all option,warranty etc. were converted immediatelly in stocks.
@@ -74,9 +75,9 @@ The inverse of PE is giving you the expected earnings over one year period. To m
 
 -**Investment Flexibility** :=*Revenues/Invested Capital* . This parameter describes the ammount of investments the company should make to have a given level of growth. This measure drops if the earnings drop. As en example telecom companies has low flexibility due to heavy infrastructure, while services or consulting busineses have high investment flexibility.
 
--**Operating Flexibility** :=*Gross profit Margin* . This parameter measures how much a change in revenues effects the operative income. The lower the revenues are the lower the operating flexibility is. In general losses effect businesses and the effect is more heavy when those businesses have lots of fixed costs. As an example airlines and industrial companies has low operating flexibility, while online retailing companies have high operating flexibility. 
+-**Operating Flexibility** :=*Gross profit Margin* . This parameter measures how much a change in revenues effects the operative income. The lower the revenues are the lower the operating flexibility is. In general losses effect businesses and the effect is more heavy when those businesses have lots of fixed costs. As an example airlines and industrial companies has low operating flexibility, while online retailing companies have high operating flexibility. Companies with higher gross profit margin have higher operating flexibility.
 
--**Financial Flexibility** :=*Net Debt/EBTDA*
+-**Financial Flexibility** :=*Net Debt/EBTDA* . This parameter measure how much a give change in the operating income results into a change into net income. If the company has more debts, there will be more expenses related to interests and it will reduce financial flexibility. If otherwise the company has more cash or income interests the financial flexibility will be higher.
 
 -**Cash return Flexibility** :=**
 
