@@ -13,6 +13,34 @@
 
 NOTE: buttons EPS and BV can plot data for just one share
 
+## How to evaluate a company? A brief introduction
+
+How do you know if the current price is not overvaluated? Five things to take into consideration:
+- Long term prospect
+- Management
+- Financial strenght and capital structure
+- Dividends records
+- Actual dividend rate
+
+Look at the financial statements and ask yourself:
+- What makes this company grow?
+- Where does the profit came from?
+
+Potential problems can be:
+- Company is a serial acquier. Most of the acquisition went bad. Why should this company buy another one instead of investing on growing?
+- Company keeps on taking debts and selling stocks to pump the business. Look for too high "cash form financial activities"
+- Company has too few customers. What are her customers?
+
+Good signs can be:
+- Competitive advantages: brand, identity, monopoly,economy of scales, utilities, intengible assets (cocacola).
+- Earnings are growing steadily (e.g 10% pretax) and are sustainable.
+- Company must invest in R&D.
+
+Management must be stable.
+- If a company reprices, reissued or exchanges its stock options for insiders stay away.
+- Normaly a company cancel worthless stock options for employees and exeutives. And replace for new one at advangateous prices. If their values has never allowed to go to zero they potential profit is always infinite. How can options encurage goods toword ship of corporate assets 
+
+
 ## Company key metrics
 
 > This section contains data retrieved from the financial documents published by the companies (Income statement, Cash Flow, Balance sheet)
