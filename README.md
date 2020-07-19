@@ -115,4 +115,9 @@ The inverse of PE is giving you the expected earnings over one year period. To m
 - Liquidity indicators:
 - Net Debt:
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 9c08af2d9a4bacc018dd88c626cd9870c60b877d
 
