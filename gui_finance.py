@@ -132,10 +132,10 @@ class GUI:
 			for ticker in ticker_list:
 				print('---- Collecting data for '+str(ticker))
 				a = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey, statistic = 'ESP')
-				(x_eps,y1_eps,y2_eps) = a.Income_statement(ticker) 
-				(x_debt,y1_debt,y2_debt) =  a.Company_key_metrics(ticker) 
-				tickers_dict_eps[ticker] = { 'x' : x_eps , 'y1' : y1_eps, 'y2' : y2_eps} 
-				tickers_dict_debt[ticker] = { 'x' : x_debt , 'y1' : y1_debt, 'y2' : y2_debt}
+				(date,eps ,netIncomeRatio) = a.Income_statement(ticker) 
+				(date_2,bookValuePerShare,debtToEquity) =  a.Company_key_metrics(ticker) 
+				tickers_dict_eps[ticker] = { 'x' : date , 'y1' : eps, 'y2' : netIncomeRatio} 
+				tickers_dict_debt[ticker] = { 'x' : date_2 , 'y1' : bookValuePerShare, 'y2' : debtToEquity}
 				self.Click()
 			#print(tickers_dict_eps)
 			plot = a.Multiple_plots(ticker_list, tickers_dict_eps, tickers_dict_debt)
@@ -145,9 +145,9 @@ class GUI:
 			print('---- Collecting EPS and BD and DEBT data for '+ticker_list[0])
 			a = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey, statistic = 'ESP')
 			b = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey,statistic='BV_DEBT')
-			(x_eps,y1_eps,y2_eps) = a.Income_statement(ticker_list[0]) 
+			(date,y1_eps,y2_eps) = a.Income_statement(ticker_list[0]) 
 			(x_debt,y1_debt,y2_debt) =  b.Company_key_metrics(ticker_list[0]) 
-			tickers_dict_eps[ticker_list[0]] = { 'x' : x_eps , 'y1' : y1_eps, 'y2' : y2_eps} 
+			tickers_dict_eps[ticker_list[0]] = { 'x' : date , 'y1' : y1_eps, 'y2' : y2_eps} 
 			tickers_dict_debt[ticker_list[0]] = { 'x' : x_debt , 'y1' : y1_debt, 'y2' : y2_debt}
 			print(str(a.title_data + b.title_data))
 			title_data = a.title_data + b.title_data
@@ -155,6 +155,8 @@ class GUI:
 			self.Click()
 			c.Plot_statistic(tickers_dict_eps,tickers_dict_debt)
 
+
+## This function get the RATIOS
 	def Click(self):
 		print('-- CLICK FUNCTION, got bunch of values for tickers')
 		self.text_real_time.delete("1.0","end")
