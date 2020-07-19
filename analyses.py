@@ -123,14 +123,14 @@ class Analyses:
 		#print('I m in')
 		df = pd.DataFrame(load)
 		print('-- Income Statement Loaded , Dataframe loaded, Selecting Income_statement and Income_statement diluted')
-		x_ax = df['date'].to_numpy()
-		y1_ax = df['eps'].to_numpy()
-		y2_ax = df['netIncomeRatio'].to_numpy()
-		x_ax_order,y1_ax_order,y2_ax_order = self.Time_and_statistic_sorter(x_ax,y1_ax,y2_ax)
+		date = df['date'].to_numpy()
+		eps = df['eps'].to_numpy()
+		netIncomeRatio = df['netIncomeRatio'].to_numpy()
+		date_order,eps_order,netIncomeRatio_order = self.Time_and_statistic_sorter(date,eps,netIncomeRatio)
 		self.title_data = ['Earning Per Share','netIncomeRatio']
 		#print(x_ax_order)
 		print('--- Closing the Income_statement function...')
-		return x_ax_order.tolist(), y1_ax_order.tolist(), y2_ax_order.tolist()  
+		return date_order.tolist(), eps_order.tolist(), netIncomeRatio_order.tolist()  
 	
 	#
 	# Create dataframe with book vlue and debt per earning data from metrics (x,y1 and y2 axis)
@@ -147,24 +147,23 @@ class Analyses:
 			df = pd.DataFrame(load)
 			#print(bv_data)
 			print('-- Income Statement Loaded , Dataframe loaded, Selecting BV and Debt')
-			x_ax = df['date'].to_numpy()
-			y1_ax = df['bookValuePerShare'].to_numpy()
-			y2_ax = df['debtToEquity'].to_numpy()
-			x_ax_order,y1_ax_order,y2_ax_order = self.Time_and_statistic_sorter(x_ax,y1_ax,y2_ax)
+			date = df['date'].to_numpy()
+			bookValuePerShare = df['bookValuePerShare'].to_numpy()
+			debtToEquity = df['debtToEquity'].to_numpy()
+			date_order,bookValuePerShare_order,debtToEquity_order = self.Time_and_statistic_sorter(date,bookValuePerShare,debtToEquity)
 			self.title_data = ['bookValuePerShare','debtToEquity']
-			print(x_ax_order)
+			#print(date)
 			print('--- Closing the Company_key_metrics function...')
 		except:
 			print('**** EXCEPTION in Company_key_metrics function :: message from API endopoint: '+eps_data)
 			exit
 	
-		return  x_ax_order.tolist(), y1_ax_order.tolist(), y2_ax_order.tolist()
+		return  date_order.tolist(), bookValuePerShare_order.tolist(), debtToEquity_order.tolist()
 	
 	
-	def CURRENT_RATIO(self):
-		pass
-		return 
-	
+
+
+
 #################
 ### Take the PE, PBV, PEG for TODAY
 	def Ratios(self):
@@ -384,9 +383,5 @@ def main():
 
 if __name__ == '__main__':
 	main()
-
-
-
-
 
 
