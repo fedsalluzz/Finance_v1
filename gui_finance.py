@@ -58,8 +58,8 @@ class GUI:
 
 
 		#Create the button calculate the EPS
-		self.buttonEPS = tk.Button(self.frame, text="ESP/ESP diluted", fg="black", font="none 12 bold", command=self.EPS_click)
-		self.buttonEPS.grid(row=9, column=3,sticky = W, pady = 2)
+		self.buttonCurrNCash = tk.Button(self.frame, text="Current and Cash", fg="black", font="none 12 bold", command=self.CurrNCash_click)
+		self.buttonCurrNCash.grid(row=9, column=3,sticky = W, pady = 2)
 		#Create the button calculate the BV and DEBT 
 		self.buttonDEBT = tk.Button(self.frame, text="BV / DEBT ", fg="black", font="none 12 bold", command=self.BV_DEBT_click)
 		self.buttonDEBT.grid(row=10, column=3,sticky = W, pady = 2)
@@ -102,14 +102,40 @@ class GUI:
 		self.frame.pack()
 		
 	
-	def EPS_click(self):
-		self.text_real_time.delete("1.0","end")
+	def CurrNCash_click(self):
+		tickers_dict_eps = dict()
+		tickers_dict_debt = dict()
 		entered_tickers=self.textTicker.get()
-		entered_years = self.buttonYears_var.get()
-		print('\n---- CLICK EVENT ESP ---- Selected ticker is/are: '+entered_tickers)
-		eps_analysis = Analyses(ticker=entered_tickers,period = entered_years,api_key = self.apikey, statistic = 'ESP')
-		self.Click()
-		eps_analysis.Plot()
+		entered_years = self.buttonYears_var.get() 
+		print('\n---- CLICK EVENT CurrNCash ---- Selected ticker is/are: '+entered_tickers)
+		ticker_list = entered_tickers.split(',')
+		if (len(ticker_list) > 1):
+			print('-- You selected '+str(len(ticker_list))+' tickers \n')
+			for ticker in ticker_list:
+				print('---- Collecting data for '+str(ticker))
+				CurrNCash = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey, statistic = '  ')
+				(date,Current_ratio, Debt_to_Assets) = CurrNCash.Current_and_Cash_ratio(ticker) 
+				(date_2,bookValuePerShare,debtToEquity) =  CurrNCash.Company_key_metrics(ticker) 
+				tickers_dict_eps[ticker] = { 'x' : date , 'y1' : Current_ratio, 'y2' : Debt_to_Assets} 
+				tickers_dict_debt[ticker] = { 'x' : date_2 , 'y1' : bookValuePerShare, 'y2' : debtToEquity}
+				self.Click()
+			#print(tickers_dict_eps
+			CurrNCash.title_data = ['Current_ratio','bookValuePerShare','Debt_to_Assets','debtToEquity']
+			plot = CurrNCash.Multiple_plots(ticker_list, tickers_dict_eps, tickers_dict_debt, 'CurrNCash' )
+		else:
+			
+			print('-- You selected '+str(len(ticker_list))+' tickers \n')
+			print('---- Collecting EPS and BD and DEBT data for '+ticker_list[0])
+			a = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey, statistic = '  ')
+			(date,Current_ratio, Debt_to_Assets) = a.Current_and_Cash_ratio(ticker) 
+			(date_2,bookValuePerShare,debtToEquity) =  a.Company_key_metrics(ticker) 
+			tickers_dict_eps[ticker] = { 'x' : date , 'y1' : Current_ratio, 'y2' : Debt_to_Assets} 
+			tickers_dict_debt[ticker] = { 'x' : date_2 , 'y1' : bookValuePerShare, 'y2' : debtToEquity}
+			print(str(a.title_data + b.title_data))
+			title_data = a.title_data + b.title_data
+			d = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey,title_data = title_data)
+			self.Click()
+			d.Plot_statistic(tickers_dict_eps,tickers_dict_debt, 'CurrNCash')
 
 
 	def BV_DEBT_click(self):
@@ -118,7 +144,7 @@ class GUI:
 		print('\n~~~~ CLICK EVENT BV_DEBT ~~~~ Selected ticker is/are: '+entered_tickers)
 		bv_analysis = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey,statistic='Company_key_metrics')
 		self.Click()
-		bv_analysis.Plot()
+		
 	
 	def ANALYZE_click(self):
 		tickers_dict_eps = dict()
@@ -138,7 +164,8 @@ class GUI:
 				tickers_dict_debt[ticker] = { 'x' : date_2 , 'y1' : bookValuePerShare, 'y2' : debtToEquity}
 				self.Click()
 			#print(tickers_dict_eps)
-			plot = a.Multiple_plots(ticker_list, tickers_dict_eps, tickers_dict_debt)
+			a.title_data = ['Earning Per Share','bookValuePerShare','netIncomeRatio','debtToEquity']
+			plot = a.Multiple_plots(ticker_list, tickers_dict_eps, tickers_dict_debt, 'Analyze')
 		else:
 			
 			print('-- You selected '+str(len(ticker_list))+' tickers \n')
@@ -153,7 +180,7 @@ class GUI:
 			title_data = a.title_data + b.title_data
 			c = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey,title_data = title_data)
 			self.Click()
-			c.Plot_statistic(tickers_dict_eps,tickers_dict_debt)
+			c.Plot_statistic(tickers_dict_eps,tickers_dict_debt, 'CurrNCash')
 
 
 ## This function get the RATIOS

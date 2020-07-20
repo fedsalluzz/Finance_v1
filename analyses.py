@@ -4,6 +4,8 @@ import time
 import json
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt1
+import matplotlib.pyplot as plt2
 plt.rcParams['axes.grid'] = True
 import numpy as np
 import requests
@@ -64,22 +66,7 @@ class Analyses:
 		return r.text
 
 
-#UNUSED
-#This need the statistic and the document set (name on the API and /*/blabla path ). The function function get the json from the api and convert the dataframe into ordered lists.
-	def Get_list(self):
-		text = self.Get_data_from_api('quarter') #it is a string json format
-		print(text)
-		load = json.loads(text) #list
-		#print('I m in')
-		df = pd.DataFrame(load)
-		print('\n-- Single data function Dataframe loaded, Selecting '+self.statistic)
-		x_ax = df[x_ax_name].to_numpy()
-		y_ax = df[self.statistic].to_numpy()
-		x_ax_order,y_ax_order = self.Time_and_statistic_sorter(x_ax,y1_ax)		
-		self.title_data = [self.statistic]
-		#print(x_ax_order)
-		print('--- Closing the Single Data function...')
-		return x_ax_order.tolist(), y_ax_order.tolist()
+
 	#
 	# Sort data from oldest to newest
 	#
@@ -114,7 +101,7 @@ class Analyses:
 	def Income_statement(self,single_ticker):
 		print('\n---- Starting the Income_statement function...')
 		self.document = 'income_statement'
-		self.statistic = 'ESP'
+		self.statistic = 'Income_statement'
 		self.ticker = single_ticker
 		print('-- Requested document is '+self.document+' for'+self.ticker)
 		eps_data = self.Get_data_from_api('quarter') #it is a string json format
@@ -143,24 +130,45 @@ class Analyses:
 		print('-- Requested document is '+self.document+' for'+self.ticker)
 		bv_data = self.Get_data_from_api('quarter') #it is a string json format
 		load = json.loads(bv_data) #list
-		try:
-			df = pd.DataFrame(load)
-			#print(bv_data)
-			print('-- Income Statement Loaded , Dataframe loaded, Selecting BV and Debt')
-			date = df['date'].to_numpy()
-			bookValuePerShare = df['bookValuePerShare'].to_numpy()
-			debtToEquity = df['debtToEquity'].to_numpy()
-			date_order,bookValuePerShare_order,debtToEquity_order = self.Time_and_statistic_sorter(date,bookValuePerShare,debtToEquity)
-			self.title_data = ['bookValuePerShare','debtToEquity']
-			#print(date)
-			print('--- Closing the Company_key_metrics function...')
-		except:
-			print('**** EXCEPTION in Company_key_metrics function :: message from API endopoint: '+eps_data)
-			exit
-	
+		df = pd.DataFrame(load)
+		#print(bv_data)
+		print('-- Income Statement Loaded , Dataframe loaded, Selecting BV and Debt')
+		date = df['date'].to_numpy()
+		bookValuePerShare = df['bookValuePerShare'].to_numpy()
+		debtToEquity = df['debtToEquity'].to_numpy()
+		date_order,bookValuePerShare_order,debtToEquity_order = self.Time_and_statistic_sorter(date,bookValuePerShare,debtToEquity)
+		self.title_data = ['bookValuePerShare','debtToEquity']
+		#print(date)
+		print('--- Closing the Company_key_metrics function...')
 		return  date_order.tolist(), bookValuePerShare_order.tolist(), debtToEquity_order.tolist()
 	
 	
+
+
+	#
+	# Create dataframe with book vlue and debt per earning data from metrics (x,y1 and y2 axis)
+	#
+	def Current_and_Cash_ratio(self,single_ticker):
+		print('\n---- Starting the Current_and_Cash_ratio function...')
+		self.document = 'metrics'
+		self.statistic = 'Current_and_Cash_ratio'
+		self.ticker = single_ticker
+		print('-- Requested document is '+self.document+' for'+self.ticker)
+		bv_data = self.Get_data_from_api('quarter') #it is a string json format
+		load = json.loads(bv_data) #list
+		df = pd.DataFrame(load)
+		#print(bv_data)
+		print('-- Current_and_Cash_ratio Loaded , Dataframe loaded')
+		date = df['date'].to_numpy()
+		Current_ratio = df['currentRatio'].to_numpy()
+		Debt_to_Assets = df['debtToAssets'].to_numpy()
+		date_order,Current_ratio_order,Debt_to_Assets_order = self.Time_and_statistic_sorter(date,Current_ratio,Debt_to_Assets)
+		self.title_data = ['currentRatio','debtToAssets']
+		#print(date)
+		print('--- Closing the Current_and_Cash_ratio function...')
+		return  date_order.tolist(), Current_ratio_order.tolist(), Debt_to_Assets_order.tolist()
+
+
 
 
 
@@ -198,41 +206,6 @@ class Analyses:
 		print('--- Closing the RATIOS function...')
 		return  pe, pbv, peg,div,roe  
 
-
-######################################
-# 
-# 
-#
-
-	def Plot(self):
-		ticker_list = self.ticker.split(',')
-		tickers_dict = dict()
-		if (len(ticker_list) > 1):
-			print('\n-- PLOT FUNCTION starting: You selected '+str(len(ticker_list))+' tickers')
-			for ticker in ticker_list:
-				self.ticker = ticker
-				print('\n---- Collecting data for '+str(self.ticker))
-				if (self.statistic == 'Company_key_metrics'):
-					(x_ax_order,y1_ax_order,y2_ax_order) = self.Company_key_metrics(ticker_list[0])
-
-				else:
-					(x_ax_order,y1_ax_order,y2_ax_order) = self.Income_statement(ticker_list[0])
-				tickers_dict[ticker] = { 'x' : x_ax_order , 'y1' : y1_ax_order, 'y2' : y2_ax_order}
-				print(str(self.title_data))
-				self.Plot_statistic(tickers_dict)
-
-		else:
-			print('---- Collecting data for '+ticker_list[0])
-			if (self.statistic == 'Company_key_metrics'):
-				(x_ax_order,y1_ax_order,y2_ax_order) = self.Company_key_metrics(ticker_list[0])
-			else:
-				(x_ax_order,y1_ax_order,y2_ax_order) = self.Income_statement(ticker_list[0])
-			print(str(self.title_data))
-			#print(x_ax_order)
-			tickers_dict[ticker_list[0]] = { 'x' : x_ax_order , 'y1' : y1_ax_order, 'y2' : y2_ax_order}
-			#print(tickers_dict)
-			self.Plot_statistic(tickers_dict)
-		return
 
 
 #
@@ -295,18 +268,22 @@ class Analyses:
 
 
 
-	def Multiple_plots(self,ticker_list, tickers_dict, tickers_dict_2 ):
+	def Multiple_plots(self,ticker_list, tickers_dict, tickers_dict_2, button ):
 		print('-- TRYING MULTI PLOT OPERATION '+str(ticker_list))
-		self.title_data = ['Earning Per Share','bookValuePerShare','netIncomeRatio','debtToEquity']
 		self.set_draw_settings()
-		fig, axs = plt.subplots(nrows=2,ncols=2, num=str(ticker_list)+' retrieved data')
+#		if (button == 'Analyze'):
+#			plt = plt1
+#		else:
+#			plt = plt2
+		fig, axs = plt.subplots(nrows=2,ncols=2, num=str(ticker_list)+' retrieved data with ' +button)
 		#print(tickers_dict)
 		myFmt = mdates.DateFormatter('%Y-%m-%d')
 		for ticker in ticker_list:
+			color = self.Random_color()
+			print('((((( THE COLOR IS ...'+ str(color))
 			for i in range(0,2):
 				for j in range(0,2):
 					axs[i,j].xaxis.set_major_formatter(myFmt)
-					color = self.Random_color()
 					t1_list = tickers_dict[str(ticker)]['x'];
 					y1 = tickers_dict[str(ticker)]['y'+str(j+1)]
 					y1_mean = [np.mean(y1)]*len(t1_list)
@@ -337,12 +314,8 @@ class Analyses:
 					#print(y2)
 		print(' -- --- Plotting the graphs over time')
 		plt.show()
-
 		return 
-
-
-
-
+ 
 
 
 
