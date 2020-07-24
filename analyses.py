@@ -4,8 +4,6 @@ import time
 import json
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib.pyplot as plt1
-import matplotlib.pyplot as plt2
 plt.rcParams['axes.grid'] = True
 import numpy as np
 import requests
@@ -29,11 +27,12 @@ class Analyses:
 #r = requests.get(Financial_api_endpoint)
 #print(r.text)
 
-#
-# Retrieve data from API endpoint
-#
-#de
-	
+############DEDICATED DATA FROM API #################
+###########
+##########
+#########
+
+
 	def Get_data_from_api(self, density = None ):
 		symbol = self.ticker
 		api_key = self.api_key
@@ -67,9 +66,71 @@ class Analyses:
 
 
 
-	#
-	# Sort data from oldest to newest
-	#
+############GENERIC DATA FUNCTION #################
+###########
+##########
+#########
+	def Get_document_for(self,single_ticker, data_1, data_2, document ):
+		print('\n---- Starting the Get_document_for function...')
+		self.document = document
+		self.statistic = document
+		self.ticker = single_ticker
+		print('---- Requested document is '+self.document+' for'+self.ticker)
+		json_data = self.Get_data_from_api('quarter') #it is a string json format
+		load = json.loads(json_data) #list
+		df = pd.DataFrame(load)
+		self.Print_on_file(df, single_ticker, self.document )
+		print('---- '+document+' Loaded , Dataframe loaded')
+		date = df['date'].to_numpy()
+		df_1 = df[data_1].to_numpy()
+		df_2 = df[data_2].to_numpy()
+		date_order,df_1_order,df_2_order = self.Time_and_statistic_sorter(date,df_1,df_2)
+		#self.title_data = ['Earning Per Share','netIncomeRatio']
+		#print(x_ax_order)
+		print('---- Closing the Get_document_for...')
+		return date_order.tolist(), df_1_order.tolist(), df_2_order.tolist()
+
+
+
+	
+#################
+### Take the PE, PBV, PEG for TODAY
+	def Ratios(self):
+		print('\n---- Starting the Ratios function...')
+		self.document = 'ratios'
+		print('---- Requested Ratios. Selected document is '+self.document+' for'+self.ticker)
+		ratios_data = self.Get_data_from_api('quarter') #it is a string json format
+		load = json.loads(ratios_data) #list
+		#print('Ratios json loaded')
+		df = pd.DataFrame(load)
+		print('---- Ratios Loaded , Dataframe loaded')
+		#print(df)
+		x_ax = df['date'].to_numpy()
+		y1_ax = df['priceBookValueRatio'].to_numpy()
+		y2_ax = df['priceEarningsRatio'].to_numpy()
+		y3_ax = df['priceEarningsToGrowthRatio'].to_numpy()
+		y4_ax = df['dividendYield'].to_numpy()
+		y5_ax = df['returnOnEquity'].to_numpy()
+		print('-- Latest data is date on: '+str(x_ax[0]))
+		pe = str(y1_ax[0])
+		pbv = str(y2_ax[0])
+		peg = str(y3_ax[0])
+		div = str(y4_ax[0])
+		roe = str(y5_ax[0])
+#		print('-- PE: '+str(y1_ax[0]))
+#		print('-- PBV: '+str(y2_ax[0]))
+#		print('-- PEG: '+str(y3_ax[0]))
+#		print('-- DividentYeld: '+str(y4_ax[0]))
+#		print('-- ROE: '+str(y5_ax[0]))
+#		print('--- Closing the RATIOS function...')
+		return  pe, pbv, peg,div,roe  
+
+
+
+
+### Take the PE, PBV, PEG for TODAY
+# Sort data from oldest to newest
+#
 	def Time_and_statistic_sorter(self,x_ax,y1_ax,y2_ax = None):
 		if (self.period == "MAX"):
 			pass
@@ -91,127 +152,23 @@ class Analyses:
 		g = random()
 		color = (r, g, b)
 		return color
-	
-	
-	#
-	# Create dataframe with Income_statement data from income_statement (x,y1 and y2 axis)
-	#
-	
-	
-	def Income_statement(self,single_ticker):
-		print('\n---- Starting the Income_statement function...')
-		self.document = 'income_statement'
-		self.statistic = 'Income_statement'
-		self.ticker = single_ticker
-		print('-- Requested document is '+self.document+' for'+self.ticker)
-		eps_data = self.Get_data_from_api('quarter') #it is a string json format
-		#print(eps_data)
-		load = json.loads(eps_data) #list
-		#print('I m in')
-		df = pd.DataFrame(load)
-		print('-- Income Statement Loaded , Dataframe loaded, Selecting Income_statement and Income_statement diluted')
-		date = df['date'].to_numpy()
-		eps = df['eps'].to_numpy()
-		netIncomeRatio = df['netIncomeRatio'].to_numpy()
-		date_order,eps_order,netIncomeRatio_order = self.Time_and_statistic_sorter(date,eps,netIncomeRatio)
-		self.title_data = ['Earning Per Share','netIncomeRatio']
-		#print(x_ax_order)
-		print('--- Closing the Income_statement function...')
-		return date_order.tolist(), eps_order.tolist(), netIncomeRatio_order.tolist()  
-	
-	#
-	# Create dataframe with book vlue and debt per earning data from metrics (x,y1 and y2 axis)
-	#
-	def Company_key_metrics(self,single_ticker):
-		print('\n---- Starting the Company_key_metrics function...')
-		self.document = 'metrics'
-		self.statistic = 'Company_key_metrics'
-		self.ticker = single_ticker
-		print('-- Requested document is '+self.document+' for'+self.ticker)
-		bv_data = self.Get_data_from_api('quarter') #it is a string json format
-		load = json.loads(bv_data) #list
-		df = pd.DataFrame(load)
-		#print(bv_data)
-		print('-- Income Statement Loaded , Dataframe loaded, Selecting BV and Debt')
-		date = df['date'].to_numpy()
-		bookValuePerShare = df['bookValuePerShare'].to_numpy()
-		debtToEquity = df['debtToEquity'].to_numpy()
-		date_order,bookValuePerShare_order,debtToEquity_order = self.Time_and_statistic_sorter(date,bookValuePerShare,debtToEquity)
-		self.title_data = ['bookValuePerShare','debtToEquity']
-		#print(date)
-		print('--- Closing the Company_key_metrics function...')
-		return  date_order.tolist(), bookValuePerShare_order.tolist(), debtToEquity_order.tolist()
-	
-	
-
 
 	#
-	# Create dataframe with book vlue and debt per earning data from metrics (x,y1 and y2 axis)
+	# Save dataframe on .csv file
 	#
-	def Current_and_Cash_ratio(self,single_ticker):
-		print('\n---- Starting the Current_and_Cash_ratio function...')
-		self.document = 'metrics'
-		self.statistic = 'Current_and_Cash_ratio'
-		self.ticker = single_ticker
-		print('-- Requested document is '+self.document+' for'+self.ticker)
-		bv_data = self.Get_data_from_api('quarter') #it is a string json format
-		load = json.loads(bv_data) #list
-		df = pd.DataFrame(load)
-		#print(bv_data)
-		print('-- Current_and_Cash_ratio Loaded , Dataframe loaded')
-		date = df['date'].to_numpy()
-		Current_ratio = df['currentRatio'].to_numpy()
-		Debt_to_Assets = df['debtToAssets'].to_numpy()
-		date_order,Current_ratio_order,Debt_to_Assets_order = self.Time_and_statistic_sorter(date,Current_ratio,Debt_to_Assets)
-		self.title_data = ['currentRatio','debtToAssets']
-		#print(date)
-		print('--- Closing the Current_and_Cash_ratio function...')
-		return  date_order.tolist(), Current_ratio_order.tolist(), Debt_to_Assets_order.tolist()
 
+	def Print_on_file(self,dataframe, ticker, document ):
+		dataframe.to_csv(r'saved_data/'+ticker+'_'+document+'.csv', index = False)
+		return
 
-
-
-
-#################
-### Take the PE, PBV, PEG for TODAY
-	def Ratios(self):
-		print('\n---- Starting the Ratios function...')
-		self.document = 'ratios'
-		print('-- Requested Ratios. Selected document is '+self.document+' for'+self.ticker)
-		ratios_data = self.Get_data_from_api('quarter') #it is a string json format
-		load = json.loads(ratios_data) #list
-		print('Ratios json loaded')
-		df = pd.DataFrame(load)
-		print('-- Income Statement Loaded , Dataframe loaded, Selecting Ratios')
-		#print(df)
-		x_ax = df['date'].to_numpy()
-		y1_ax = df['priceBookValueRatio'].to_numpy()
-		y2_ax = df['priceEarningsRatio'].to_numpy()
-		y3_ax = df['priceEarningsToGrowthRatio'].to_numpy()
-		y4_ax = df['dividendYield'].to_numpy()
-		y5_ax = df['returnOnEquity'].to_numpy()
-		print('-- Latest data is date on: '+str(x_ax[0]))
-		pe = str(y1_ax[0])
-		pbv = str(y2_ax[0])
-		peg = str(y3_ax[0])
-		div = str(y4_ax[0])
-		roe = str(y5_ax[0])
-		print('-- PE: '+str(y1_ax[0]))
-		print('-- PBV: '+str(y2_ax[0]))
-		print('-- PEG: '+str(y3_ax[0]))
-		print('-- DividentYeld: '+str(y4_ax[0]))
-		print('-- ROE: '+str(y5_ax[0]))
-		#self.title_data = ['Income_statement','netIncomeRatio']
-		#print(x_ax_order)
-		print('--- Closing the RATIOS function...')
-		return  pe, pbv, peg,div,roe  
-
+	
 
 
 #
-# Plot wanted statitics for 2x1 or 2x2 suplots
+# Plot statitics for 2x1 or 2x2 suplots for one ticker only.
 #
 	def Plot_statistic(self,tickers_dict, tickers_dict_2 = None, ticker_gui_list = None ):
+		color = ['b','g','r','c','m','y','k']
 		print('\n---- Trying to plot statistics ')
 		ticker_list = self.ticker.split(',')
 		if (len(ticker_list) == 1):
@@ -223,11 +180,11 @@ class Analyses:
 					#print(str(ticker))
 					#print(tickers_dict)
 					for i in range(0,2):
-						color = self.Random_color()
+						#color = self.Random_color()
 						t = tickers_dict[str(ticker)]['x'];
 						y = tickers_dict[str(ticker)]['y'+str(i+1)]
 						y_mean = [np.mean(y)]*len(t)
-						axs[i].plot(t,y,c=color,label = ticker)
+						axs[i].plot(t,y,c=color[i+j],label = ticker)
 						axs[i].plot(t,y_mean,color='red',label = ticker,linestyle='--')
 						axs[i].set_title(str(self.title_data[i]))
 			else: #All four drawings
@@ -262,25 +219,16 @@ class Analyses:
 	
 
 
-
-
-
-
-
-
 	def Multiple_plots(self,ticker_list, tickers_dict, tickers_dict_2, button ):
-		print('-- TRYING MULTI PLOT OPERATION '+str(ticker_list))
+		print('\n---- TRYING MULTI PLOT OPERATION '+str(ticker_list))
+		colors = ['b','g','r','c','m','y','k']
 		self.set_draw_settings()
-#		if (button == 'Analyze'):
-#			plt = plt1
-#		else:
-#			plt = plt2
 		fig, axs = plt.subplots(nrows=2,ncols=2, num=str(ticker_list)+' retrieved data with ' +button)
 		#print(tickers_dict)
 		myFmt = mdates.DateFormatter('%Y-%m-%d')
-		for ticker in ticker_list:
-			color = self.Random_color()
-			print('((((( THE COLOR IS ...'+ str(color))
+		for index,ticker in enumerate(ticker_list):
+			color = colors[index]
+			#print('((((( THE COLOR IS ...'+ str(color))
 			for i in range(0,2):
 				for j in range(0,2):
 					axs[i,j].xaxis.set_major_formatter(myFmt)
@@ -296,7 +244,6 @@ class Analyses:
 					if ( int(str(i)+str(j),2) < 2 ):
 						axs[i,j].plot(t1,y1,c=color)
 						axs[i,j].plot(t1,y1_mean,c=color,label = ticker,linestyle='--')
-						#print('y'+str(j+1))
 						axs[i,j].set_title(str(self.title_data[int(str(i)+str(j), base= 2)]))
 					else:
 						axs[i,j].plot(t2,y2,c=color)
@@ -304,21 +251,10 @@ class Analyses:
 						axs[i,j].set_title(str(self.title_data[int(str(i)+str(j), base= 2)]))
 					leg = axs[i,j].legend();
 					fig.autofmt_xdate()
-					#print('........................y1 \n')
-					#print(t1)
-					#print('........................t1 \n')
-					#print(y1)
-					#print('........................t2 \n')
-					#print(t2)
-					#print('........................y2 \n')
-					#print(y2)
-		print(' -- --- Plotting the graphs over time')
+		print('--- Plotting the multiple graphs over time')
 		plt.show()
 		return 
  
-
-
-
 
 
 	def set_draw_settings(self):
@@ -334,6 +270,7 @@ class Analyses:
 		"ytick.major.size": 0,     
 		"ytick.minor.size": 0,
 		"xtick.direction" : "in",
+		"axes.titlesize"      : "small",
 		"xtick.major.size" : 7,
 		"xtick.color"      : "#191919",
 		"axes.edgecolor"    :"#191919",
@@ -344,13 +281,7 @@ class Analyses:
 
 def main():
 	pass
-	##tickers = "AAPL,JNJ"
-	#eps_analysis = Analyses(ticker='RCL',period = '1',api_key = 'c69c0e1c9f3b70a951441dc376b6d400', statistic = 'ESP')
-	#print(eps_analysis.ticker)
-	#print(eps_analysis.period)
-	#print(eps_analysis.api_key)
-	#print(eps_analysis.document)
-	#eps_analysis.Ratios()
+
 
 
 
