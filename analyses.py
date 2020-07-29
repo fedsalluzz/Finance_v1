@@ -9,7 +9,8 @@ import numpy as np
 import requests
 from random import random
 import matplotlib.dates as mdates
-
+from matplotlib.ticker import PercentFormatter
+import csv
 
 
 class Analyses:
@@ -20,6 +21,7 @@ class Analyses:
 		self.document = document
 		self.title_data = title_data
 		self.statistic =  statistic
+		self.today = None
 
 
 #A URL that returns an HTTP response in Json format is called API endpoint
@@ -50,6 +52,8 @@ class Analyses:
 			api_endpoint_body = api_endpoint_head+'key-metrics/'
 		elif (self.document == 'ratios'):
 			api_endpoint_body = api_endpoint_head+'ratios/'
+		elif (self.document =='quote'):
+			api_endpoint_body = api_endpoint_head+'quote/'
 		else:
 			error
 		if (density == 'quarter'):
@@ -73,7 +77,6 @@ class Analyses:
 	def Get_document_for(self,single_ticker, data_1, data_2, document ):
 		print('\n---- Starting the Get_document_for function...')
 		self.document = document
-		self.statistic = document
 		self.ticker = single_ticker
 		print('---- Requested document is '+self.document+' for'+self.ticker)
 		json_data = self.Get_data_from_api('quarter') #it is a string json format
@@ -86,15 +89,38 @@ class Analyses:
 		df_2 = df[data_2].to_numpy()
 		date_order,df_1_order,df_2_order = self.Time_and_statistic_sorter(date,df_1,df_2)
 		#self.title_data = ['Earning Per Share','netIncomeRatio']
-		#print(x_ax_order)
 		print('---- Closing the Get_document_for...')
 		return date_order.tolist(), df_1_order.tolist(), df_2_order.tolist()
 
 
+	def Get_quote_for(self,single_ticker):
+		print('\n---- Starting the Get_quote_for function...')
+		self.document = 'quote'
+		self.ticker = single_ticker
+		print('---- Requested document is '+self.document+' for '+self.ticker)
+		json_data = self.Get_data_from_api() #it is a string json format
+		load = json.loads(json_data) #list
+		df = pd.DataFrame(load)
+		print(df)
+		self.Print_on_file(df, single_ticker, self.document )
+		print('---- quote Loaded , Dataframe loaded')
+		price = df['price'].to_numpy()
+		priceAvg50 = df['priceAvg50'].to_numpy()
+		priceAvg200 = df['priceAvg200'].to_numpy()
+		eps = df['eps'].to_numpy()
+		#self.title_data = ['Earning Per Share','netIncomeRatio']
+		print(price)
+		print('---- Closing the Get_quote_for...')
+		price_str = str(price[0])
+		priceAvg50_str = str(priceAvg50[0])
+		priceAvg200_str = str(priceAvg200[0])
+		eps_str = str(eps[0])
+		return price_str[:6],priceAvg50_str[:6],priceAvg200_str[:6],eps_str[:6]
 
 	
+
 #################
-### Take the PE, PBV, PEG for TODAY
+### Take the PE, PBV, PEG for Latest Report
 	def Ratios(self):
 		print('\n---- Starting the Ratios function...')
 		self.document = 'ratios'
@@ -103,6 +129,8 @@ class Analyses:
 		load = json.loads(ratios_data) #list
 		#print('Ratios json loaded')
 		df = pd.DataFrame(load)
+		print(df)
+		self.Print_on_file(df, self.ticker, self.document )
 		print('---- Ratios Loaded , Dataframe loaded')
 		#print(df)
 		x_ax = df['date'].to_numpy()
@@ -111,19 +139,23 @@ class Analyses:
 		y3_ax = df['priceEarningsToGrowthRatio'].to_numpy()
 		y4_ax = df['dividendYield'].to_numpy()
 		y5_ax = df['returnOnEquity'].to_numpy()
+		y6_ax = df['dividendPayoutRatio'].to_numpy()
 		print('-- Latest data is date on: '+str(x_ax[0]))
+		self.today = str(x_ax[0])
 		pe = str(y1_ax[0])
 		pbv = str(y2_ax[0])
 		peg = str(y3_ax[0])
 		div = str(y4_ax[0])
 		roe = str(y5_ax[0])
+		dividendPayoutRatio = str(y6_ax[0])
+		r_list = [pe,pbv,peg,div,roe,dividendPayoutRatio]
 #		print('-- PE: '+str(y1_ax[0]))
 #		print('-- PBV: '+str(y2_ax[0]))
 #		print('-- PEG: '+str(y3_ax[0]))
 #		print('-- DividentYeld: '+str(y4_ax[0]))
 #		print('-- ROE: '+str(y5_ax[0]))
 #		print('--- Closing the RATIOS function...')
-		return  pe, pbv, peg,div,roe  
+		return  pe[:4], pbv[:4], peg[:4],div[:5],roe[:4], dividendPayoutRatio[:4]  
 
 
 
@@ -131,14 +163,13 @@ class Analyses:
 ### Take the PE, PBV, PEG for TODAY
 # Sort data from oldest to newest
 #
-	def Time_and_statistic_sorter(self,x_ax,y1_ax,y2_ax = None):
+	def Time_and_statistic_sorter(self,x_ax,y1_ax,y2_ax = None, y3_ax = None):
 		if (self.period == "MAX"):
 			pass
 		else:
 			timespan = x_ax[:int(self.period)*4] #quarter data
 			y1_reduced_data = y1_ax[:int(self.period)*4] #quarter data
 			y2_reduced_data = y2_ax[:int(self.period)*4] #quarter data
-	
 		x_ax_order = timespan[::-1]
 		y1_ax_order = y1_reduced_data[::-1] 
 		y2_ax_order = y2_reduced_data[::-1]
@@ -158,7 +189,7 @@ class Analyses:
 	#
 
 	def Print_on_file(self,dataframe, ticker, document ):
-		dataframe.to_csv(r'saved_data/'+ticker+'_'+document+'.csv', index = False)
+		dataframe.to_csv(r'saved_data/csv/'+ticker+'_'+document+'.csv', index = False)
 		return
 
 	
@@ -224,7 +255,9 @@ class Analyses:
 		colors = ['b','g','r','c','m','y','k']
 		self.set_draw_settings()
 		fig, axs = plt.subplots(nrows=2,ncols=2, num=str(ticker_list)+' retrieved data with ' +button)
-		#print(tickers_dict)
+		print(self.statistic)
+		if (self.statistic == 'log'):
+			print('yes')
 		myFmt = mdates.DateFormatter('%Y-%m-%d')
 		for index,ticker in enumerate(ticker_list):
 			color = colors[index]
@@ -234,14 +267,31 @@ class Analyses:
 					axs[i,j].xaxis.set_major_formatter(myFmt)
 					t1_list = tickers_dict[str(ticker)]['x'];
 					y1 = tickers_dict[str(ticker)]['y'+str(j+1)]
+					#print('LIST TYPE IS: '+str(type(y1)))
+					#print('ELEMENT OF LIST Y1[0] is'+str(y1[0])+' of type '+str(type(y1[0])))
 					y1_mean = [np.mean(y1)]*len(t1_list)
 					t2_list = tickers_dict_2[str(ticker)]['x'];
 					y2 = tickers_dict_2[str(ticker)]['y'+str(j+1)]
 					y2_mean = [np.mean(y2)]*len(t2_list)
+					#print(str(y1))
+					#print(str(y2))
 					t1 =pd.to_datetime(pd.Series(t1_list), format='%Y-%m-%d')
 					t2 =pd.to_datetime(pd.Series(t2_list), format='%Y-%m-%d')
+					if (self.statistic == 'log'):
+						axs[i,j].set_yscale('log')
+					elif (self.statistic == '%'):
+						axs[i,j].yaxis.set_major_formatter(PercentFormatter())
+						#for u in range(0,len(y1)):
+						#	print(u)
+						#	y1[u] = y1[u]*100
+						#	y2[u] = y2[u]*100
 					#print(str(int(str(i)+str(j), base= 2)))
-					if ( int(str(i)+str(j),2) < 2 ):
+					if ( int(str(i)+str(j),2) < 2 ): #i primi due grafici sono in %
+						if (self.statistic == '%'):
+							for u in range(0,len(y1)):
+								#print(u)
+								y1[u] = y1[u]*100
+								y2[u] = y2[u]*100
 						axs[i,j].plot(t1,y1,c=color)
 						axs[i,j].plot(t1,y1_mean,c=color,label = ticker,linestyle='--')
 						axs[i,j].set_title(str(self.title_data[int(str(i)+str(j), base= 2)]))
