@@ -95,7 +95,9 @@ The inverse of PE is giving you the expected earnings over one year period. To m
 
 - **Divident Yield (DIV)**:= *annual dividends per share / price per share*.  It is showed as percentage and describe the ammount of money a company pays shareholders for owning a stock. It is an estimate of the dividend return for a stock investment. In general mature companies have higher returns than new comanies, but too high DIV Yelds sometimes shows reduced expected growth. Usually it is evaluated as TTM (trailing twelve month). Better indicator is Dividend Payout ratio.
 
-- **Return on Equity** (ROE):
+- **Return on Equity** (ROE): Return on equity (ROE) is a measure of financial performance calculated by dividing net income by shareholders' equity. Because shareholders' equity is equal to a company’s assets minus its debt, ROE is considered the return on net assets. ROE is considered a measure of how effectively management is using a company’s assets to create profits.
+
+KEY TAKEAWAYS
 
 ## Flexibility indicators
 
