@@ -261,8 +261,6 @@ class GUI:
 			(date,eps ,netIncomeRatio) = a.Get_document_for(ticker, 'epsdiluted', 'netIncomeRatio',document = 'income_statement') 
 			(date_2,bookValuePerShare,roe) =  a.Get_document_for(ticker, 'bookValuePerShare', 'roe', document = 'metrics') 
 			(date_2,dividendYield,roe ) =  a.Get_document_for(ticker, 'dividendYield', 'roe', document = 'metrics')
-			for k in range (0, len(dividendYield)):
-				dividendYield[k] = dividendYield[k]*100
 			tickers_dict_eps[ticker] = { 'x' : date , 'y1' : eps, 'y2' : dividendYield} 
 			tickers_dict_debt[ticker] = { 'x' : date_2 , 'y1' : bookValuePerShare, 'y2' : roe}
 			#self.Click()
@@ -288,13 +286,9 @@ class GUI:
 			price,priceAvg50,priceAvg200,eps = Quote.Get_quote_for(ticker) 
 			print(price+'   '+priceAvg50+'   '+priceAvg200+'   '+eps)
 			pe, pbv, peg,div,roe,dividendPayoutRatio =  Quote.Ratios() #return 5 strings
-			divXsh_float = float(dividendPayoutRatio)*float(eps)
-			divXsh = str(divXsh_float)[:5]
-			divYield_float = divXsh_float / float(price)
-			divYield = str(divYield_float)[:5]
 			latest_ratio_date = Quote.today
-			tickers_quote[ticker] = { 'price' : price , 'priceAvg50' : priceAvg50, 'priceAvg200' : priceAvg200,'divYield':divYield,'EPS' : eps ,'Latest Date': latest_ratio_date,'PBV':pbv ,'PE':pe ,'PEG':peg ,'DIV YiELD': div,'ROE':roe,'dividendPayoutRatio': dividendPayoutRatio, 'Dividend per share': divXsh}
-		index_for_dataframe = Quote.title_data = ['price','priceAvg50','priceAvg200','divYield','EPS','Latest Date','PBV','PE','PEG','DIV YiELD','ROE','dividendPayoutRatio','Dividend per share']
+			tickers_quote[ticker] = { 'price' : price , 'priceAvg50' : priceAvg50, 'priceAvg200' : priceAvg200,'EPS' : eps ,'Latest Date': latest_ratio_date,'PBV':pbv ,'PE':pe ,'PEG':peg ,'DIV YiELD': div,'ROE':roe,'dividendPayoutRatio': dividendPayoutRatio}
+		index_for_dataframe = Quote.title_data = ['price','priceAvg50','priceAvg200','EPS','Latest Date','PBV','PE','PEG','DIV YiELD','ROE','dividendPayoutRatio']
 		print('Dict is '+str(tickers_quote))
 		mydict = tickers_quote
 		#with open('dict.csv', 'w') as csv_file:  
@@ -358,7 +352,7 @@ class GUI:
 		frame = pd.DataFrame(data, columns = entered_tickers.split(","), index=index_for_dataframe)
 		if(len(entered_tickers) > 1):
 			f = open("saved_data/datalog/"+entered_tickers.replace(',','_')+"_datalog.log","w")
-			print(frame,file = f)
+			#print(frame,file = f)
 			frame.to_csv(r'saved_data/csv/'+entered_tickers.replace(',','_')+'_simplified_ratios.csv', index = False)
 		print('-- RATIOS printed on files for: '+entered_tickers)
 		csv =frame.to_csv(r'saved_data/'+entered_tickers.replace(',','_')+'_simplified_ratios.csv', header=True, index=['PE','PBV','PEG','DIV YiELD','ROE'], sep='\t', mode='a')

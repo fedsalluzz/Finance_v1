@@ -101,7 +101,7 @@ class Analyses:
 		json_data = self.Get_data_from_api() #it is a string json format
 		load = json.loads(json_data) #list
 		df = pd.DataFrame(load)
-		print(df)
+		#print(df)
 		self.Print_on_file(df, single_ticker, self.document )
 		print('---- quote Loaded , Dataframe loaded')
 		price = df['price'].to_numpy()
@@ -129,7 +129,7 @@ class Analyses:
 		load = json.loads(ratios_data) #list
 		#print('Ratios json loaded')
 		df = pd.DataFrame(load)
-		print(df)
+		#print(df)
 		self.Print_on_file(df, self.ticker, self.document )
 		print('---- Ratios Loaded , Dataframe loaded')
 		#print(df)
