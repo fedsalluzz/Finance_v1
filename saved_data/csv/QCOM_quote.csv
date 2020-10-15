@@ -1,2 +1,2 @@
-avgVolume,change,changesPercentage,dayHigh,dayLow,earningsAnnouncement,eps,exchange,marketCap,name,open,pe,previousClose,price,priceAvg200,priceAvg50,sharesOutstanding,symbol,timestamp,volume,yearHigh,yearLow
-9063960,-0.69,-0.56,124.13,121.86,2020-11-04T21:00:00.000+0000,2.355,NASDAQ,138032545792.0,QUALCOMM Incorporated,124.0,51.949043,123.03,122.34,93.16259,115.655426,1128269951,QCOM,1602198200,4641716,124.13,58.0
+symbol,name,price,changesPercentage,change,dayLow,dayHigh,yearHigh,yearLow,marketCap,priceAvg50,priceAvg200,volume,avgVolume,exchange,open,previousClose,eps,pe,earningsAnnouncement,sharesOutstanding,timestamp
+QCOM,QUALCOMM Incorporated,129.05,-0.64,-0.83,126.65,129.1,132.42,58.0,145603248128.0,117.503426,95.35396,5898757,9243403,NASDAQ,127.3,129.88,2.355,54.7983,2020-11-04T21:00:00.000+0000,1128270036,1602790421

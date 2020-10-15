@@ -11,7 +11,7 @@ from random import random
 import matplotlib.dates as mdates
 from matplotlib.ticker import PercentFormatter
 import csv
-
+import datetime
 
 class Analyses:
 	def __init__(self,ticker,period,api_key,document = None, title_data = None, statistic = None):
@@ -104,18 +104,26 @@ class Analyses:
 		#print(df)
 		self.Print_on_file(df, single_ticker, self.document )
 		print('---- quote Loaded , Dataframe loaded')
+		timestamp = df['timestamp'].to_numpy()
 		price = df['price'].to_numpy()
 		priceAvg50 = df['priceAvg50'].to_numpy()
 		priceAvg200 = df['priceAvg200'].to_numpy()
 		eps = df['eps'].to_numpy()
-		#self.title_data = ['Earning Per Share','netIncomeRatio']
+		sharesOutstanding =df['sharesOutstanding'].to_numpy()
+                marketCap =df[ 'marketCap'].to_numpy()
+                #self.title_data = ['Earning Per Share','netIncomeRatio']
 		print(price)
 		print('---- Closing the Get_quote_for...')
 		price_str = str(price[0])
 		priceAvg50_str = str(priceAvg50[0])
 		priceAvg200_str = str(priceAvg200[0])
 		eps_str = str(eps[0])
-		return price_str[:6],priceAvg50_str[:6],priceAvg200_str[:6],eps_str[:6]
+		sharesOutstanding_str =str(sharesOutstanding[0])
+		marketCap_str = str(marketCap[0])
+                dt = datetime.datetime.fromtimestamp(timestamp[0])
+		print('DATE TIME IS : '+str(dt))
+		self.today = str(dt)
+		return price_str[:6],priceAvg50_str[:6],priceAvg200_str[:6],eps_str[:6],sharesOutstanding_str[:6], marketCap_str[:6]
 
 	
 
@@ -134,28 +142,39 @@ class Analyses:
 		print('---- Ratios Loaded , Dataframe loaded')
 		#print(df)
 		x_ax = df['date'].to_numpy()
-		y1_ax = df['priceBookValueRatio'].to_numpy()
-		y2_ax = df['priceEarningsRatio'].to_numpy()
-		y3_ax = df['priceEarningsToGrowthRatio'].to_numpy()
-		y4_ax = df['dividendYield'].to_numpy()
-		y5_ax = df['returnOnEquity'].to_numpy()
-		y6_ax = df['dividendPayoutRatio'].to_numpy()
+		y1_ax = df['currentRatio'].to_numpy()
+		y2_ax = df['quickRatio'].to_numpy()
+		y3_ax = df['cashRatio'].to_numpy()
+		y4_ax = df['grossProfitMargin'].to_numpy()
+		y5_ax = df['operatingProfitMargin'].to_numpy()
+		y6_ax = df['netProfitMargin'].to_numpy()
+		y7_ax = df['returnOnAssets'].to_numpy()
+		y8_ax = df['returnOnEquity'].to_numpy()
+		y9_ax = df['debtRatio'].to_numpy()
+		y10_ax = df['debtEquityRatio'].to_numpy()
+		y11_ax = df['operatingCashFlowPerShare'].to_numpy()
+		y12_ax = df['freeCashFlowPerShare'].to_numpy()
 		print('-- Latest data is date on: '+str(x_ax[0]))
 		self.today = str(x_ax[0])
-		pe = str(y1_ax[0])
-		pbv = str(y2_ax[0])
-		peg = str(y3_ax[0])
-		div = str(y4_ax[0])
-		roe = str(y5_ax[0])
-		dividendPayoutRatio = str(y6_ax[0])
-		r_list = [pe,pbv,peg,div,roe,dividendPayoutRatio]
+		currentRatio = str(y1_ax[0])
+		quickRatio = str(y2_ax[0])
+		cashRatio = str(y3_ax[0])
+		grossProfitMargin = str(y4_ax[0])
+		operatingProfitMargin = str(y5_ax[0])
+		netProfitMargin = str(y6_ax[0])
+		returnOnAssets = str(y7_ax[0]) 
+		returnOnEquity= str(y8_ax[0])
+		debtRatio= str(y9_ax[0])
+		debtEquityRatio= str(y10_ax[0]) 
+		operatingCashFlowPerShare= str(y11_ax[0]) 
+		freeCashFlowPerShare= str(y12_ax[0]) 
 #		print('-- PE: '+str(y1_ax[0]))
 #		print('-- PBV: '+str(y2_ax[0]))
 #		print('-- PEG: '+str(y3_ax[0]))
 #		print('-- DividentYeld: '+str(y4_ax[0]))
 #		print('-- ROE: '+str(y5_ax[0]))
 #		print('--- Closing the RATIOS function...')
-		return  pe[:4], pbv[:4], peg[:4],div[:5],roe[:4], dividendPayoutRatio[:4]  
+		return  currentRatio[:4], quickRatio[:4], cashRatio[:4],grossProfitMargin[:5],operatingProfitMargin[:4], netProfitMargin[:4], returnOnAssets[:4], returnOnEquity[:4], debtRatio[:4], debtEquityRatio[:4], operatingCashFlowPerShare[:4], freeCashFlowPerShare[:4] 
 
 
 

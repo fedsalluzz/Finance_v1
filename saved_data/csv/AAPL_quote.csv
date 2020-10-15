@@ -1,2 +1,2 @@
-avgVolume,change,changesPercentage,dayHigh,dayLow,earningsAnnouncement,eps,exchange,marketCap,name,open,pe,previousClose,price,priceAvg200,priceAvg50,sharesOutstanding,symbol,timestamp,volume,yearHigh,yearLow
-171479643,-0.11,-0.1,116.4,114.5901,2020-10-29T20:00:00.000+0000,3.296,NASDAQ,1966274379776.0,Apple Inc.,116.25,34.881676,115.08,114.97,92.61032,117.33128,17102499607,AAPL,1602198202,80779844,137.98,53.1525
+symbol,name,price,changesPercentage,change,dayLow,dayHigh,yearHigh,yearLow,marketCap,priceAvg50,priceAvg200,volume,avgVolume,exchange,open,previousClose,eps,pe,earningsAnnouncement,sharesOutstanding,timestamp
+AAPL,Apple Inc.,120.97,-0.18,-0.22,118.15,121.2,137.98,53.1525,2068889468928.0,117.034,94.71746,95058035,173662673,NASDAQ,118.72,121.19,3.296,36.702065,2020-10-29T20:00:00.000+0000,17102500363,1602790420

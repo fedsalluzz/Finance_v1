@@ -263,13 +263,9 @@ class GUI:
 			(date_2,dividendYield,roe ) =  a.Get_document_for(ticker, 'dividendYield', 'roe', document = 'metrics')
 			tickers_dict_eps[ticker] = { 'x' : date , 'y1' : eps, 'y2' : dividendYield} 
 			tickers_dict_debt[ticker] = { 'x' : date_2 , 'y1' : bookValuePerShare, 'y2' : roe}
-			#self.Click()
 		a.title_data = ['Earning Per Share Diluted =\n (NetIncome - PreferredDividends)/SharesOutstanding','dividendYield %','bookValuePerShare =\n (TotalEquity-PreferredEquity)/SharesOutstanding','ROE =\n NetIncome/SharholdersEquity']
 		print('::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::')
 		click_data = ['EPS' ,'netIncomeRatio','BVPS','ROE']
-		self.Click(tickers_dict_eps,tickers_dict_debt,  click_data )
-		#print(str(tickers_dict_eps))
-		#print(str(tickers_dict_debt))
 		plot = a.Multiple_plots(ticker_list, tickers_dict_eps, tickers_dict_debt, 'Analyze')
 			
 
@@ -283,12 +279,14 @@ class GUI:
 		for ticker in ticker_list:
 			print('---- Collecting data for '+str(ticker))
 			Quote = Analyses(ticker,period = entered_years,api_key =self.apikey, statistic = ' ')
-			price,priceAvg50,priceAvg200,eps = Quote.Get_quote_for(ticker) 
-			print(price+'   '+priceAvg50+'   '+priceAvg200+'   '+eps)
-			pe, pbv, peg,div,roe,dividendPayoutRatio =  Quote.Ratios() #return 5 strings
+			price,priceAvg50,priceAvg200,eps,sharesOutstanding,marketCap = Quote.Get_quote_for(ticker) 
+			today = Quote.today
+			print(price+'   '+priceAvg50+'   '+priceAvg200+'   '+eps+'   '+today)
+			#Thoise values are evaluated at the latest date
+			currentRatio,quickRatio, cashRatio, grossProfitMargin,operatingProfitMargin,netProfitMargin,returnOnAssets,returnOnEquity,debtRatio,debtEquityRatio,operatingCashFlowPerShare,freeCashFlowPerShare =  Quote.Ratios() #return 12 strings
 			latest_ratio_date = Quote.today
-			tickers_quote[ticker] = { 'price' : price , 'priceAvg50' : priceAvg50, 'priceAvg200' : priceAvg200,'EPS' : eps ,'Latest Date': latest_ratio_date,'PBV':pbv ,'PE':pe ,'PEG':peg ,'DIV YiELD': div,'ROE':roe,'dividendPayoutRatio': dividendPayoutRatio}
-		index_for_dataframe = Quote.title_data = ['price','priceAvg50','priceAvg200','EPS','Latest Date','PBV','PE','PEG','DIV YiELD','ROE','dividendPayoutRatio']
+                        tickers_quote[ticker] = { 'Today' : today ,'marketCap':marketCap, 'price' : price , 'priceAvg50' : priceAvg50, 'priceAvg200' : priceAvg200,'EPS' : eps ,'sharesOutstanding' :sharesOutstanding, 'Latest report date': latest_ratio_date,'currentRatio':currentRatio ,'quickRatio':quickRatio ,'cashRatio':cashRatio ,'grossProfitMargin':grossProfitMargin ,'operatingProfitMargin':operatingProfitMargin,'netProfitMargin':netProfitMargin, 'returnOnAssets' : returnOnAssets, 'returnOnEquity' : returnOnEquity, 'debtRatio' :debtRatio, 'debtEquityRatio' :debtEquityRatio, 'operatingCashFlowPerShare' :operatingCashFlowPerShare, 'freeCashFlowPerShare' :freeCashFlowPerShare  }
+		index_for_dataframe = Quote.title_data = ['Today' ,'marketCap','price','priceAvg50','priceAvg200','EPS','sharesOutstanding' ,'Latest report date','currentRatio','quickRatio','cashRatio','grossProfitMargin','operatingProfitMargin','netProfitMargin', 'returnOnAssets' ,'returnOnEquity' ,'debtRatio' ,'debtEquityRatio' ,'operatingCashFlowPerShare', 'freeCashFlowPerShare' ]
 		print('Dict is '+str(tickers_quote))
 		mydict = tickers_quote
 		#with open('dict.csv', 'w') as csv_file:  
@@ -308,63 +306,11 @@ class GUI:
 
 
 
-## This function get the RATIOS
-	def Click(self, tickers_dict_eps = dict(), tickers_dict_debt = dict(), title_data = [] ):
-		print('-- CLICK FUNCTION, got bunch of values for tickers')
-		self.text_real_time.delete("1.0","end")
-		entered_tickers=self.textTicker.get()
-		entered_years = self.buttonYears_var.get()
-		data = {}
-		print('title data is: '+str(title_data))
-		index_for_dataframe = ['LatData','PBV','PE','PEG','DIV YiELD','ROE']+title_data
-		print(str(index_for_dataframe))
-		latest_d1_y2 = ' '
-		latest_d1_y1 = ' '
-		latest_d2_y2 = ' '
-		latest_d2_y1 = ' '
-		for ticker in entered_tickers.split(","):
-			print(ticker)
-			c = Analyses(ticker=ticker,period = entered_years, api_key =self.apikey,statistic = ' ')
-			pe, pbv, peg,div,roe,dividendPayoutRatio =  c.Ratios()
-			self.prova = pe[:4]+'\n'+pbv[:4]+'\n'+peg[:4]+'\n'+div[:4]+'\n'+roe[:4]
-			#print(type(c.today))
-			#print(str(c.today))
-			latest_date_ratio = c.today
-			#print(str(tickers_dict_eps))
-			#print(type(tickers_dict_eps))
-			#print(type(tickers_dict_debt))
-			if tickers_dict_eps:
-				latest_d1_y1 = tickers_dict_eps[ticker]['y1'][-1]
-				latest_d1_y2 = tickers_dict_eps[ticker]['y2'][-1]
-				latest_d2_y1 = tickers_dict_debt[ticker]['y1'][-1]
-				latest_d2_y2 = tickers_dict_debt[ticker]['y2'][-1]
-				d1_y1 = '{:.3f}'.format(latest_d1_y1)
-				d1_y2 = '{:.3f}'.format(latest_d1_y2)
-				d2_y1 = '{:.3f}'.format(latest_d2_y1)
-				d2_y2 = '{:.3f}'.format(latest_d2_y2)
-				data[ticker] = [latest_date_ratio,pe[:4],pbv[:4],peg[:4],div[:4],roe[:4],d1_y1,d1_y2,d2_y1,d2_y2]
-			else:
-				print('No dict to use')
-				data[ticker] = [latest_date_ratio,pe[:4],pbv[:4],peg[:4],div[:4],roe[:4]]
-		#print(str(latest_date))
-		#print(str(data))
-		#print(str(index_for_dataframe))
-		frame = pd.DataFrame(data, columns = entered_tickers.split(","), index=index_for_dataframe)
-		if(len(entered_tickers) > 1):
-			f = open("saved_data/datalog/"+entered_tickers.replace(',','_')+"_datalog.log","w")
-			#print(frame,file = f)
-			frame.to_csv(r'saved_data/csv/'+entered_tickers.replace(',','_')+'_simplified_ratios.csv', index = False)
-		print('-- RATIOS printed on files for: '+entered_tickers)
-		csv =frame.to_csv(r'saved_data/'+entered_tickers.replace(',','_')+'_simplified_ratios.csv', header=True, index=['PE','PBV','PEG','DIV YiELD','ROE'], sep='\t', mode='a')
-		self.text_real_time.insert(tk.END,self.prova, 'blue')
-		f.close()	
-		
 
 def main ():
 	window = tk.Tk()
 	#create the window
 	app = GUI(window)
-	app.Click()
 	window.mainloop()
 
 
