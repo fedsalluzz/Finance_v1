@@ -110,8 +110,8 @@ class Analyses:
 		priceAvg200 = df['priceAvg200'].to_numpy()
 		eps = df['eps'].to_numpy()
 		sharesOutstanding =df['sharesOutstanding'].to_numpy()
-                marketCap =df[ 'marketCap'].to_numpy()
-                #self.title_data = ['Earning Per Share','netIncomeRatio']
+		marketCap =df[ 'marketCap'].to_numpy()
+		#self.title_data = ['Earning Per Share','netIncomeRatio']
 		print(price)
 		print('---- Closing the Get_quote_for...')
 		price_str = str(price[0])
@@ -120,7 +120,7 @@ class Analyses:
 		eps_str = str(eps[0])
 		sharesOutstanding_str =str(sharesOutstanding[0])
 		marketCap_str = str(marketCap[0])
-                dt = datetime.datetime.fromtimestamp(timestamp[0])
+		dt = datetime.datetime.fromtimestamp(timestamp[0])
 		print('DATE TIME IS : '+str(dt))
 		self.today = str(dt)
 		return price_str[:6],priceAvg50_str[:6],priceAvg200_str[:6],eps_str[:6],sharesOutstanding_str[:6], marketCap_str[:6]
