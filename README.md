@@ -97,6 +97,9 @@ The inverse of PE is giving you the expected earnings over one year period. To m
 
 - **Return on Equity** (ROE): Return on equity (ROE) is a measure of financial performance calculated by dividing net income by shareholders' equity. Because shareholders' equity is equal to a company’s assets minus its debt, ROE is considered the return on net assets. ROE is considered a measure of how effectively management is using a company’s assets to create profits.
 
+- **Return on Invested Capital** (ROIC/ROI): Misure of financial performance The formula for ROIC is (net income - dividend) / (debt + equity). The ROIC formula is calculated by assessing the value in the denominator, total capital, which is the sum of a company's debt and equity. An ROIC higher than the cost of capital means a company is healthy and growing, while an ROIC lower than cost of capital suggests an unsustainable business model. If ROIC is greater than a firm's weighted average cost of capital (WACC), the most common cost of capital metric, value is being created and these firms will trade at a premium. A common benchmark for evidence of value creation is a return in excess of 2% of the firm's cost of capital.
+If a company's ROIC is less than 2%, it is considered a value destroyer. Some firms run at a zero-return level, and while they may not be destroying value, these companies have no excess capital to invest in future growth.
+
 KEY TAKEAWAYS
 
 ## Flexibility indicators
