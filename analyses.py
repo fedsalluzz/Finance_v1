@@ -35,7 +35,7 @@ class Analyses:
 #########
 
 
-	def Get_data_from_api(self, density = None ):
+	def Get_data_from_api(self, density = None, screener_list = None ):
 		symbol = self.ticker
 		api_key = self.api_key
 		print('\n---- GET DATA FROM API starting...')
@@ -52,12 +52,28 @@ class Analyses:
 			api_endpoint_body = api_endpoint_head+'key-metrics/'
 		elif (self.document == 'ratios'):
 			api_endpoint_body = api_endpoint_head+'ratios/'
+		elif (self.document =='stock-screener'):
+			api_endpoint_body = api_endpoint_head+'stock-screener/'
+			marketCapLowerThan= screener_list[1]
+			marketCapMoreThan=screener_list[0]
+			betaMoreThan=screener_list[2]
+			betaLowerThan=screener_list[3]
+			sector=screener_list[6]
+			industry=screener_list[7]
+			dividendMoreThan=screener_list[4]
+			dividendLowerThan=screener_list[5]
+			exchange=screener_list[8]
+			api_endpoint =api_endpoint_body+'?marketCapMoreThan='+marketCapMoreThan+'&marketCapLowerThan='+marketCapLowerThan+'&betaMoreThan='+betaMoreThan+'&betaLowerThan='+betaLowerThan+'&sector='+sector+'&exchange='+exchange+'&industry'+industry+'&dividendLowerThan='+dividendLowerThan+'&dividendMoreThan='+dividendMoreThan+'&limit=100&apikey='+api_key
 		elif (self.document =='quote'):
 			api_endpoint_body = api_endpoint_head+'quote/'
+		elif (self.document =='profile'):
+			api_endpoint_body = api_endpoint_head+'profile/'
 		else:
 			error
 		if (density == 'quarter'):
 			api_endpoint =api_endpoint_body+symbol+'?period=quarter&apikey='+api_key
+		elif (self.document == 'stock-screener'):
+			api_endpoint =api_endpoint_body+'?marketCapMoreThan='+marketCapMoreThan+'&marketCapLowerThan='+marketCapLowerThan+'&betaMoreThan='+betaMoreThan+'&betaLowerThan='+betaLowerThan+'&sector='+sector+'&exchange='+exchange+'&industry'+industry+'&dividendLowerThan'+dividendLowerThan+'&dividendMoreThan='+dividendMoreThan+'&limit=100&apikey='+api_key
 		else:
 			api_endpoint =api_endpoint_body+symbol+'?apikey='+api_key
 		try:
@@ -128,7 +144,7 @@ class Analyses:
 	
 
 #################
-### Take the PE, PBV, PEG for Latest Report
+### Take the RATIOS for Latest Report
 	def Ratios(self):
 		print('\n---- Starting the Ratios function...')
 		self.document = 'ratios'
@@ -168,16 +184,99 @@ class Analyses:
 		debtEquityRatio= str(y10_ax[0]) 
 		operatingCashFlowPerShare= str(y11_ax[0]) 
 		freeCashFlowPerShare= str(y12_ax[0]) 
-#		print('-- PE: '+str(y1_ax[0]))
-#		print('-- PBV: '+str(y2_ax[0]))
-#		print('-- PEG: '+str(y3_ax[0]))
-#		print('-- DividentYeld: '+str(y4_ax[0]))
-#		print('-- ROE: '+str(y5_ax[0]))
-#		print('--- Closing the RATIOS function...')
-		return  currentRatio[:4], quickRatio[:4], cashRatio[:4],grossProfitMargin[:5],operatingProfitMargin[:4], netProfitMargin[:4], returnOnAssets[:4], returnOnEquity[:4], debtRatio[:4], debtEquityRatio[:4], operatingCashFlowPerShare[:4], freeCashFlowPerShare[:4] 
+		return  currentRatio[:5], quickRatio[:5], cashRatio[:5],grossProfitMargin[:5],operatingProfitMargin[:5], netProfitMargin[:5], returnOnAssets[:5], returnOnEquity[:5], debtRatio[:5], debtEquityRatio[:5], operatingCashFlowPerShare[:5], freeCashFlowPerShare[:5] 
 
 
 
+#################
+### Take the METRICS for Latest Report
+	def Metrics(self):
+		print('\n---- Starting the Ratios function...')
+		self.document = 'metrics'
+		print('---- Requested Ratios. Selected document is '+self.document+' for'+self.ticker)
+		ratios_data = self.Get_data_from_api('quarter') #it is a string json format
+		load = json.loads(ratios_data) #list
+		#print('Ratios json loaded')
+		df = pd.DataFrame(load)
+		#print(df)
+		self.Print_on_file(df, self.ticker, self.document )
+		print('---- Ratios Loaded , Dataframe loaded')
+		#print(df)
+		y1_ax = df['bookValuePerShare'].to_numpy()
+		y2_ax = df['debtToAssets'].to_numpy()
+		y3_ax = df['debtToEquity'].to_numpy()
+		y4_ax = df['enterpriseValue'].to_numpy()
+		y5_ax = df['enterpriseValueOverEBITDA'].to_numpy()
+		y6_ax = df['freeCashFlowPerShare'].to_numpy()
+		y7_ax = df['researchAndDdevelopementToRevenue'].to_numpy()
+		y8_ax = df['roe'].to_numpy()
+		y9_ax = df['roic'].to_numpy()
+		bookValuePerShare= str(y1_ax[0])
+		debtToAssets= str(y2_ax[0])
+		debtToEquity= str(y3_ax[0])
+		enterpriseValue= str(y4_ax[0])
+		enterpriseValueOverEBITDA= str(y5_ax[0])
+		freeCashFlowPerShare= str(y6_ax[0])
+		researchAndDdevelopementToRevenue= str(y7_ax[0]) 
+		roe= str(y8_ax[0])
+		roic= str(y9_ax[0])
+		return bookValuePerShare [:5], debtToAssets[:5], debtToEquity[:5],enterpriseValue[:5],enterpriseValueOverEBITDA[:5], freeCashFlowPerShare[:5], researchAndDdevelopementToRevenue[:5],roe[:5], roic[:5]
+
+
+
+#################
+### Take the PROFILE for Latest Report
+	def Profile(self):
+		print('\n---- Starting the Profile function...')
+		self.document = 'profile'
+		print('---- Requested Profile. Selected document is '+self.document+' for'+self.ticker)
+		ratios_data = self.Get_data_from_api() #it is a string json format
+		load = json.loads(ratios_data) #list
+		#print('Ratios json loaded')
+		df = pd.DataFrame(load)
+		#print(df)
+		self.Print_on_file(df, self.ticker, self.document )
+		print('---- Profile Loaded , Dataframe loaded')
+		#print(df)
+		y1_ax = df['beta'].to_numpy()
+		y2_ax = df['volAvg'].to_numpy()
+		y3_ax = df['lastDiv'].to_numpy()
+		y4_ax = df['dcf'].to_numpy()
+		y5_ax = df['ipoDate'].to_numpy()
+		y6_ax = df['industry'].to_numpy()
+		y7_ax = df['sector'].to_numpy()
+		beta= str(y1_ax[0])
+		volAvg= str(y2_ax[0])
+		lastDiv= str(y3_ax[0])
+		dcf= str(y4_ax[0])
+		ipoDate= str(y5_ax[0])
+		industry= str(y6_ax[0])
+		sector= str(y7_ax[0]) 
+		return beta[:5],volAvg[:5],lastDiv[:5],dcf[:5],ipoDate[:4], industry,sector
+
+
+
+	def Stock_screener(self, criteria_list):
+		print('\n---- Starting the Stock screener function...')
+		self.document = 'stock-screener'
+		print('---- Requested strock screen...')
+		ratios_data = self.Get_data_from_api(screener_list = criteria_list) #it is a string json format
+		load = json.loads(ratios_data) #list
+		print('Printing criteria list')
+		print(criteria_list)
+		df = pd.DataFrame(load)
+		#print(df)
+		criteria = ''
+		criteria_heathers = ['marketCapMoreThan','marketCapLowerThan','betaMoreThan','betaLowerThan','dividendMoreThan','dividendLowerThan','sector','industry','exchange']
+		length = len(criteria_list)
+		for i in range(length):
+			if (criteria_list[i] != ''):
+				criteria = criteria+criteria_heathers[i]+'='+criteria_list[i]+'&'
+		print(criteria)
+		self.ticker = criteria
+		self.Print_on_file(df, self.ticker, self.document )
+		print('---- Printed on file --------')
+		return 
 
 ### Take the PE, PBV, PEG for TODAY
 # Sort data from oldest to newest
@@ -203,12 +302,12 @@ class Analyses:
 		color = (r, g, b)
 		return color
 
-	#
-	# Save dataframe on .csv file
-	#
+#
+# Save dataframe on .csv file
+#
 
 	def Print_on_file(self,dataframe, ticker, document ):
-		dataframe.to_csv(r'saved_data/csv/'+ticker+'_'+document+'.csv', index = False)
+		dataframe.to_csv(r'saved_data/'+document+'/'+ticker+'_'+document+'.csv', index = False)
 		return
 
 	
@@ -331,18 +430,18 @@ class Analyses:
 		"axes.facecolor": "#cad9e1",
 		"axes.grid" : True,
 		"axes.grid.axis" : "y",
-		"grid.color"    : "#ffffff",
+		"grid.color"	: "#ffffff",
 		"grid.linewidth": 2,
 		"axes.spines.left" : False,
 		"axes.spines.right" : False,
 		"axes.spines.top" : False,
-		"ytick.major.size": 0,     
+		"ytick.major.size": 0,	 
 		"ytick.minor.size": 0,
 		"xtick.direction" : "in",
-		"axes.titlesize"      : "small",
+		"axes.titlesize"	  : "small",
 		"xtick.major.size" : 7,
-		"xtick.color"      : "#191919",
-		"axes.edgecolor"    :"#191919",
+		"xtick.color"	  : "#191919",
+		"axes.edgecolor"	:"#191919",
 		"axes.prop_cycle" : plt.cycler('color',['#006767', '#ff7f0e', '#2ca02c', '#d62728','#9467bd', '#8c564b', '#e377c2', '#7f7f7f','#bcbd22', '#17becf'])}
 		plt.rcParams.update(params)
 

@@ -17,13 +17,13 @@ class GUI:
 	def __init__(self, master):
 		self.master = master
 		self.master.title("FINANCE GUI")
-		self.master.geometry("800x500")
+		self.master.geometry("1200x750")
 		self.master.configure(background="black")
 		self.frame = tk.Frame(self.master)
 		self.prova = 'prova'
 		self.apikey = 'c69c0e1c9f3b70a951441dc376b6d400'
 
-		self.textDirectory = tk.Entry(self.frame, width=40, bg="white")
+		self.textDirectory = tk.Entry(self.frame, width=60, bg="white")
 		self.textDirectory.grid(row=2, column=1)
 		dir_path = os.path.dirname(os.path.realpath(__file__))
 		self.textDirectory.insert(END,dir_path)
@@ -36,11 +36,50 @@ class GUI:
 		initial_ticker_fill = 'AAPL'
 		self.textTicker.insert(END,initial_ticker_fill)
 		
+#marketCapMoreThan & marketCapLowerThan : Number
+#betaMoreThan & betaLowerThan : Number
+#dividendMoreThan & dividendLowerThan : Number
+		
+		
+		#Create a Label and text entry box  for stock screener
+		self.labelTk = tk.Label (self.frame, text=" Stocks Screener marketCap > ", bg="black" , fg="white", font="none 12 bold") .grid(row=4, column=0,sticky = W, pady = 2)
+		self.textTicker2 = tk.Entry(self.frame, width=20, bg="white")
+		self.textTicker2.grid(row=4, column=1)
+		self.textTicker2.insert(END,'1000000')	
+		self.labelTk = tk.Label (self.frame, text=" Stocks Screener marketCap < ", bg="black" , fg="white", font="none 12 bold") .grid(row=5, column=0,sticky = W, pady = 2)
+		self.textTicker3 = tk.Entry(self.frame, width=20, bg="white")
+		self.textTicker3.grid(row=5, column=1)
+		self.labelTk = tk.Label (self.frame, text=" Stocks Screener beta > ", bg="black" , fg="white", font="none 12 bold") .grid(row=6, column=0,sticky = W, pady = 2)
+		self.textTicker4 = tk.Entry(self.frame, width=20, bg="white")
+		self.textTicker4.grid(row=6, column=1)
+		self.labelTk = tk.Label (self.frame, text=" Stocks Screener beta < ", bg="black" , fg="white", font="none 12 bold") .grid(row=7, column=0,sticky = W, pady = 2)
+		self.textTicker5 = tk.Entry(self.frame, width=20, bg="white")
+		self.textTicker5.grid(row=7, column=1)
+		self.labelTk = tk.Label (self.frame, text=" Stocks Screener dividend > ", bg="black" , fg="white", font="none 12 bold") .grid(row=8, column=0,sticky = W, pady = 2)
+		self.textTicker6 = tk.Entry(self.frame, width=20, bg="white")
+		self.textTicker6.grid(row=8, column=1)
+		self.labelTk = tk.Label (self.frame, text=" Stocks Screener dividend < ", bg="black" , fg="white", font="none 12 bold") .grid(row=9, column=0,sticky = W, pady = 2)
+		self.textTicker7 = tk.Entry(self.frame, width=20, bg="white")
+		self.textTicker7.grid(row=9, column=1)
+		self.labelTk = tk.Label (self.frame, text=" Stocks Screener sector", bg="black" , fg="white", font="none 12 bold") .grid(row=10, column=0,sticky = W, pady = 2)
+		self.textTicker8 = tk.Entry(self.frame, width=20, bg="white")
+		self.textTicker8.grid(row=10, column=1)
+		self.labelTk = tk.Label (self.frame, text=" Stocks Screener Industry ", bg="black" , fg="white", font="none 12 bold") .grid(row=11, column=0,sticky = W, pady = 2)
+		self.textTicker9 = tk.Entry(self.frame, width=20, bg="white")
+		self.textTicker9.grid(row=11, column=1)
+		self.labelTk = tk.Label (self.frame, text=" Stocks Screener exchange ", bg="black" , fg="white", font="none 12 bold") .grid(row=12, column=0,sticky = W, pady = 2)
+		self.textTicker10 = tk.Entry(self.frame, width=20, bg="white")
+		self.textTicker10.grid(row=12, column=1)
+		self.textTicker10.insert(END,'NYSE,NASDAQ')	
+		self.textTicker11 = tk.Text(self.frame, height=50, width=80, bg="white")
+		self.textTicker11.grid(row=13, column=0,columnspan=4)
+		instructions_fill = '\n\t\t\t *** HOW TO USE STOCK SCREENER ***\n\nmarketCapMoreThan & marketCapLowerThan : Number \nbetaMoreThan & betaLowerThan : Number \nvolumeMoreThan & volumeLowerThan : Number \ndividendMoreThan & dividendLowerThan : Number \nsector : \n\tConsumer Cyclical - Energy - Technology - Industrials \n\tFinancial Services - Basic Materials - Communication Services Consumer Defensive - Healthcare - Real Estate - Utilities - Industrial Goods - Financial - Services - Conglomerates \n Industry :  \n\tAutos - Banks - Banks Diversified - Software - Banks Regional - Beverages Alcoholic  \n\tBeverages Brewers - Beverages Non-Alcoholic \n exchange : nyse - nasdaq - amex - euronex - tsx - etf - mutual_fund \n limit : Number\n\nexample.\nstock-screener?marketCapMoreThan=1000000000&betaMoreThan=1&volumeMoreThan=10000&sector=Technology&exchange=NASDAQ&dividendMoreThan=0&limit=100'
+		self.textTicker11.insert(END,instructions_fill)	
 		#Create a Label with the Real Time evaluator
-		self.label_real_time = tk.Label (self.frame, text="PE\nPBV\nPEG\nDIV\nROE\n", bg="black" , fg="white") .grid(row=4, column=2,sticky = E, pady = 1)
-		self.text_real_time = tk.Text (self.frame, height = 5, width = 10)
-		self.text_real_time.insert(tk.END,self.prova, 'blue')
-		self.text_real_time.grid(row=4, column=3,sticky = W, pady = 2)
+#		self.label_real_time = tk.Label (self.frame, text="PE\nPBV\nPEG\nDIV\nROE\n", bg="black" , fg="white") .grid(row=4, column=2,sticky = E, pady = 1)
+#		self.text_real_time = tk.Text (self.frame, height = 5, width = 10)
+#		self.text_real_time.insert(tk.END,self.prova, 'blue')
+#		self.text_real_time.grid(row=4, column=3,sticky = W, pady = 2)
 		
 		#Create a Label and text entry box  for time
 		TIME_SPAN = [
@@ -50,13 +89,13 @@ class GUI:
 			("10Y", "10"),
 			("MAX", "MAX"),
 			]
-		i = 4
+		i = 0
 		self.buttonYears_var = StringVar()
 		self.buttonYears_var.set("1") # initialize
 		for text, mode in TIME_SPAN:
 			i = i+1
 			self.buttonYears = tk.Radiobutton(self.frame, text=text ,variable=self.buttonYears_var, value=mode, bg="white" , fg="black")
-			self.buttonYears.grid(column=0, row=i,sticky = W, pady = 2)
+			self.buttonYears.grid(column=3, row=i,sticky = W, pady = 2)
 
 		#Create the button
 		self.buttonBalance = tk.Button(self.frame, text="Balance Sheet", fg="black", font="none 9 bold", command=self.BalanceSheet_click)
@@ -71,48 +110,20 @@ class GUI:
 		self.buttonProf = tk.Button(self.frame, text="Profitability", fg="black", font="none 9 bold", command=self.Profitability_click)
 		self.buttonProf.grid(row=8, column=3,sticky = W, pady = 2)
 		#Create the button
-		self.buttonCashFig = tk.Button(self.frame, text="Cash Figures", fg="black", font="none 9 bold", command=self.CashFigures_click)
-		self.buttonCashFig.grid(row=10, column=3,sticky = W, pady = 2)
-		#Create the button
 		self.buttonDebt = tk.Button(self.frame, text="Debt Figures", fg="black", font="none 9 bold", command=self.DebtFigures_click)
 		self.buttonDebt.grid(row=9, column=3,sticky = W, pady = 2)
 		#Create the button 
 		self.buttonANALYZE = tk.Button(self.frame, text="  Analyze  ", fg="black", font="none 9 bold", command=self.ANALYZE_click)
-		self.buttonANALYZE.grid(row=11, column=3,sticky = W, pady = 2)
+		self.buttonANALYZE.grid(row=10, column=3,sticky = W, pady = 2)
 		#Create the button
-		self.buttonNOW = tk.Button(self.frame, text="  NOW  ", fg="black", font="none 9 bold", command=self.NOW_click)
+		self.buttonStockScreener= tk.Button(self.frame, text="Stocks Screener", fg="black", font="none 9 bold", command=self.StockScreener_click)
+		self.buttonStockScreener.grid(row=12, column=2,sticky = W, pady = 2)
+		#Create the button
+		self.buttonNOW = tk.Button(self.frame, text="  CLICK NOW  ", fg="black", font="none 9 bold", command=self.NOW_click)
 		self.buttonNOW.grid(row=12, column=3,sticky = W, pady = 2)
 		#Create a Label and text entry box  for Directory
 		self.labelDirectory = tk.Label (self.frame, text=" Program Directory ", bg="black" , fg="white", font="none 12 bold") .grid(row=2, column=0,sticky = W, pady = 2)
 
-		self.textDirectory = tk.Entry(self.frame, width=40, bg="white")
-		self.textDirectory.grid(row=2, column=1)
-		dir_path = os.path.dirname(os.path.realpath(__file__))
-		self.textDirectory.insert(END,dir_path)
-
-		#Create a Label and text entry box  for ticker
-		self.labelTk = tk.Label (self.frame, text=" Selected symbol ", bg="black" , fg="white", font="none 12 bold") .grid(row=3, column=0,sticky = W, pady = 2)
-
-		self.textTicker = tk.Entry(self.frame, width=40, bg="white")
-		self.textTicker.grid(row=3, column=1)
-		initial_ticker_fill = 'AAPL'
-		self.textTicker.insert(END,initial_ticker_fill)
-
-		#Create a Label and text entry box  for time
-		TIME_SPAN = [
-			("1Y", "1"),
-			("2Y", "2"),
-			("5Y", "5"),
-			("10Y", "10"),
-			("MAX", "MAX"),
-			]
-		i = 4
-		self.buttonYears_var = StringVar()
-		self.buttonYears_var.set("1") # initialize
-		for text, mode in TIME_SPAN:
-			i = i+1
-			self.buttonYears = tk.Radiobutton(self.frame, text=text ,variable=self.buttonYears_var, value=mode, bg="white" , fg="black")
-			self.buttonYears.grid(column=0, row=i,sticky = W, pady = 2)
 
 
 		self.frame.pack()
@@ -185,26 +196,6 @@ class GUI:
 
 
 ###################figures
-
-
-	def CashFigures_click(self):  #TO DO
-		tickers_dict_eps = dict()
-		tickers_dict_debt = dict()
-		entered_tickers=self.textTicker.get()
-		entered_years = self.buttonYears_var.get() 
-		print('\n---- CLICK EVENT CashFigures ---- Selected ticker is/are: '+entered_tickers)
-		ticker_list = entered_tickers.split(',')
-		#print('-- You selected '+str(len(ticker_list))+' tickers \n')
-		for ticker in ticker_list:
-			print('---- Collecting data for '+str(ticker))
-			CashFigures = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey, statistic = '  ')
-			(date,netCashProvidedByOperating, netCashUsedForInvesting) = CashFigures.Get_document_for(ticker,'netCashProvidedByOperatingActivities','netCashUsedForInvestingActivites',document = 'cash_flow' ) 
-			(date_2,netCashUsedProvidedByFinancing, netChangeInCash) = CashFigures.Get_document_for(ticker, 'netCashUsedProvidedByFinancingActivities', 'netChangeInCash', document = 'cash_flow' ) 
-			tickers_dict_eps[ticker] = { 'x' : date , 'y1' : netCashProvidedByOperating, 'y2' : netCashUsedForInvesting} 
-			tickers_dict_debt[ticker] = { 'x' : date_2 , 'y1' : netCashUsedProvidedByFinancing, 'y2' : netChangeInCash}
-			#print(tickers_dict_eps
-		CashFigures.title_data = ['netCashProvidedByOperatingActivities','netCashUsedForInvestingActivites','netCashUsedProvidedByFinancingActivities','netChangeInCash']
-		plot = CashFigures.Multiple_plots(ticker_list, tickers_dict_eps, tickers_dict_debt, 'CashFigures' )
 
 
 	def Profitability_click(self):
@@ -281,12 +272,77 @@ class GUI:
 			Quote = Analyses(ticker,period = entered_years,api_key =self.apikey, statistic = ' ')
 			price,priceAvg50,priceAvg200,eps,sharesOutstanding,marketCap = Quote.Get_quote_for(ticker) 
 			today = Quote.today
-			print(price+'   '+priceAvg50+'   '+priceAvg200+'   '+eps+'   '+today)
 			#Thoise values are evaluated at the latest date
-			currentRatio,quickRatio, cashRatio, grossProfitMargin,operatingProfitMargin,netProfitMargin,returnOnAssets,returnOnEquity,debtRatio,debtEquityRatio,operatingCashFlowPerShare,freeCashFlowPerShare =  Quote.Ratios() #return 12 strings
+			currentRatio,quickRatio, cashRatio, grossProfitMargin,operatingProfitMargin,netProfitMargin,returnOnAssets,returnOnEquity,unused_0,unused_1,operatingCashFlowPerShare,freeCashFlowPerShare =  Quote.Ratios() #return 12 strings
 			latest_ratio_date = Quote.today
-			tickers_quote[ticker] = { 'Today' : today ,'marketCap':marketCap, 'price' : price , 'priceAvg50' : priceAvg50, 'priceAvg200' : priceAvg200,'EPS' : eps ,'sharesOutstanding' :sharesOutstanding, 'Latest report date': latest_ratio_date,'currentRatio':currentRatio ,'quickRatio':quickRatio ,'cashRatio':cashRatio ,'grossProfitMargin':grossProfitMargin ,'operatingProfitMargin':operatingProfitMargin,'netProfitMargin':netProfitMargin, 'returnOnAssets' : returnOnAssets, 'returnOnEquity' : returnOnEquity, 'debtRatio' :debtRatio, 'debtEquityRatio' :debtEquityRatio, 'operatingCashFlowPerShare' :operatingCashFlowPerShare, 'freeCashFlowPerShare' :freeCashFlowPerShare  }
-		index_for_dataframe = Quote.title_data = ['Today' ,'marketCap','price','priceAvg50','priceAvg200','EPS','sharesOutstanding' ,'Latest report date','currentRatio','quickRatio','cashRatio','grossProfitMargin','operatingProfitMargin','netProfitMargin', 'returnOnAssets' ,'returnOnEquity' ,'debtRatio' ,'debtEquityRatio' ,'operatingCashFlowPerShare', 'freeCashFlowPerShare' ]
+			bookValuePerShare,debtToAssets,debtToEquity,enterpriseValue,enterpriseValueOverEBITDA,freeCashFlowPerShare,researchAndDdevelopementToRevenue,roe,roic = Quote.Metrics()
+			beta,volAvg,lastDiv,dcf,ipoDate,industry,sector= Quote.Profile()
+			tickers_quote[ticker] = { 'Today' : today ,
+				'beta':beta, 
+				'volAvg':volAvg, 
+				'lastDiv':lastDiv, 
+				'dcf':dcf, 
+				'ipoDate':ipoDate, 
+				'industry':industry, 
+				'sector':sector, 
+				'marketCap':marketCap, 
+				'price' : price , 
+				'priceAvg50' : priceAvg50, 
+				'priceAvg200' : priceAvg200,
+				'EPS' : eps ,
+				'bookValuePerShare' : bookValuePerShare,
+				'roe' : roe,
+				'roic' :roic ,
+				'sharesOutstanding' :sharesOutstanding, 
+				'Latest report date': latest_ratio_date,
+				'currentRatio':currentRatio ,
+				'quickRatio':quickRatio ,
+				'debtToAssets' :debtToAssets ,
+				'debtToEquity' :debtToEquity ,
+				'cashRatio':cashRatio ,
+				'grossProfitMargin':grossProfitMargin ,
+				'operatingProfitMargin':operatingProfitMargin,
+				'netProfitMargin':netProfitMargin, 
+				'returnOnAssets' : returnOnAssets, 
+				'returnOnEquity' : returnOnEquity,
+				'researchAndDdevelopementToRevenue' :researchAndDdevelopementToRevenue ,
+				'operatingCashFlowPerShare' :operatingCashFlowPerShare, 
+				'freeCashFlowPerShare' :freeCashFlowPerShare,
+				'enterpriseValue' :enterpriseValue ,
+				'enterpriseValueOverEBITDA' :enterpriseValueOverEBITDA }
+		index_for_dataframe = Quote.title_data = ['Today' ,
+			'beta',
+			'volAvg',
+			'lastDiv',
+			'dcf',
+			'ipoDate',
+			'industry',
+			'sector',
+			'marketCap',
+			'price',
+			'priceAvg50',
+			'priceAvg200',
+			'EPS',
+			'bookValuePerShare',
+			'roe',
+			'roic' ,
+			'sharesOutstanding' ,
+			'Latest report date',
+			'currentRatio',
+			'quickRatio',
+			'debtToAssets',
+			'debtToEquity',
+			'cashRatio',
+			'grossProfitMargin',
+			'operatingProfitMargin',
+			'netProfitMargin', 
+			'returnOnAssets' ,
+			'returnOnEquity' ,
+			'researchAndDdevelopementToRevenue',
+ 			'operatingCashFlowPerShare', 
+			'freeCashFlowPerShare',
+			'enterpriseValue',
+			'enterpriseValueOverEBITDA' ]
 		print('Dict is '+str(tickers_quote))
 		mydict = tickers_quote
 		#with open('dict.csv', 'w') as csv_file:  
@@ -296,15 +352,30 @@ class GUI:
 		frame = pd.DataFrame(tickers_quote, columns = entered_tickers.split(","), index=index_for_dataframe)
 		print('Frame is '+str(frame)) 
 		if(len(entered_tickers) > 1):
-			f = open("saved_data/datalog/"+entered_tickers.replace(',','_')+"_now_click.log","w")
+			f = open("saved_data/dataframe/"+entered_tickers.replace(',','_')+"_now_click.log","w")
 			print(frame,file = f)
 			frame.to_csv(r'saved_data/csv/'+entered_tickers.replace(',','_')+'_now_click.csv', index = index_for_dataframe)
 		print('-- NOW_click printed on files for: '+entered_tickers)
 
 		
-
-
-
+	def StockScreener_click(self):  #TO DO
+		tickers_dict_eps = dict()
+		tickers_dict_debt = dict()
+		marketcap_high= self.textTicker2.get()
+		marketcap_low =self.textTicker3.get()
+		beta_high = self.textTicker4.get()
+		beta_low = self.textTicker5.get()
+		dividend_high = self.textTicker6.get()
+		dividend_low = self.textTicker7.get()
+		sector = self.textTicker8.get()
+		industry = self.textTicker9.get()
+		exchange = self.textTicker10.get()
+		entered_years = self.buttonYears_var.get() 
+		print('\n---- CLICK EVENT StockScreener_click ---- Selected criteria are are: '+marketcap_high+' '+marketcap_low+' '+beta_high+' '+beta_low+' '+dividend_high+' '+dividend_low+' '+sector+' '+industry+' '+exchange)
+		Quote = Analyses('stockscreener',period = entered_years,api_key =self.apikey, statistic = ' ')
+		criteria_list = [marketcap_high,marketcap_low,beta_high,beta_low,dividend_high,dividend_low,sector,industry,exchange]
+		Quote.Stock_screener(criteria_list) 
+		#Thoise values are evaluated at the latest date
 
 
 def main ():

@@ -1,0 +1,101 @@
+symbol,companyName,marketCap,sector,industry,beta,price,lastAnnualDividend,volume,exchange,exchangeShortName
+MSFT,Microsoft Corp,1662310020000.0,Technology,Software Infrastructure,0.85286,219.66,1.99,33841051,Nasdaq Global Select,NASDAQ
+BRKB,Berkshire Hathaway Inc.,537046876000.0,,,0.841483,211.91,0.0,971,NYSE,NYSE
+BRKA,Berkshire Hathaway Inc.,524935987000.0,Industrials,Insurance Diversified,0.847173,318504.0,0.0,428,NYSE,NYSE
+BRK-A,Berkshire Hathaway Inc,506507362000.0,Financial Services,Insurance Diversified,0.81775,318504.0,0.0,1009,NYSE,NYSE
+BRK-B,Berkshire Hathaway Inc.,506507297000.0,Financial Services,Insurance Diversified,0.841483,211.91,0.0,4920134,NYSE,NYSE
+V,Visa Inc,439658840000.0,Financial Services,Credit Services,0.88936,200.26,1.15,7704825,New York Stock Exchange,NYSE
+WMT,Walmart Inc,410071990000.0,Consumer Defensive,Discount Stores,0.39052,144.71,2.14,9910440,New York Stock Exchange,NYSE
+TSM,Taiwan Semiconductor Manufacturing Company Ltd.,405218460000.0,Technology,Semiconductors,0.602506,86.7,2.848502,10949706,New York Stock Exchange,NYSE
+JNJ,Johnson & Johnson,389920653000.0,Healthcare,Drug Manufacturers General,0.66931,148.1,3.92,5982185,New York Stock Exchange,NYSE
+VTI,Vanguard Total Stock Market,368189014000.0,,,0.0,177.55,2.9000000000000004,2954698,NYSE Arca,NYSE
+PG,Procter & Gamble Co,359476232000.0,Consumer Defensive,Household & Personal Products,0.40028,144.39,3.0284,6007326,New York Stock Exchange,NYSE
+SPY,SPDR S&P 500,318736531000.0,,,0.0,347.29,5.726000000000001,67494281,NYSE Arca,NYSE
+UNH,UnitedHealth Group Inc,313515835000.0,Healthcare,Health Care Plans,0.72597,329.9,4.49,2705104,New York Stock Exchange,NYSE
+GJS,Goldman Sachs Group Securities STRATS Trust for Series 2006-2,281484880000.0,,,0.154206,19.75,0.326,743,New York Stock Exchange,NYSE
+ADBE,Adobe Inc,241212310000.0,Technology,Software Infrastructure,0.97734,502.82,0.0,2892951,Nasdaq Global Select,NASDAQ
+VZ,Verizon Communications Inc,240213803000.0,Communication Services,Telecom Services,0.37859,58.05,2.4475,13408184,New York Stock Exchange,NYSE
+NFLX,Netflix Inc,234086351000.0,Communication Services,Entertainment,0.99601,530.79,0.0,6002628,Nasdaq Global Select,NASDAQ
+INTC,Intel Corp,230342476000.0,Technology,Semiconductors,0.67617,54.16,1.29,34687664,Nasdaq Global Select,NASDAQ
+IVV,iShares Core S&P 500,216579113000.0,,,0.0,348.45,6.314,3358185,NYSE Arca,NYSE
+KO,Coca-Cola Co,214900851000.0,Consumer Defensive,Beverages Non-Alcoholic,0.55254,50.03,1.61,14385329,New York Stock Exchange,NYSE
+CMCSA,Comcast Corp,211541475000.0,Communication Services,Entertainment,0.90179,45.56,0.88,17287418,Nasdaq Global Select,NASDAQ
+PFE,Pfizer Inc,210883592000.0,Healthcare,Drug Manufacturers General,0.62905,37.95,1.48,24928353,New York Stock Exchange,NYSE
+FIYY,Barclays ETN FI Enhanced Global High Yield Exchange Traded Notes Series B,208189063000.0,,,0.0,88.8937,0.0,2337,NYSE Arca,NYSE
+MRK,Merck & Co Inc,201909240000.0,Healthcare,Drug Manufacturers General,0.37831,79.83,2.38,8016926,New York Stock Exchange,NYSE
+NKE,Nike Inc,200938242000.0,Consumer Cyclical,Footwear & Accessories,0.81469,128.0,0.955,6601915,New York Stock Exchange,NYSE
+NVS,Novartis AG,197121704000.0,Healthcare,Drug Manufacturers General,0.517296,86.19,3.042,1812443,New York Stock Exchange,NYSE
+PEP,PepsiCo Inc,195865182000.0,Consumer Defensive,Beverages Non-Alcoholic,0.55412,141.73,3.8875,4160706,Nasdaq Global Select,NASDAQ
+T,AT&T Inc,194726248000.0,Communication Services,Telecom Services,0.64772,27.33,2.06,33596498,New York Stock Exchange,NYSE
+ABT,Abbott Laboratories,194174026000.0,Healthcare,Medical Devices,0.87433,109.67,1.36,5186395,New York Stock Exchange,NYSE
+ORCL,Oracle Corp,181526561000.0,Technology,Software Infrastructure,0.77197,60.29,0.96,13150351,New York Stock Exchange,NYSE
+TM,Toyota Motor Corporation,181204206000.0,Consumer Cyclical,Auto Manufacturers,0.901214,130.64,4.05504,162792,New York Stock Exchange,NYSE
+FFEU,Barclays ETN+ FI Enhanced Europe 50 ETN Series C,178241667000.0,,,0.0,76.1066,0.0,853,NYSEArca,NYSE
+BT,BT Group plc American Depositary Shares,173378967464.86,Communication Services,Communication Services,0.588951,13.05,0.60314,1308007,New York Stock Exchange,NYSE
+MCD,Mcdonald's Corp,170674897000.0,Consumer Cyclical,Restaurants,0.61518,229.37,4.91,2882040,New York Stock Exchange,NYSE
+CSCO,Cisco Systems Inc,170014556000.0,Technology,Communication Equipment,0.82049,40.16,1.41,22827482,Nasdaq Global Select,NASDAQ
+COST,Costco Wholesale Corp,168346141000.0,Consumer Defensive,Discount Stores,0.6692,381.54,2.65,2193193,Nasdaq Global Select,NASDAQ
+NVO,Novo Nordisk A/S,165313954000.0,Healthcare,Biotechnology,0.592115,71.02,1.300605,945178,New York Stock Exchange,NYSE
+UL,Unilever PLC,164269277000.0,Consumer Defensive,Household & Personal Products,0.388576,62.76,1.8179999999999998,882578,New York Stock Exchange,NYSE
+TBB,AT&T Inc. 5.350% Global Notes due 2066,163870736000.0,,,0.398881,26.69,1.336,73639,New York Stock Exchange,NYSE
+DHR,Danaher Corp,161355088000.0,Healthcare,Diagnostics & Research,0.87917,227.45,0.69,2009828,New York Stock Exchange,NYSE
+UN,Unilever NV,161252475000.0,Consumer Defensive,Household & Personal Products,0.388576,61.61,1.8179999999999998,1305882,New York Stock Exchange,NYSE
+ZM,Zoom Video Communications Inc,158991335000.0,Communication Services,Telecom Services,0.0,559.0,0.0,9876567,NasdaqGS,NASDAQ
+AVGO,Broadcom Inc,153164300000.0,Technology,Semiconductors,0.98527,378.65,12.4,1871351,Nasdaq Global Select,NASDAQ
+ABBV,Abbvie Inc,152251875000.0,Healthcare,Drug Manufacturers General,0.68081,86.27,4.5,6980450,New York Stock Exchange,NYSE
+NEE,Nextera Energy Inc,149636432000.0,Utilities,Utilities Regulated Electric,0.20584,305.6,5.3,1755778,New York Stock Exchange,NYSE
+MDT,Medtronic PLC,148059865000.0,Healthcare,Medical Devices,0.64621,110.13,2.2,4439085,New York Stock Exchange,NYSE
+VB,Vanguard Small-Cap,146335826000.0,,,0.0,165.64,2.1310000000000002,651075,NYSE Arca,NYSE
+TMUS,T-Mobile US Inc,144569106000.0,Communication Services,Telecom Services,0.34654,114.96,0.0,4204945,Nasdaq Global Select,NASDAQ
+LLY,Eli Lilly and Co,139759387000.0,Healthcare,Drug Manufacturers General,0.23436,146.12,2.77,3260003,New York Stock Exchange,NYSE
+AZN,Astrazeneca PLC,139108827000.0,Healthcare,Drug Manufacturers General,0.196299,53.03,1.4,5462426,New York Stock Exchange,NYSE
+AMGN,Amgen Inc,138059792000.0,Healthcare,Drug Manufacturers General,0.74976,235.72,6.1,2647971,Nasdaq Global Select,NASDAQ
+BMY,Bristol-Myers Squibb Co,138030678000.0,Healthcare,Drug Manufacturers General,0.64131,61.24,1.72,10027368,New York Stock Exchange,NYSE
+CHL,China Mobile Limited,132096131000.0,Communication Services,Telecom Services,0.793242,32.29,2.08451,1023885,New York Stock Exchange,NYSE
+BHP,BHP Billiton Limited,129943658000.0,Basic Materials,Other Industrial Metals & Mining,0.987127,51.65,2.8600000000000003,2004432,New York Stock Exchange,NYSE
+MSF,Morgan Stanley Emerging Markets Fund Inc.,127276020000.0,Financial Services,Asset Management,0.761374,16.33,0.181084,34375,New York Stock Exchange,NYSE
+SNY,Sanofi American Depositary Shares (Each repstg one-half of one),126524064000.0,Healthcare,Drug Manufacturers General,0.47144,50.27,3.493,1009637,New York Stock Exchange,NASDAQ
+PM,Philip Morris International Inc,123446370000.0,Consumer Defensive,Tobacco,0.77449,79.27,4.65,4098371,New York Stock Exchange,NYSE
+LIN,Linde PLC,122450911000.0,Basic Materials,Specialty Chemicals,0.72545,233.08,3.676,1767362,NYSE,NYSE
+QQQ,PowerShares QQQ Trust Series 1,113413284000.0,,,0.0,288.51,1.629,46670351,NASDAQ Global Market,NASDAQ
+VOO,Vanguard S&P 500,111153118580.0,,,0.0,318.99,5.341,3057750,NYSE Arca,NYSE
+BUD,Anheuser-Busch Inbev SA Sponsored ADR (Belgium),109431775000.0,Consumer Defensive,Beverages Alcoholic,0.841512,55.42,1.457909,1668468,New York Stock Exchange,NYSE
+LMT,Lockheed Martin Corp,108042985000.0,Industrials,Aerospace & Defense,0.94496,386.5,9.4,1081889,New York Stock Exchange,NYSE
+AMT,American Tower Corp,107663557000.0,Real Estate,REIT Specialty,0.28773,242.72,3.96,1743998,New York Stock Exchange,NYSE
+BBL,BHP Billiton plc Sponsored ADR,106770530000.0,Basic Materials,Other Industrial Metals & Mining,0.987127,42.23,2.8600000000000003,1369575,New York Stock Exchange,NYSE
+RY,Royal Bank of Canada,104650310000.0,Financial Services,Banks Diversified,0.74943,73.7,4.26,758034,New York Stock Exchange,NYSE
+SBUX,Starbucks Corp,103479869000.0,Consumer Cyclical,Restaurants,0.78874,88.52,1.59,7487182,Nasdaq Global Select,NASDAQ
+PDD,Pinduoduo Inc,100624867000.0,Consumer Cyclical,Internet Retail,0.0,84.02,0.0,7889010,NasdaqGS,NASDAQ
+MMM,3M Co,98481971000.0,Industrials,Specialty Industrial Machinery,0.95115,170.97,4.38,2495887,New York Stock Exchange,NYSE
+RDS-A,Royal Dutch Shell plc,96790667000.0,Energy,Oil & Gas Integrated,0.83588,25.27,2.52,6250693,NYSE,NYSE
+RDS-B,Royal Dutch Shell plc,96790553000.0,Energy,Oil & Gas Integrated,0.83588,24.29,2.52,3482860,NYSE,NYSE
+ISG,ING Group N.V. Perpetual Dent Secs 6.125%,96534790000.0,Financial Services,Banks,0.084341,24.85,0.0,0,New York Stock Exchange,NYSE
+GSK,GlaxoSmithKline PLC,91265188000.0,Healthcare,Drug Manufacturers General,0.366854,36.57,2.0509999999999997,3117551,New York Stock Exchange,NYSE
+HDB,HDFC Bank Limited,89685680000.0,Financial Services,Banks,0.407017,56.0,0.431963,1454996,New York Stock Exchange,NYSE
+INTU,Intuit Inc,89315459000.0,Technology,Software Application,0.97966,341.15,2.06,1206484,Nasdaq Global Select,NASDAQ
+STO,Statoil ASA,89219880000.0,Energy,Oil & Gas Integrated,0.980813,27.14,0.92,1792871,New York Stock Exchange,NYSE
+FIS,Fidelity National Information Services Inc,89148482000.0,Technology,Information Technology Services,0.71337,143.88,1.4,3031960,New York Stock Exchange,NYSE
+TI,Telecom Italia S.P.A. New,88160636127.86,Communication Services,Communication Services,0.686082,5.05,0.0,200034,New York Stock Exchange,NYSE
+ISRG,Intuitive Surgical Inc,88083128000.0,Healthcare,Medical Instruments & Supplies,0.95513,752.68,0.0,617131,Nasdaq Global Select,NASDAQ
+TOT,Total S.A.,87562535000.0,Energy,Oil & Gas Integrated,0.73934,33.0,3.000075,2740068,New York Stock Exchange,NYSE
+SYK,Stryker Corp,84154532000.0,Healthcare,Medical Devices,0.83685,224.05,2.765,1180864,New York Stock Exchange,NYSE
+MDLZ,Mondelez International Inc,82800869000.0,Consumer Defensive,Confectioners,0.5843,57.97,1.14,5932501,Nasdaq Global Select,NASDAQ
+TD,Toronto-Dominion Bank,82765881000.0,Financial Services,Banks Diversified,0.72284,45.79,3.06,1532973,New York Stock Exchange,NYSE
+TGT,Target Corp,82561917000.0,Consumer Defensive,Discount Stores,0.92031,164.92,2.64,3962729,New York Stock Exchange,NYSE
+EL,Estee Lauder Companies Inc,80957325000.0,Consumer Defensive,Household & Personal Products,0.8313,224.13,1.39,1128064,New York Stock Exchange,NYSE
+HSBC,HSBC Holdings plc.,80494649000.0,Financial Services,Banks Diversified,0.563153,19.71,2.55,3356175,New York Stock Exchange,NYSE
+DEO,Diageo plc,80087695000.0,Consumer Defensive,Beverages Wineries & Distilleries,0.115044,138.52,3.6441,479645,New York Stock Exchange,NYSE
+CNI,Canadian National Railway Co,79100625000.0,Industrials,Railroads,0.62822,111.8,2.225,748154,New York Stock Exchange,NYSE
+BTI,British American Tobacco Industries p.l.c. ADR,78254359000.0,Consumer Defensive,Tobacco,0.58407,34.07,2.6674029999999997,2419912,New York Stock Exchange,NYSE
+TWX,Time Warner Inc.,78237810000.0,Consumer Cyclical,Entertainment,0.887957,98.91,1.61,4848309,New York Stock Exchange,NYSE
+CVS,CVS Health Corp,77985432000.0,Healthcare,Health Care Plans,0.66799,59.59,2.0,7455078,New York Stock Exchange,NYSE
+GILD,Gilead Sciences Inc,77730644000.0,Healthcare,Drug Manufacturers General,0.52957,62.0,2.62,8976343,Nasdaq Global Select,NASDAQ
+ZTS,Zoetis Inc,77709967000.0,Healthcare,Drug Manufacturers General Specialty & Generic,0.72046,163.55,0.728,1548448,New York Stock Exchange,NYSE
+PLD,Prologis Inc,77023953000.0,Real Estate,REIT Industrial,0.90924,104.26,2.22,2526682,New York Stock Exchange,NYSE
+DE,Deere & Co,75228807000.0,Industrials,Farm & Heavy Construction Machinery,0.9581,240.06,3.04,1594214,New York Stock Exchange,NYSE
+RIO,Rio Tinto Plc,74864337000.0,Basic Materials,Other Industrial Metals & Mining,0.81979,60.05,3.8600000000000003,2012690,New York Stock Exchange,NYSE
+ANTM,Anthem Inc,74664583000.0,Healthcare,Health Care Plans,0.99486,296.87,3.5,1128846,New York Stock Exchange,NYSE
+MO,Altria Group Inc,73462546000.0,Consumer Defensive,Tobacco,0.51062,39.53,4.16,7658381,New York Stock Exchange,NYSE
+EQIX,Equinix Inc,72412258000.0,Real Estate,REIT Specialty,0.38219,817.69,10.04,347443,Nasdaq Global Select,NASDAQ
+VEA,Vanguard FTSE Developed Markets,72401444965.0,,,0.0,41.56,1.044,8724287,NYSE Arca,NYSE
+AET,Aetna Inc.,71120500000.0,Healthcare,Health Care Plans,0.681521,212.3,2.0,2107092,New York Stock Exchange,NYSE

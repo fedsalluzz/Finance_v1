@@ -1,0 +1,101 @@
+symbol,companyName,marketCap,sector,industry,beta,price,lastAnnualDividend,volume,exchange,exchangeShortName
+MSFT,Microsoft Corp,1662310020000.0,Technology,Software Infrastructure,0.85286,219.66,1.99,33841051,Nasdaq Global Select,NASDAQ
+TSM,Taiwan Semiconductor Manufacturing Company Ltd.,405218460000.0,Technology,Semiconductors,0.602506,86.7,2.848502,10949706,New York Stock Exchange,NYSE
+ADBE,Adobe Inc,241212310000.0,Technology,Software Infrastructure,0.97734,502.82,0.0,2892951,Nasdaq Global Select,NASDAQ
+INTC,Intel Corp,230342476000.0,Technology,Semiconductors,0.67617,54.16,1.29,34687664,Nasdaq Global Select,NASDAQ
+ORCL,Oracle Corp,181526561000.0,Technology,Software Infrastructure,0.77197,60.29,0.96,13150351,New York Stock Exchange,NYSE
+CSCO,Cisco Systems Inc,170014556000.0,Technology,Communication Equipment,0.82049,40.16,1.41,22827482,Nasdaq Global Select,NASDAQ
+AVGO,Broadcom Inc,153164300000.0,Technology,Semiconductors,0.98527,378.65,12.4,1871351,Nasdaq Global Select,NASDAQ
+INTU,Intuit Inc,89315459000.0,Technology,Software Application,0.97966,341.15,2.06,1206484,Nasdaq Global Select,NASDAQ
+FIS,Fidelity National Information Services Inc,89148482000.0,Technology,Information Technology Services,0.71337,143.88,1.4,3031960,New York Stock Exchange,NYSE
+FISV,Fiserv Inc,67781972000.0,Technology,Information Technology Services,0.74322,101.22,0.0,4739609,Nasdaq Global Select,NASDAQ
+INFY,Infosys Limited American Depositary Shares,64978371000.0,Technology,Information Technology Services,0.017042,15.51,0.390279,9441710,New York Stock Exchange,NYSE
+VMW,VMware Inc,64115581000.0,Technology,Software Infrastructure,0.87872,152.61,0.0,1117132,New York Stock Exchange,NYSE
+UBER,Uber Technologies Inc,59098350000.0,Technology,Software Application,0.0,33.72,0.0,20495006,NYSE,NYSE
+DELL,Dell Technologies Inc,52382200000.0,Technology,Computer Hardware,0.80996,70.15,0.0,2089853,NYSE,NYSE
+TEAM,Atlassian Corporation PLC,51332882000.0,Technology,Software Application,0.98363,207.45,0.0,1731517,Nasdaq Global Select,NASDAQ
+DOCU,DocuSign Inc,43439710000.0,Technology,Software Application,0.0,234.6,0.0,5710148,NasdaqGS,NASDAQ
+ERIC,Ericsson,35615805000.0,Technology,Communication Equipment,0.41432,10.7,0.078,8885450,Nasdaq Global Select,NASDAQ
+RHT,Red Hat Inc.,34735824030.0,Technology,Software Application,0.527214,186.43,0.0,1699149,New York Stock Exchange,NYSE
+DDOG,Datadog Inc,34082721800.0,Technology,Software Application,0.0,112.36,0.0,4972870,NasdaqGS,NASDAQ
+CRWD,Crowdstrike Holdings Inc,31894716400.0,Technology,Software Infrastructure,0.0,145.34,0.0,5497107,NasdaqGS,NASDAQ
+MB,MINDBODY Inc.,31533575000.0,Technology,Software Application,-0.363531,36.46,0.0,446364,NASDAQ Global Market,NASDAQ
+OKTA,Okta Inc,31247067100.0,Technology,Software Infrastructure,0.96614,243.95,0.0,1416285,Nasdaq Global Select,NASDAQ
+MSI,Motorola Solutions Inc,29018298400.0,Technology,Communication Equipment,0.78559,170.91,2.42,1080035,New York Stock Exchange,NYSE
+XLNX,Xilinx Inc,28833937400.0,Technology,Semiconductors,0.95349,118.02,1.49,2432639,Nasdaq Global Select,NASDAQ
+HPQ,HP Inc,26920601600.0,Technology,Computer Hardware,0.97349,19.6,0.7,10248829,New York Stock Exchange,NYSE
+WIT,Wipro Limited,26262571000.0,Technology,Software Application,0.207518,5.01,0.027962,1360729,New York Stock Exchange,NYSE
+RNG,RingCentral Inc,24903850000.0,Technology,Software Application,0.57027,279.95,0.0,1011551,New York Stock Exchange,NYSE
+VRSN,Verisign Inc,23813828600.0,Technology,Software Infrastructure,0.82621,207.34,0.0,662221,Nasdaq Global Select,NASDAQ
+NOK,Nokia Corporation Sponsored American Depositary Shares,22465921000.0,Technology,Communication Equipment,0.045856,4.03,0.11599999999999999,28373915,New York Stock Exchange,NYSE
+KYO,Kyocera Corporation,20319120000.0,Technology,Computer Hardware,0.720627,55.22,1.063828,24985,New York Stock Exchange,NYSE
+CCC,CLARIVATE PLC,19205062700.0,Technology,Information Technology Services,0.0,30.67,0.0,1100589,NYSE,NYSE
+ZI,ZoomInfo Technologies Inc,18648963100.0,Technology,Software Application,0.0,42.63,0.0,2084262,NasdaqGS,NASDAQ
+CA,CA Inc.,18444675000.0,Technology,Software Application,0.714944,44.45,1.02,2785544,Nasdaq Global Select,NASDAQ
+WORK,Slack Technologies Inc,18399430700.0,Technology,Software Application,0.0,32.25,0.0,15048370,NYSE,NYSE
+AKAM,Akamai Technologies Inc,18013069300.0,Technology,Software Infrastructure,0.42394,110.71,0.0,1446239,Nasdaq Global Select,NASDAQ
+STNE,StoneCo Ltd,17875120100.0,Technology,Software Application,0.0,57.9,0.0,2547279,NasdaqGS,NASDAQ
+GIB,CGI Inc,17840437200.0,Technology,Information Technology Services,0.93837,68.98,0.0,175228,New York Stock Exchange,NYSE
+NET,Cloudflare Inc,17820770300.0,Technology,Software Infrastructure,0.0,58.29,0.0,5974935,NYSE,NYSE
+CHKP,Check Point Software Technologies Ltd,17752123400.0,Technology,Software Infrastructure,0.66982,126.62,0.0,1091348,Nasdaq Global Select,NASDAQ
+CTXS,Citrix Systems Inc,17079533600.0,Technology,Software Application,0.17951,138.26,1.4,1469010,Nasdaq Global Select,NASDAQ
+BR,Broadridge Financial Solutions Inc,16555339800.0,Technology,Information Technology Services,0.90327,143.34,2.16,487596,New York Stock Exchange,NYSE
+CAJ,Canon Inc. American Depositary Shares,16336144400.0,Technology,Computer Hardware,0.808527,15.77,1.122392,547739,New York Stock Exchange,NYSE
+TYL,Tyler Technologies Inc,16036763600.0,Technology,Software Application,0.72338,398.52,0.0,258904,New York Stock Exchange,NYSE
+MDB,MongoDB Inc,15735683100.0,Technology,Software Infrastructure,0.117073,267.3,0.0,851000,NASDAQ Global Market,NASDAQ
+SMI,Semiconductor Manufacturing International Corporation ADR,15226898925.6,Technology,Semiconductors,0.799578,5.55,0.0,363374,New York Stock Exchange,NYSE
+SEDG,Solaredge Technologies Inc,15136788500.0,Technology,Solar,0.9999,302.02,0.0,1204164,Nasdaq Global Select,NASDAQ
+BKI,Black Knight Inc,14955536400.0,Technology,Software Infrastructure,0.62439,95.24,0.0,666510,New York Stock Exchange,NYSE
+NICE,NICE Ltd,14744798200.0,Technology,Software Application,0.152882,236.36,0.0,237306,Nasdaq Global Select,NASDAQ
+LOGI,Logitech International SA,13527113700.0,Technology,Computer Hardware,0.78048,79.83,0.67836,573332,Nasdaq Global Select,NASDAQ
+AVLR,Avalara Inc,13249970200.0,Technology,Software Application,0.0,157.55,0.0,753306,NYSE,NYSE
+CDAY,Ceridian HCM Holding Inc,13230418900.0,Technology,Software Application,0.0,89.99,0.0,1436925,NYSE,NYSE
+UMC,United Microelectronics Corporation (NEW),12926271500.0,Technology,Semiconductors,0.449624,5.21,0.136,2635307,New York Stock Exchange,NYSE
+GDDY,GoDaddy Inc,12761989100.0,Technology,Software Infrastructure,0.90158,75.99,0.0,1356678,New York Stock Exchange,NYSE
+LDOS,Leidos Holdings Inc,12488899600.0,Technology,Information Technology Services,0.94093,87.83,1.36,928026,New York Stock Exchange,NYSE
+NLOK,NortonLifeLock Inc,12470163500.0,Technology,Software Infrastructure,0.87563,21.1,0.45,5882887,NasdaqGS,NASDAQ
+JKHY,Jack Henry & Associates Inc,12384720900.0,Technology,Information Technology Services,0.47134,162.26,1.66,547948,Nasdaq Global Select,NASDAQ
+DT,Dynatrace Inc,12060757000.0,Technology,Software Application,0.0,42.91,0.0,2836342,NYSE,NYSE
+OTEX,Open Text Corp,11348933600.0,Technology,Software Application,0.73366,41.84,0.91616,518639,Nasdaq Global Select,NASDAQ
+ESTC,Elastic NV,10394062800.0,Technology,Software Application,0.0,120.48,0.0,1039571,NYSE,NYSE
+FIVN,Five9 Inc,9516827600.0,Technology,Software Infrastructure,0.52704,145.66,0.0,704203,NASDAQ Global Market,NASDAQ
+FSLY,Fastly Inc,9446462500.0,Technology,Software Application,0.0,84.67,0.0,10741121,NYSE,NYSE
+BILL,Bill.com Holdings Inc,9305759700.0,Technology,Software Application,0.0,116.06,0.0,1493059,NYSE,NYSE
+PLAN,Anaplan Inc,8724568100.0,Technology,Software Infrastructure,0.0,62.42,0.0,2450914,NYSE,NYSE
+DBX,Dropbox Inc,8399495200.0,Technology,Software Infrastructure,0.0,20.32,0.0,5689314,NasdaqGS,NASDAQ
+ZAYO,Zayo Group Holdings Inc.,8321287700.0,Technology,Communication Equipment,0.740303,34.99,0.0,0,New York Stock Exchange,NYSE
+LYFT,Lyft Inc,7967428100.0,Technology,Software Application,0.0,25.53,0.0,8946600,NasdaqGS,NASDAQ
+DOX,Amdocs Ltd,7777621000.0,Technology,Software Infrastructure,0.68576,58.47,1.1825,643162,Nasdaq Global Select,NASDAQ
+JNPR,Juniper Networks Inc,7441153000.0,Technology,Communication Equipment,0.87806,22.43,0.78,3096707,New York Stock Exchange,NYSE
+OCFT,OneConnect Financial Technology Co Ltd,7293556700.0,Technology,Software Application,0.0,19.75,0.0,665001,NYSE,NYSE
+MLNX,Mellanox Technologies Ltd.,7023214100.0,Technology,Semiconductors,0.491568,124.89,0.0,0,Nasdaq Global Select,NASDAQ
+KC,Kingsoft Cloud Holdings Ltd,6802161700.0,Technology,Software Application,0.0,31.2,0.0,1589423,NasdaqGS,NASDAQ
+SMAR,Smartsheet Inc,6773457400.0,Technology,Software Application,0.0,56.16,0.0,1686795,NYSE,NYSE
+SWI,SolarWinds Corp,6766258700.0,Technology,Software Infrastructure,0.0,21.66,0.0,570893,NYSE,NYSE
+CSRA,CSRA Inc.,6758671371.0,Technology,Software Application,0.824056,41.23,0.4,6174732,New York Stock Exchange,NYSE
+CIEN,Ciena Corp,6452119600.0,Technology,Communication Equipment,0.8314,41.81,0.0,2382501,New York Stock Exchange,NYSE
+INXN,InterXion Holding N.V. (0.01 nominal value),5944747500.0,Technology,Online Media,0.901349,77.41,0.0,0,New York Stock Exchange,NYSE
+SPIL,Siliconware Precision Industries Company Ltd.,5873800000.0,Technology,Semiconductors,0.289407,8.6,0.211964,53286,Nasdaq Global Select,NASDAQ
+ARRS,ARRIS International plc,5758480000.0,Technology,Communication Equipment,0.914293,31.64,0.0,1557269,Nasdaq Global Select,NASDAQ
+BL,Blackline Inc,5746788900.0,Technology,Software Infrastructure,0.8508,101.0,0.0,531051,Nasdaq Global Select,NASDAQ
+LPL,LG Display Co Ltd AMERICAN DEPOSITORY SHARES,4901456400.0,Technology,Consumer Electronics,0.615538,6.81,0.0,427615,New York Stock Exchange,NYSE
+NATI,National Instruments Corp,4795442700.0,Technology,Software Application,0.96405,36.485,1.02,710473,Nasdaq Global Select,NASDAQ
+MULE,MuleSoft Inc. Class A,4784505000.0,Technology,Software Application,-3.504473,44.72,0.0,4778502,New York Stock Exchange,NYSE
+FOUR,Shift4 Payments Inc,4754245600.0,Technology,Software Infrastructure,0.0,59.4,0.0,740739,NYSE,NYSE
+SAIC,Science Applications International Corp,4721212400.0,Technology,Information Technology Services,0.91427,81.17,1.48,538046,New York Stock Exchange,NYSE
+STMP,Stamps.Com Inc,4697984500.0,Technology,Software Application,0.54587,267.3,0.0,336943,Nasdaq Global Select,NASDAQ
+MDLA,Medallia Inc,4586048000.0,Technology,Software Application,0.0,31.18,0.0,1772817,NYSE,NYSE
+BAND,Bandwidth Inc,4479500800.0,Technology,Software Infrastructure,0.473715,185.34,0.0,482392,Nasdaq Global Select,NASDAQ
+EVBG,Everbridge Inc,4373285900.0,Technology,Software Application,0.53397,126.45,0.0,454751,NASDAQ Global Market,NASDAQ
+COTV,Cotiviti Holdings Inc.,4250775000.0,Technology,Software Application,0.499703,44.75,0.0,534185,New York Stock Exchange,NYSE
+LOGM,LogMeIn Inc,4218386430.0,Technology,Software Application,0.65097,86.04,0.325,355730,Nasdaq Global Select,NASDAQ
+PVTL,"Pivotal Software, Inc.",4216605180.0,Technology,Software Application,0.0,15.0,0.0,0,NYSE,NYSE
+CRUS,Cirrus Logic Inc,3996986880.0,Technology,Semiconductors,0.88601,68.45,0.0,693559,Nasdaq Global Select,NASDAQ
+QLYS,Qualys Inc,3988229380.0,Technology,Software Infrastructure,0.73672,101.62,0.0,380079,Nasdaq Global Select,NASDAQ
+DAVA,Endava PLC,3941560580.0,Technology,Software Infrastructure,0.0,65.04,0.0,148118,NYSE,NYSE
+TENB,Tenable Holdings Inc,3926005250.0,Technology,Software Infrastructure,0.0,38.77,0.0,1088171,NasdaqGS,NASDAQ
+SWCH,Switch Inc,3834574340.0,Technology,Information Technology Services,0.543292,15.94,0.1176,1412276,New York Stock Exchange,NYSE
+VICR,Vicor Corp,3699188990.0,Technology,Electronic Components,0.92183,85.9,0.0,206251,Nasdaq Global Select,NASDAQ
+POWI,Power Integrations Inc,3606781180.0,Technology,Semiconductors,0.95394,60.34,0.38,359985,Nasdaq Global Select,NASDAQ
+VRNT,Verint Systems Inc,3462940670.0,Technology,Software Infrastructure,0.82658,52.95,0.0,521340,Nasdaq Global Select,NASDAQ
+SYNT,Syntel Inc.,3443580000.0,Technology,Software Application,0.79391,41.0,0.0,552694,Nasdaq Global Select,NASDAQ
