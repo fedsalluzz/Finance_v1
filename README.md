@@ -52,7 +52,9 @@ Management must be stable.
 - **COGS** = The cost of goods sold
 - **EBIT** = Earnings before income tax
 - **EBITDA** = Earnings before income tax, depreciation and ammortization.
-- **Gross profit margin** = (REVENUEs - COGS)/REVENUEs
+- **Gross profit margin** = Gross Profit/Revenues = (REVENUEs - COGS)/REVENUEs   .analyzes the relationship between gross sales revenue and the direct costs of sales.
+- **Operating profit margin** = (Gross - Operative expenses)/Revenue     .focuses on indirect costs. Companies have a wide range of indirect costs which also influence the bottom line. Some commonly reported indirect costs includes research and development, marketing campaign expenses, general and administrative expenses, and depreciation and amortization.
+- **Net Profit margin** = (Operating profit - Interest and Taxes)/Revenue   .net earnings of a company after accounting for all expenses. Net profit margin takes into consideration the interest and taxes paid by a company
 	
 ### From the Income statement:
 - **Earnings x share (EPS)**: =((Net Income - preferred dividends) /shares outstanding). It is used as an indicator for company profitability. Higher number means company is more profitable. EPS diluted is often used, considering as the shares outstanging number the one calculated over the assumpion that all option,warranty etc. were converted immediatelly in stocks.
