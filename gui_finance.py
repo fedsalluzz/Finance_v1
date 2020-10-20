@@ -17,7 +17,7 @@ class GUI:
 	def __init__(self, master):
 		self.master = master
 		self.master.title("FINANCE GUI")
-		self.master.geometry("1200x750")
+		self.master.geometry("1200x900")
 		self.master.configure(background="black")
 		self.frame = tk.Frame(self.master)
 		self.prova = 'prova'
@@ -71,10 +71,7 @@ class GUI:
 		self.textTicker10 = tk.Entry(self.frame, width=20, bg="white")
 		self.textTicker10.grid(row=12, column=1)
 		self.textTicker10.insert(END,'NYSE,NASDAQ')	
-		self.textTicker11 = tk.Text(self.frame, height=50, width=80, bg="white")
-		self.textTicker11.grid(row=13, column=0,columnspan=4)
-		instructions_fill = '\n\t\t\t *** HOW TO USE STOCK SCREENER ***\n\nmarketCapMoreThan & marketCapLowerThan : Number \nbetaMoreThan & betaLowerThan : Number \nvolumeMoreThan & volumeLowerThan : Number \ndividendMoreThan & dividendLowerThan : Number \nsector : \n\tConsumer Cyclical - Energy - Technology - Industrials \n\tFinancial Services - Basic Materials - Communication Services Consumer Defensive - Healthcare - Real Estate - Utilities - Industrial Goods - Financial - Services - Conglomerates \n Industry :  \n\tAutos - Banks - Banks Diversified - Software - Banks Regional - Beverages Alcoholic  \n\tBeverages Brewers - Beverages Non-Alcoholic \n exchange : nyse - nasdaq - amex - euronex - tsx - etf - mutual_fund \n limit : Number\n\nexample.\nstock-screener?marketCapMoreThan=1000000000&betaMoreThan=1&volumeMoreThan=10000&sector=Technology&exchange=NASDAQ&dividendMoreThan=0&limit=100'
-		self.textTicker11.insert(END,instructions_fill)	
+
 		#Create a Label with the Real Time evaluator
 #		self.label_real_time = tk.Label (self.frame, text="PE\nPBV\nPEG\nDIV\nROE\n", bg="black" , fg="white") .grid(row=4, column=2,sticky = E, pady = 1)
 #		self.text_real_time = tk.Text (self.frame, height = 5, width = 10)
@@ -123,9 +120,22 @@ class GUI:
 		self.buttonNOW.grid(row=12, column=3,sticky = W, pady = 2)
 		#Create a Label and text entry box  for Directory
 		self.labelDirectory = tk.Label (self.frame, text=" Program Directory ", bg="black" , fg="white", font="none 12 bold") .grid(row=2, column=0,sticky = W, pady = 2)
+		#Button Yield and label with entry
+		self.buttonYield= tk.Button(self.frame, text=" $ $ $ ", fg="black", font="none 9 bold", command=self.YieldSearch_click)
+		self.buttonYield.grid(row=13, column=2,sticky = W, pady = 2)
+		self.labelYield = tk.Label (self.frame, text=" Yield target ", bg="black" , fg="white", font="none 12 bold") .grid(row=13, column=0,sticky = W, pady = 2)
+		self.textYield = tk.Entry(self.frame, width=20, bg="white")
+		self.textYield.grid(row=13, column=1)
+		self.textYield.insert(END,'0.02')	
 
+		self.labelDirectory = tk.Label (self.frame, text=" Program Directory ", bg="black" , fg="white", font="none 12 bold") .grid(row=2, column=0,sticky = W, pady = 2)
+		self.buttonTickers= tk.Button(self.frame, text=" Ticker List ", fg="black", font="none 9 bold", command=self.Ticker_list_click)
+		self.buttonTickers.grid(row=13, column=3,sticky = E, pady = 2)
 
-
+		self.textTicker11 = tk.Text(self.frame, height=50, width=80, bg="white")
+		self.textTicker11.grid(row=16, column=0,columnspan=4)
+		instructions_fill = '\n\t\t\t *** HOW TO USE STOCK SCREENER ***\n\n1. Select criteria\nmarketCapMoreThan & marketCapLowerThan : Number \nbetaMoreThan & betaLowerThan : Number \nvolumeMoreThan & volumeLowerThan : Number \ndividendMoreThan & dividendLowerThan : Number \nsector : \n\tConsumer Cyclical - Energy - Technology - Industrials \n\tFinancial Services - Basic Materials - Communication Services Consumer Defensive - Healthcare - Real Estate - Utilities - Industrial Goods - Financial - Services - Conglomerates \n Industry :  \n\tAutos - Banks - Banks Diversified - Software - Banks Regional - Beverages Alcoholic  \n\tBeverages Brewers - Beverages Non-Alcoholic \n exchange : nyse - nasdaq - amex - euronex - tsx - etf - mutual_fund \n limit : Number \n\nexample.\nstock-screener?marketCapMoreThan=1000000000&betaMoreThan=1&volumeMoreThan=10000&sector=Technology&exchange=NASDAQ&dividendMoreThan=0&limit=100\n\n2. Select Yield Target \n\n3. Press $$$'
+		self.textTicker11.insert(END,instructions_fill)
 		self.frame.pack()
 		
 
@@ -358,7 +368,7 @@ class GUI:
 		print('-- NOW_click printed on files for: '+entered_tickers)
 
 		
-	def StockScreener_click(self):  #TO DO
+	def StockScreener_click(self):  
 		tickers_dict_eps = dict()
 		tickers_dict_debt = dict()
 		marketcap_high= self.textTicker2.get()
@@ -375,8 +385,34 @@ class GUI:
 		Quote = Analyses('stockscreener',period = entered_years,api_key =self.apikey, statistic = ' ')
 		criteria_list = [marketcap_high,marketcap_low,beta_high,beta_low,dividend_high,dividend_low,sector,industry,exchange]
 		Quote.Stock_screener(criteria_list) 
-		#Thoise values are evaluated at the latest date
+		#Thoise values are evaluated at the latest date YieldSearch_click
 
+
+
+	def YieldSearch_click(self):
+		marketcap_high= self.textTicker2.get()
+		marketcap_low =self.textTicker3.get()
+		beta_high = self.textTicker4.get()
+		beta_low = self.textTicker5.get()
+		dividend_high = self.textTicker6.get()
+		dividend_low = self.textTicker7.get()
+		sector = self.textTicker8.get()
+		industry = self.textTicker9.get()
+		exchange = self.textTicker10.get()
+		targetYield = self.textYield.get()
+		entered_years = self.buttonYears_var.get() 
+		print('\n---- CLICK EVENT Yeld finder click ---- Selected criteria are are: '+marketcap_high+' '+marketcap_low+' '+beta_high+' '+beta_low+' '+dividend_high+' '+dividend_low+' '+sector+' '+industry+' '+exchange)
+		Quote = Analyses('stockscreener',period = entered_years,api_key =self.apikey, statistic = ' ')
+		criteria_list = [marketcap_high,marketcap_low,beta_high,beta_low,dividend_high,dividend_low,sector,industry,exchange]
+		Quote.Stock_screener(criteria_list, 1, targetYield ) #YIELD function is enabled
+		#Thoise values are evaluated at the latest date YieldSearch_click Ticker_list_click
+
+
+	def Ticker_list_click(self):  #TO DO
+		print('\n---- CLICK EVENT Ticker_list_click : Ticker list will be listed /saved_data/Ticker_list.csv  ---- ')
+		entered_years = self.buttonYears_var.get() 
+		Quote = Analyses('list',period = entered_years,api_key =self.apikey, statistic = ' ')
+		Quote.Ticker_list() #Get the ticker list
 
 def main ():
 	window = tk.Tk()

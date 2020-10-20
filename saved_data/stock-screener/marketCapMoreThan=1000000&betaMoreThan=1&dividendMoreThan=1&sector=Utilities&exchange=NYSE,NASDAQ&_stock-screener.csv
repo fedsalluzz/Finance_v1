@@ -1,0 +1,7 @@
+symbol,companyName,marketCap,sector,industry,beta,price,lastAnnualDividend,volume,exchange,exchangeShortName
+CNP,CenterPoint Energy Inc,11359476700,Utilities,Utilities Regulated Gas,1.01293,20.85,1.015,5215359,New York Stock Exchange,NYSE
+APU,AmeriGas Partners L.P.,3231015060,Utilities,Utilities Regulated,1.142619,34.71,3.8,240035,New York Stock Exchange,NYSE
+PEGI,Pattern Energy Group Inc.,2626365440,Utilities,Utilities Independent Power Producers,1.022765,26.74,1.688,0,Nasdaq Global Select,NASDAQ
+NYLD,NRG Yield Inc. Class C,1992375000,Utilities,Utilities Regulated,1.80794,20.13,1.28,747818,New York Stock Exchange,NYSE
+KEN,Kenon Holdings Ltd,1283750660,Utilities,Utilities Regulated,1.82678,23.83,1.21,1148,New York Stock Exchange,NYSE
+JE,Just Energy Group Inc,273156544,Utilities,Utilities Diversified,1.75147,5.73,132.0271,2384898,New York Stock Exchange,NYSE

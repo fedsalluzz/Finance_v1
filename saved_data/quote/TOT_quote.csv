@@ -1,2 +1,2 @@
 symbol,name,price,changesPercentage,change,dayLow,dayHigh,yearHigh,yearLow,marketCap,priceAvg50,priceAvg200,volume,avgVolume,exchange,open,previousClose,eps,pe,earningsAnnouncement,sharesOutstanding,timestamp
-AAPL,Apple Inc.,119.02,-1.4,-1.69,118.81,121.54,137.98,53.1525,2035539509248.0,116.45824,95.52649,115393808,174376479,NASDAQ,121.28,120.71,3.296,36.110435,2020-10-29T20:00:00.000+0000,17102499658,1603036288
+TOT,TOTAL S.A.,33.0,-0.87,-0.29,32.73,33.375,56.91,22.13,87562534912.0,35.805,37.27768,2301867,2740068,NYSE,33.01,33.29,-1.292,,,2653410149,1603055207

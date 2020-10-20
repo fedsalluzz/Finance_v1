@@ -1,0 +1,17 @@
+symbol,companyName,marketCap,sector,industry,beta,price,lastAnnualDividend,volume,exchange,exchangeShortName
+XOM,Exxon Mobil Corp,144182641000,Energy,Oil & Gas Integrated,1.27499,34.1,3.48,24477031,New York Stock Exchange,NYSE
+RDS-A,Royal Dutch Shell plc,96790667000,Energy,Oil & Gas Integrated,0.83588,25.27,2.52,6250693,NYSE,NYSE
+RDS-B,Royal Dutch Shell plc,96790553000,Energy,Oil & Gas Integrated,0.83588,24.29,2.52,3482860,NYSE,NYSE
+WFC,Wells Fargo & Co,94469407000,Financial Services,Banks Diversified,1.10183,22.86,2.04,40599493,New York Stock Exchange,NYSE
+TOT,Total S.A.,87562535000,Energy,Oil & Gas Integrated,0.73934,33.0,3.000075,2740068,New York Stock Exchange,NYSE
+HSBC,HSBC Holdings plc.,80494649000,Financial Services,Banks Diversified,0.563153,19.71,2.55,3356175,New York Stock Exchange,NYSE
+MO,Altria Group Inc,73462546000,Consumer Defensive,Tobacco,0.51062,39.53,4.16,7658381,New York Stock Exchange,NYSE
+SNP,China Petroleum & Chemical Corporation,65665417000,Energy,Oil & Gas Integrated,1.644408,38.83,4.37,154817,New York Stock Exchange,NYSE
+NTES,NetEase Inc.,60714627000,Communication Services,Internet Content & Information,0.806913,88.52,10.809999999999999,2458396,Nasdaq Global Select,NASDAQ
+ENB,Enbridge Inc,59491652000,Energy,Oil & Gas Midstream,0.91338,29.45,3.096,2838646,New York Stock Exchange,NYSE
+BP,BP p.l.c.,54748037000,Energy,Oil & Gas Integrated,0.570394,16.25,2.1900000000000004,12708992,New York Stock Exchange,NYSE
+BNS,Bank of Nova Scotia,51861058000,Financial Services,Banks Diversified,0.83388,42.61,3.6,1132532,New York Stock Exchange,NYSE
+WBK,Westpac Banking Corporation,47730844000,Financial Services,Banks Diversified,0.623491,13.28,1.2120000000000002,209423,New York Stock Exchange,NYSE
+EQNR,Equinor ASA,46946202000,Energy,Oil & Gas Integrated,0.790828,14.17,1.41,3538834,NYSE,NYSE
+CEO,CNOOC Limited,41938543000,Energy,Oil & Gas E&P,1.116653,93.57,10.011,131018,New York Stock Exchange,NYSE
+TRP,TC Energy Corp,40297206000,Energy,Oil & Gas Midstream,0.68639,43.03,3.87,1263659,New York Stock Exchange,NYSE

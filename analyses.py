@@ -52,6 +52,10 @@ class Analyses:
 			api_endpoint_body = api_endpoint_head+'key-metrics/'
 		elif (self.document == 'ratios'):
 			api_endpoint_body = api_endpoint_head+'ratios/'
+		elif (self.document == 'list'):
+			api_endpoint_body = api_endpoint_head+'stock/list/'
+		elif (self.document == 'financial-statement-symbol-lists'):
+			api_endpoint_body = api_endpoint_head+'financial-statement-symbol-lists'
 		elif (self.document =='stock-screener'):
 			api_endpoint_body = api_endpoint_head+'stock-screener/'
 			marketCapLowerThan= screener_list[1]
@@ -63,7 +67,7 @@ class Analyses:
 			dividendMoreThan=screener_list[4]
 			dividendLowerThan=screener_list[5]
 			exchange=screener_list[8]
-			api_endpoint =api_endpoint_body+'?marketCapMoreThan='+marketCapMoreThan+'&marketCapLowerThan='+marketCapLowerThan+'&betaMoreThan='+betaMoreThan+'&betaLowerThan='+betaLowerThan+'&sector='+sector+'&exchange='+exchange+'&industry'+industry+'&dividendLowerThan='+dividendLowerThan+'&dividendMoreThan='+dividendMoreThan+'&limit=100&apikey='+api_key
+			api_endpoint =api_endpoint_body+'?marketCapMoreThan='+marketCapMoreThan+'&marketCapLowerThan='+marketCapLowerThan+'&betaMoreThan='+betaMoreThan+'&betaLowerThan='+betaLowerThan+'&sector='+sector+'&exchange='+exchange+'&industry'+industry+'&dividendLowerThan='+dividendLowerThan+'&dividendMoreThan='+dividendMoreThan+'&limit=600&apikey='+api_key
 		elif (self.document =='quote'):
 			api_endpoint_body = api_endpoint_head+'quote/'
 		elif (self.document =='profile'):
@@ -73,9 +77,9 @@ class Analyses:
 		if (density == 'quarter'):
 			api_endpoint =api_endpoint_body+symbol+'?period=quarter&apikey='+api_key
 		elif (self.document == 'stock-screener'):
-			api_endpoint =api_endpoint_body+'?marketCapMoreThan='+marketCapMoreThan+'&marketCapLowerThan='+marketCapLowerThan+'&betaMoreThan='+betaMoreThan+'&betaLowerThan='+betaLowerThan+'&sector='+sector+'&exchange='+exchange+'&industry'+industry+'&dividendLowerThan'+dividendLowerThan+'&dividendMoreThan='+dividendMoreThan+'&limit=100&apikey='+api_key
+			api_endpoint =api_endpoint_body+'?marketCapMoreThan='+marketCapMoreThan+'&marketCapLowerThan='+marketCapLowerThan+'&betaMoreThan='+betaMoreThan+'&betaLowerThan='+betaLowerThan+'&sector='+sector+'&exchange='+exchange+'&industry'+industry+'&dividendLowerThan'+dividendLowerThan+'&dividendMoreThan='+dividendMoreThan+'&limit=600&apikey='+api_key
 		else:
-			api_endpoint =api_endpoint_body+symbol+'?apikey='+api_key
+			api_endpoint =api_endpoint_body+'?apikey='+api_key
 		try:
 			r = requests.get(api_endpoint)
 			print('-- API ENDPOINT IS : '+api_endpoint)
@@ -256,7 +260,7 @@ class Analyses:
 
 
 
-	def Stock_screener(self, criteria_list):
+	def Stock_screener(self, criteria_list, yield_gain = None, divThr = None):
 		print('\n---- Starting the Stock screener function...')
 		self.document = 'stock-screener'
 		print('---- Requested strock screen...')
@@ -276,7 +280,56 @@ class Analyses:
 		self.ticker = criteria
 		self.Print_on_file(df, self.ticker, self.document )
 		print('---- Printed on file --------')
+		if (yield_gain == 1):
+			priceList=[]
+			lastDivList=[]
+			divYieldlastDiv=[]
+			index_yield_pass=[]
+			new_list=[]
+			for dictitem in load :
+				price = dictitem['price']
+				lastDiv = dictitem['lastAnnualDividend']
+				priceList.append(price)
+				lastDivList.append(lastDiv)
+				divYieldlastDiv = [a/b for a,b in zip(lastDivList,priceList)]
+				#print(len(divYieldlastDiv))
+			for i in range(len(divYieldlastDiv)):
+				if (divYieldlastDiv[i] > float(divThr)):
+					#print(divYieldlastDiv[i])
+					new_list.append(load[i])
+					index_yield_pass.append(i)
+			print('==== Target Yield is '+divThr+' ====')
+			print('==== Number of items meeting the criteria '+str(len(index_yield_pass))+' ====')
+			new_load= new_list
+			new_df=pd.DataFrame(new_load)
+			self.ticker = 'Yield_finder_'+divThr+'_'+criteria
+			self.Print_on_file(new_df, self.ticker, 'yield_finder' ) 
+			#print(len(new_list))
+			#print(new_list)
+			#print(index_yield_pass)
+			#print(len(lastDivList))
+			#print(len(divYieldlastDiv))
+			#print(divYieldlastDiv) Ticker_list
 		return 
+
+
+	def Ticker_list(self):
+		self.document = 'list'
+		self.ticker = 'Ticker_List'
+		ticker_available = self.Get_data_from_api() #it is a string json format
+		load = json.loads(ticker_available) #list
+		df = pd.DataFrame(load) #dataframe
+		#print(df)
+		self.Print_on_file(df, self.ticker, '') 
+		self.document = 'financial-statement-symbol-lists'
+		self.ticker = 'Financial_statement_Ticker_List'
+		ticker_available = self.Get_data_from_api() #it is a string json format
+		load = json.loads(ticker_available) #list
+		df = pd.DataFrame(data ={"list":load}) #dataframe
+		#print(df)
+		self.Print_on_file(df, self.ticker, '') 
+		return
+
 
 ### Take the PE, PBV, PEG for TODAY
 # Sort data from oldest to newest

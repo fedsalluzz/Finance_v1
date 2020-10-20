@@ -1,2 +1,2 @@
 symbol,name,price,changesPercentage,change,dayLow,dayHigh,yearHigh,yearLow,marketCap,priceAvg50,priceAvg200,volume,avgVolume,exchange,open,previousClose,eps,pe,earningsAnnouncement,sharesOutstanding,timestamp
-AAPL,Apple Inc.,119.02,-1.4,-1.69,118.81,121.54,137.98,53.1525,2035539509248.0,116.45824,95.52649,115393808,174376479,NASDAQ,121.28,120.71,3.296,36.110435,2020-10-29T20:00:00.000+0000,17102499658,1603036288
+PTR,PetroChina Company Limited,28.32,-0.7,-0.2,28.24,28.47,53.55,27.74,104795332608.0,30.971176,34.24554,84809,145529,NYSE,28.47,28.52,4.4,6.436363,,3700400163,1603055213

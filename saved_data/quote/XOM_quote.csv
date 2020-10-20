@@ -1,2 +1,2 @@
 symbol,name,price,changesPercentage,change,dayLow,dayHigh,yearHigh,yearLow,marketCap,priceAvg50,priceAvg200,volume,avgVolume,exchange,open,previousClose,eps,pe,earningsAnnouncement,sharesOutstanding,timestamp
-AAPL,Apple Inc.,119.02,-1.4,-1.69,118.81,121.54,137.98,53.1525,2035539509248.0,116.45824,95.52649,115393808,174376479,NASDAQ,121.28,120.71,3.296,36.110435,2020-10-29T20:00:00.000+0000,17102499658,1603036288
+XOM,Exxon Mobil Corporation,34.1,-1.02,-0.35,33.875,34.64,73.12,30.11,144182640640.0,35.883236,42.08741,22207294,24477031,NYSE,34.37,34.45,1.679,20.309708,2020-10-30T12:30:00.000+0000,4228229931,1603057184

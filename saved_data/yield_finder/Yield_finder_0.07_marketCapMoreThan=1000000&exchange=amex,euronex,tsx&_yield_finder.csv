@@ -1,0 +1,34 @@
+symbol,companyName,marketCap,sector,industry,beta,price,lastAnnualDividend,volume,exchange,exchangeShortName
+ENB.TO,Enbridge Inc,78698889000,Energy,Oil & Gas Midstream,0.91338,38.86,3.096,5917656,Toronto,TSX
+CNU.TO,CNOOC Limited,55478694000,Energy,Oil & Gas E&P,1.116653,141.01,10.00138,17,Toronto,TSX
+BCE-PY.TO,BCE Inc.,45234414000,Communication Services,Telecom Services,0.0,12.38,0.8789399999999998,5338,Toronto,TSX
+SU.TO,Suncor Energy Inc,23899099100,Energy,Oil & Gas Integrated,1.69744,15.67,1.935,8760559,Toronto,TSX
+PPL-PA.TO,Pembina Pipeline Corporation,20642797600,Energy,Oil & Gas Midstream,0.0,13.3,1.2265,9404,Toronto,TSX
+PPL-PC.TO,Pembina Pipeline Corporation,20635531300,Energy,Oil & Gas Midstream,0.0,13.18,1.1195,3297,Toronto,TSX
+PPL-PQ.TO,Pembina Pipeline Corporation,19841824800,Energy,Oil & Gas Midstream,0.0,14.17,1.205252,3377,Toronto,TSX
+PPL.TO,Pembina Pipeline Corp,15752830000,Energy,Oil & Gas Midstream,1.75845,28.65,2.45,1869911,Toronto,TSX
+BPY-UN.TO,Brookfield Property Partners LP,15728959500,Real Estate,Real Estate Services,1.63677,17.03,1.325,1150649,Toronto,TSX
+IMO,Imperial Oil Ltd,9078461400,Energy,Oil & Gas Integrated,2.03332,12.42,0.88,490396,NYSE American,AMEX
+IPL.TO,Inter Pipeline Ltd,5498052100,Energy,Oil & Gas Midstream,2.31878,12.81,1.505,2219896,Toronto,TSX
+KEY.TO,Keyera Corp,4641483300,Energy,Oil & Gas Midstream,2.53484,21.0,1.9,1082537,Toronto,TSX
+REI-UN.TO,RioCan Real Estate Investment Trust,4632401400,Real Estate,REIT Retail,1.04313,14.58,1.56,1787899,Toronto,TSX
+SRU-UN.TO,SmartCentres Real Estate Investment Trust,3505985790,Real Estate,REIT Retail,1.18927,20.63,1.83336,509608,Toronto,TSX
+LTSL,Ladenburg Thalmann Financial Services Inc 6.50% Senior Notes due 2027,3273672960,,,0.383355,16.65,1.624,7700,NYSE American,AMEX
+HSE.TO,Husky Energy Inc,3135974400,Energy,Oil & Gas Integrated,2.29511,3.12,0.3875,2235364,Toronto,TSX
+HR-UN.TO,H&R Real Estate Investment Trust,2920102660,Real Estate,REIT Diversified,1.68826,10.18,1.265,1049266,Toronto,TSX
+ARX.TO,ARC Resources Ltd,2420673540,Energy,Oil & Gas E&P,2.12674,6.85,0.48,1334827,Toronto,TSX
+PSK.TO,Prairiesky Royalty Ltd,2020139900,Energy,Oil & Gas E&P,2.10939,8.7,0.71,697748,Toronto,TSX
+CUF-UN.TO,Cominar REIT,1357368450,Real Estate,REIT Diversified,1.14465,7.44,0.72,698964,Toronto,TSX
+EVV,Eaton Vance Ltd Duration Income Fund,1351951100,Financial Services,Asset Management,0.50775,11.64,1.017,280360,NYSE American,AMEX
+ORA.TO,Aura Minerals Inc,1201207550,Basic Materials,Gold,0.1572,16.98,2560.324,49711,Toronto,TSX
+RUS.TO,Russel Metals Inc,1197683070,Industrials,Industrial Distribution,1.67544,19.26,1.52,193246,Toronto,TSX
+LB.TO,Laurentian Bank of Canada,1151783300,Financial Services,Banks Regional,0.95325,26.71,2.66,257732,Toronto,TSX
+EIT-UN.TO,Canoe EIT Income Fund,1111651330,Financial Services,Asset Management,1.30832,9.31,1.2,179640,Toronto,TSX
+FSZ.TO,Fiera Capital Corp,1089209340,Financial Services,Asset Management,1.86708,10.52,0.84,134238,Toronto,TSX
+EIF.TO,Exchange Income Corp,1085909380,Industrials,Airlines,2.65818,31.1,2.455,122685,Toronto,TSX
+WCP.TO,Whitecap Resources Inc,1044943300,Energy,Oil & Gas E&P,3.30481,2.56,0.32775,2576251,Toronto,TSX
+NFI.TO,NFI Group Inc,990736000,Consumer Cyclical,Auto Manufacturers,1.55081,15.85,1.25058,283312,Toronto,TSX
+FAX,Aberdeen Asia-Pacific Income Fund Inc,970968320,Financial Services,Asset Management,0.512647,3.92,0.3360000000000001,769464,NYSE American,AMEX
+ZWU.TO,BMO Covered Call Utilities ETF,847396610,,,0.0,12.07,0.9299999999999998,121437,Toronto,TSX
+CLM,Cornerstone Strategic Value Fund Inc,846781060,Financial Services,Asset Management,1.20425,10.93,2.5053000000000005,626581,NYSE American,AMEX
+BBD-B.TO,Bombardier Inc,810094980,Industrials,Aerospace & Defense,2.32317,0.325,0.23228,5128504,Toronto,TSX

@@ -1,0 +1,2 @@
+symbol,price,beta,volAvg,mktCap,lastDiv,range,changes,companyName,currency,cik,isin,cusip,exchange,exchangeShortName,industry,website,description,ceo,sector,country,fullTimeEmployees,phone,address,city,state,zip,dcfDiff,dcf,image,ipoDate,defaultImage
+SNP,38.83,1.644408,154817,65665417000,4.37,38.47-62.22,-0.14,China Petroleum & Chemical Corporation,USD,,,,New York Stock Exchange,NYSE,Oil & Gas Integrated,http://www.sinopec.com,,,Energy,,,,,,,,1685.56,1761.74,https://financialmodelingprep.com/image-stock/SNP.jpg,,True
