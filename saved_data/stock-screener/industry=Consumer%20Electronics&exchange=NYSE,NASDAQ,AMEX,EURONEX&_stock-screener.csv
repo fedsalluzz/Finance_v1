@@ -1,0 +1,15 @@
+symbol,companyName,marketCap,sector,industry,beta,price,lastAnnualDividend,volume,exchange,exchangeShortName
+AAPL,Apple Inc,1967471590000,Technology,Consumer Electronics,1.33758,115.04,0.7825,172305204,Nasdaq Global Select,NASDAQ
+SNE,Sony Corporation,91934835000,Technology,Consumer Electronics,1.548672,75.43,0.41142599999999996,999193,New York Stock Exchange,NYSE
+LPL,LG Display Co Ltd AMERICAN DEPOSITORY SHARES,4827544600,Technology,Consumer Electronics,0.615538,6.8,0.0,420743,New York Stock Exchange,NYSE
+IRBT,iRobot Corp,2352504060,Technology,Consumer Electronics,1.68322,84.0,0.0,765641,Nasdaq Global Select,NASDAQ
+SONO,Sonos Inc,1768813820,Technology,Consumer Electronics,0.0,15.99,0.0,3895892,NasdaqGS,NASDAQ
+GPRO,GoPro Inc,1077176060,Technology,Consumer Electronics,1.47129,6.825,0.0,3378084,Nasdaq Global Select,NASDAQ
+UEIC,Universal Electronics Inc,551830660,Technology,Consumer Electronics,0.99666,39.61,0.0,63870,Nasdaq Global Select,NASDAQ
+VIOT,Viomi Technology Co Ltd,408014080,Technology,Consumer Electronics,0.0,5.85,0.0,115941,NasdaqGS,NASDAQ
+HBB,Hamilton Beach Brands Holding Co,308522880,Technology,Consumer Electronics,0.17256,22.57,0.36,65289,New York Stock Exchange,NYSE
+HEAR,Turtle Beach Corp,281679616,Technology,Consumer Electronics,2.08549,19.3,0.0,581496,NASDAQ Global Market,NASDAQ
+VUZI,Vuzix Corp,187238768,Technology,Consumer Electronics,2.1473,4.39,0.0,2212944,NASDAQ Capital Market,NASDAQ
+MWK,Mohawk Group Holdings Inc,174031264,Technology,Consumer Electronics,0.0,8.24,0.0,182512,NasdaqCM,NASDAQ
+MSN,Emerson Radio Corp,21884408,Technology,Consumer Electronics,0.3679,1.04,0.0,370207,NYSE American,AMEX
+KOSS,Koss Corp,16290626,Technology,Consumer Electronics,1.3179,2.2,0.0,48847,NASDAQ Capital Market,NASDAQ

@@ -1,0 +1,89 @@
+symbol,companyName,marketCap,sector,industry,beta,price,lastAnnualDividend,volume,exchange,exchangeShortName
+TSM,Taiwan Semiconductor Manufacturing Company Ltd.,408295113000.0,Technology,Semiconductors,0.602506,88.31,2.848502,10775915,New York Stock Exchange,NYSE
+NVDA,NVIDIA Corp,335795487000.0,Technology,Semiconductors,1.53923,543.61,0.64,13026398,Nasdaq Global Select,NASDAQ
+INTC,Intel Corp,197523603000.0,Technology,Semiconductors,0.67973,48.2,1.29,36188360,Nasdaq Global Select,NASDAQ
+AVGO,Broadcom Inc,150765617000.0,Technology,Semiconductors,0.98823,372.72,12.4,1842436,Nasdaq Global Select,NASDAQ
+QCOM,Qualcomm Inc,145411441000.0,Technology,Semiconductors,1.38043,128.88,2.54,9116246,Nasdaq Global Select,NASDAQ
+TXN,Texas Instruments Inc,137654583000.0,Technology,Semiconductors,1.1028,149.96,3.47,3988664,Nasdaq Global Select,NASDAQ
+AMD,Advanced Micro Devices Inc,96225960000.0,Technology,Semiconductors,2.26866,81.96,0.0,59317844,NASDAQ Capital Market,NASDAQ
+MU,Micron Technology Inc,58833674000.0,Technology,Semiconductors,1.30831,52.85,0.0,19056515,Nasdaq Global Select,NASDAQ
+ADI,Analog Devices Inc,45899350000.0,Technology,Semiconductors,1.3131,124.2,2.32,3196838,Nasdaq Global Select,NASDAQ
+NXPI,NXP Semiconductors NV,38303945000.0,Technology,Semiconductors,1.56646,137.18,1.5,2071753,Nasdaq Global Select,NASDAQ
+STM,STMicroelectronics N.V.,30528770000.0,Technology,Semiconductors,1.228479,34.01,0.222,2530484,New York Stock Exchange,NYSE
+XLNX,Xilinx Inc,28627793900.0,Technology,Semiconductors,0.957,116.82,1.49,2510340,Nasdaq Global Select,NASDAQ
+MCHP,Microchip Technology Inc,28405897200.0,Technology,Semiconductors,1.63975,112.52,1.467,2095516,Nasdaq Global Select,NASDAQ
+MRVL,Marvell Technology Group Ltd,27766386700.0,Technology,Semiconductors,1.07483,41.43,0.24,7634878,Nasdaq Global Select,NASDAQ
+SWKS,Skyworks Solutions Inc,25015310300.0,Technology,Semiconductors,1.34291,149.76,1.76,1738492,Nasdaq Global Select,NASDAQ
+MXIM,Maxim Integrated Products Inc,19485585400.0,Technology,Semiconductors,1.25426,72.87,1.92,3420929,Nasdaq Global Select,NASDAQ
+MPWR,Monolithic Power Systems Inc,15521631200.0,Technology,Semiconductors,1.11643,321.45,1.7,308493,Nasdaq Global Select,NASDAQ
+QRVO,Qorvo Inc,15501825000.0,Technology,Semiconductors,1.45923,135.7,0.0,1327209,Nasdaq Global Select,NASDAQ
+SMI,Semiconductor Manufacturing International Corporation ADR,15226898925.6,Technology,Semiconductors,0.799578,5.55,0.0,363374,New York Stock Exchange,NYSE
+UMC,United Microelectronics Corporation (NEW),13824449500.0,Technology,Semiconductors,0.449624,5.58,0.136,2711323,New York Stock Exchange,NYSE
+ON,ON Semiconductor Corp,10747104300.0,Technology,Semiconductors,2.17669,26.16,0.0,6125063,Nasdaq Global Select,NASDAQ
+ASX,Advanced Semiconductor Engineering Inc.,9688000500.0,Technology,Semiconductors,1.233357,4.48,0.136,696953,New York Stock Exchange,NYSE
+CY,Cypress Semiconductor Corporation,8934261800.0,Technology,Semiconductors,1.860033,23.82,0.44,0,Nasdaq Global Select,NASDAQ
+MSCC,Microsemi Corporation,8043165000.0,Technology,Semiconductors,1.199894,68.75,0.0,5283795,Nasdaq Global Select,NASDAQ
+CREE,Cree Inc,7957701100.0,Technology,Semiconductors,1.18677,72.53,0.0,1078827,Nasdaq Global Select,NASDAQ
+MLNX,Mellanox Technologies Ltd.,7023214100.0,Technology,Semiconductors,0.491568,124.89,0.0,0,Nasdaq Global Select,NASDAQ
+IDTI,Integrated Device Technology Inc.,6515670000.0,Technology,Semiconductors,1.208666,48.99,0.0,1164638,Nasdaq Global Select,NASDAQ
+IPHI,Inphi Corp,6144369700.0,Technology,Semiconductors,1.22917,118.32,0.0,918650,New York Stock Exchange,NYSE
+SPIL,Siliconware Precision Industries Company Ltd.,5873800000.0,Technology,Semiconductors,0.289407,8.6,0.211964,53286,Nasdaq Global Select,NASDAQ
+CAVM,Cavium Inc.,5866360000.0,Technology,Semiconductors,1.457668,86.27,0.0,993359,Nasdaq Global Select,NASDAQ
+LSCC,Lattice Semiconductor Corp,4697928200.0,Technology,Semiconductors,1.03431,34.72,0.0,1045107,Nasdaq Global Select,NASDAQ
+SLAB,Silicon Laboratories Inc,4602041900.0,Technology,Semiconductors,1.0779,105.08,0.0,242690,Nasdaq Global Select,NASDAQ
+CRUS,Cirrus Logic Inc,3950856960.0,Technology,Semiconductors,0.86804,67.66,0.0,667410,Nasdaq Global Select,NASDAQ
+SMTC,Semtech Corp,3712942080.0,Technology,Semiconductors,1.64222,56.98,0.0,461013,Nasdaq Global Select,NASDAQ
+POWI,Power Integrations Inc,3683890180.0,Technology,Semiconductors,0.9597,61.63,0.38,352516,Nasdaq Global Select,NASDAQ
+DIOD,Diodes Inc,3225474300.0,Technology,Semiconductors,1.15947,62.23,0.0,271473,Nasdaq Global Select,NASDAQ
+AMKR,Amkor Technology Inc,3205393410.0,Technology,Semiconductors,1.65422,13.28,0.0,1195693,Nasdaq Global Select,NASDAQ
+SYNA,Synaptics Inc,2784545790.0,Technology,Semiconductors,1.23106,81.27,0.0,397375,Nasdaq Global Select,NASDAQ
+VSH,Vishay Intertechnology Inc,2579252220.0,Technology,Semiconductors,1.40419,17.83,0.38,947223,New York Stock Exchange,NYSE
+MTSI,MACOM Technology Solutions Holdings Inc,2371084030.0,Technology,Semiconductors,2.29109,35.45,0.0,487672,Nasdaq Global Select,NASDAQ
+FORM,FormFactor Inc,2282478850.0,Technology,Semiconductors,1.22772,29.62,0.0,547184,Nasdaq Global Select,NASDAQ
+TSEM,Tower Semiconductor Ltd,2158973180.0,Technology,Semiconductors,1.2074,19.96,0.0,355586,Nasdaq Global Select,NASDAQ
+MXL,Maxlinear Inc,2046097150.0,Technology,Semiconductors,1.99718,27.68,0.0,505740,New York Stock Exchange,NYSE
+ONTO,Onto Innovation Inc,1668022140.0,Technology,Semiconductors,1.11761,34.17,0.0,278367,NYSE,NYSE
+RMBS,Rambus Inc,1621989500.0,Technology,Semiconductors,1.01366,14.26,0.0,644526,Nasdaq Global Select,NASDAQ
+SITM,SiTime Corp,1559602820.0,Technology,Semiconductors,0.0,93.3,0.0,134455,NasdaqGS,NASDAQ
+OCLR,Oclaro Inc.,1421580000.0,Technology,Semiconductors,0.49996,8.27,0.0,7820083,Nasdaq Global Select,NASDAQ
+SIMO,Silicon Motion Technology Corp,1391797380.0,Technology,Semiconductors,1.09532,39.6,0.64,295420,Nasdaq Global Select,NASDAQ
+CEVA,CEVA Inc,962578240.0,Technology,Semiconductors,1.3463,43.44,0.0,135384,Nasdaq Global Select,NASDAQ
+QTNA,Quantenna Communications Inc.,962224380.0,Technology,Semiconductors,1.037903,24.26,0.0,405370,Nasdaq Global Select,NASDAQ
+LASR,nLIGHT Inc,900125180.0,Technology,Semiconductors,0.0,23.155,0.0,252618,NasdaqGS,NASDAQ
+HQCL,Hanwha Q CELLS Co. Ltd.,816305000.0,Technology,Semiconductors,0.435287,9.84,0.0,33867,Nasdaq Global Select,NASDAQ
+XCRA,Xcerra Corporation,784025000.0,Technology,Semiconductors,1.310784,14.26,0.0,1577302,Nasdaq Global Select,NASDAQ
+NANO,Nanometrics Incorporated,752514000.0,Technology,Semiconductors,1.662178,30.59,0.0,198533,Nasdaq Global Select,NASDAQ
+IMOS,ChipMOS TECHNOLOGIES INC.,741544320.0,Technology,Semiconductors,0.436591,20.28,1.9820000000000002,11490,Nasdaq Global Select,NASDAQ
+HIMX,Himax Technologies Inc,654299200.0,Technology,Semiconductors,1.23286,3.8,0.0,816172,Nasdaq Global Select,NASDAQ
+SGH,Smart Global Holdings Inc,631496060.0,Technology,Semiconductors,0.83503,25.86,0.0,212653,Nasdaq Global Select,NASDAQ
+MX,MagnaChip Semiconductor Corp,488726752.0,Technology,Semiconductors,1.17798,13.9,0.0,351696,New York Stock Exchange,NYSE
+AQ,Aquantia Corp.,472096576.0,Technology,Semiconductors,1.176533,13.16,0.0,823734,New York Stock Exchange,NYSE
+AOSL,Alpha and Omega Semiconductor Ltd,422865792.0,Technology,Semiconductors,2.45664,16.66,0.0,129006,Nasdaq Global Select,NASDAQ
+IOTS,Adesto Technologies Corporation,391868736.0,Technology,Semiconductors,1.094707,12.54,0.0,0,NASDAQ Capital Market,NASDAQ
+JASO,JA Solar Holdings Co. Ltd.,352265000.0,Technology,Semiconductors,0.828534,7.5,0.0,452257,Nasdaq Global Select,NASDAQ
+DSPG,DSP Group Inc,338389504.0,Technology,Semiconductors,0.86067,14.39,0.0,153767,Nasdaq Global Select,NASDAQ
+NPTN,NeoPhotonics Corp,333575136.0,Technology,Semiconductors,1.19414,6.73,0.0,1074656,New York Stock Exchange,NYSE
+AAOI,Applied Optoelectronics Inc,231611584.0,Technology,Semiconductors,1.99055,10.17,0.0,796193,NASDAQ Global Market,NASDAQ
+NVEC,NVE Corp,231511728.0,Technology,Semiconductors,1.16466,47.9,4.0,19887,NASDAQ Capital Market,NASDAQ
+SOL,ReneSola Ltd,184431200.0,Technology,Semiconductors,1.60044,3.57,0.0,1527690,New York Stock Exchange,NYSE
+GSIT,GSI Technology Inc,167851456.0,Technology,Semiconductors,0.99458,7.11,0.0,40247,Nasdaq Global Select,NASDAQ
+OIIM,O2micro International Ltd,157699280.0,Technology,Semiconductors,1.25135,5.84,0.0,300264,Nasdaq Global Select,NASDAQ
+SQNS,Sequans Communications SA,155804704.0,Technology,Semiconductors,0.64471,5.14,0.0,167910,New York Stock Exchange,NYSE
+MRAM,Everspin Technologies Inc,147608032.0,Technology,Semiconductors,2.33546,7.79,0.0,223952,NASDAQ Global Market,NASDAQ
+VVPR,VivoPower International PLC,125353784.0,Technology,Semiconductors,4.88554,7.4,0.0,4909170,NASDAQ Capital Market,NASDAQ
+RESN,Resonant Inc,124719888.0,Technology,Semiconductors,3.17601,2.34,0.0,1036310,NASDAQ Capital Market,NASDAQ
+EMKR,EMCORE Corp,109104056.0,Technology,Semiconductors,1.03105,3.71,0.0,80353,NASDAQ Global Market,NASDAQ
+PXLW,Pixelworks Inc,98462888.0,Technology,Semiconductors,2.22736,2.32,0.0,360966,NASDAQ Global Market,NASDAQ
+WKEY,WISeKey International Holding AG,89024712.0,Technology,Semiconductors,1.430703,6.26,0.0,244752,NasdaqGS,NASDAQ
+IMI,Intermolecular Inc.,58384575.0,Technology,Semiconductors,1.174275,1.18,0.0,27495,Nasdaq Global Select,NASDAQ
+NLST,Netlist Inc,57946825.2,Technology,Semiconductors,0.38239,0.54,0.0,1128912,NASDAQ Capital Market,NASDAQ
+INTT,inTest Corp,44214644.0,Technology,Semiconductors,2.01121,4.48,0.0,22007,NYSE American,AMEX
+QUIK,QuickLogic Corp,33055946.0,Technology,Semiconductors,2.0983,2.99,0.0,72583,NASDAQ Global Market,NASDAQ
+YGE,Yingli Green Energy Holding Company Limited ADR,24840000.0,Technology,Semiconductors,2.128398,1.38,0.0,35455,New York Stock Exchange,NYSE
+WISA,Summit Wireless Technologies Inc,17443908.0,Technology,Semiconductors,0.0,2.23,0.0,361698,NasdaqCM,NASDAQ
+RGSE,Real Goods Solar Inc.,16384280.0,Technology,Semiconductors,1.721658,0.46,0.0,236479,NASDAQ Capital Market,NASDAQ
+LEDS,SemiLEDs Corp,12299402.0,Technology,Semiconductors,1.7848,3.07,0.0,167312,NASDAQ Capital Market,NASDAQ
+SIGM,Sigma Designs Inc,9262500.0,Technology,Semiconductors,0.30556,0.24,0.0,322424,Nasdaq Global Select,NASDAQ
+MOSY,MoSys Inc,6365718.0,Technology,Semiconductors,2.46422,1.8,0.0,85163,NASDAQ Capital Market,NASDAQ
+PRKR,ParkerVision Inc,6231837.9,Technology,Semiconductors,2.22766,0.26,0.0,250329,NASDAQ Capital Market,NASDAQ
+AVGOP,Broadcom Inc.,0.0,Technology,Semiconductors,0.805653,1250.81,0.0,10320,NasdaqGS,NASDAQ

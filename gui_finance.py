@@ -95,6 +95,16 @@ class GUI:
 			self.buttonYears.grid(column=3, row=i,sticky = W, pady = 2)
 
 		#Create the button
+		self.buttonGrowth = tk.Button(self.frame, text=" Growth ", fg="black", font="none 9 bold", command=self.BalanceSheet_click)
+		self.buttonGrowth.grid(row=6, column=1,sticky = E, pady = 2)
+		#Create the button
+		self.buttonExtra = tk.Button(self.frame, text=" EGO ", fg="black", font="none 9 bold", command=self.BalanceSheet_click)
+		self.buttonExtra.grid(row=6, column=2,sticky = E, pady = 2)
+		#Create the button
+		self.buttonExtra2 = tk.Button(self.frame, text=" ES ", fg="black", font="none 9 bold", command=self.BalanceSheet_click)
+		self.buttonExtra2.grid(row=6, column=3,sticky = E, pady = 2)
+
+		#Create the button
 		self.buttonBalance = tk.Button(self.frame, text="Balance Sheet", fg="black", font="none 9 bold", command=self.BalanceSheet_click)
 		self.buttonBalance.grid(row=7, column=1,sticky = E, pady = 2)
 		#Create the button 
@@ -353,7 +363,7 @@ class GUI:
 			'freeCashFlowPerShare',
 			'enterpriseValue',
 			'enterpriseValueOverEBITDA' ]
-		print('Dict is '+str(tickers_quote))
+		#print('Dict is '+str(tickers_quote))
 		mydict = tickers_quote
 		#with open('dict.csv', 'w') as csv_file:  
     		#	writer = csv.writer(csv_file)
@@ -366,6 +376,8 @@ class GUI:
 			print(frame,file = f)
 			frame.to_csv(r'saved_data/csv/'+entered_tickers.replace(',','_')+'_now_click.csv', index = index_for_dataframe)
 		print('-- NOW_click printed on files for: '+entered_tickers)
+		Quote.Get_Industry_Ratios(industry)
+		#Quote.Get_History_data()
 
 		
 	def StockScreener_click(self):  

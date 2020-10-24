@@ -38,7 +38,7 @@ class Analyses:
 	def Get_data_from_api(self, density = None, screener_list = None ):
 		symbol = self.ticker
 		api_key = self.api_key
-		print('\n---- GET DATA FROM API starting...')
+		print('>>>> GET '+self.document+' from endpoint' )
 		api_endpoint_head ='https://financialmodelingprep.com/api/v3/'
 		if (self.document == 'income_statement'):
 			api_endpoint_body = api_endpoint_head+'income-statement/'
@@ -57,7 +57,7 @@ class Analyses:
 		elif (self.document == 'financial-statement-symbol-lists'):
 			api_endpoint_body = api_endpoint_head+'financial-statement-symbol-lists'
 		elif (self.document =='stock-screener'):
-			api_endpoint_body = api_endpoint_head+'stock-screener/'
+			api_endpoint_body = api_endpoint_head+'stock-screener'
 			marketCapLowerThan= screener_list[1]
 			marketCapMoreThan=screener_list[0]
 			betaMoreThan=screener_list[2]
@@ -67,23 +67,22 @@ class Analyses:
 			dividendMoreThan=screener_list[4]
 			dividendLowerThan=screener_list[5]
 			exchange=screener_list[8]
-			api_endpoint =api_endpoint_body+'?marketCapMoreThan='+marketCapMoreThan+'&marketCapLowerThan='+marketCapLowerThan+'&betaMoreThan='+betaMoreThan+'&betaLowerThan='+betaLowerThan+'&sector='+sector+'&exchange='+exchange+'&industry'+industry+'&dividendLowerThan='+dividendLowerThan+'&dividendMoreThan='+dividendMoreThan+'&limit=600&apikey='+api_key
+			api_endpoint =api_endpoint_body+'?marketCapMoreThan='+marketCapMoreThan+'&marketCapLowerThan='+marketCapLowerThan+'&betaMoreThan='+betaMoreThan+'&betaLowerThan='+betaLowerThan+'&sector='+sector+'&exchange='+exchange+'&industry='+industry+'&dividendLowerThan='+dividendLowerThan+'&dividendMoreThan='+dividendMoreThan+'&limit=600&apikey='+api_key
 		elif (self.document =='quote'):
-			api_endpoint_body = api_endpoint_head+'quote/'
+			api_endpoint_body = api_endpoint_head+'quote/'+symbol
 		elif (self.document =='profile'):
-			api_endpoint_body = api_endpoint_head+'profile/'
+			api_endpoint_body = api_endpoint_head+'profile/'+symbol
 		else:
 			error
 		if (density == 'quarter'):
 			api_endpoint =api_endpoint_body+symbol+'?period=quarter&apikey='+api_key
 		elif (self.document == 'stock-screener'):
-			api_endpoint =api_endpoint_body+'?marketCapMoreThan='+marketCapMoreThan+'&marketCapLowerThan='+marketCapLowerThan+'&betaMoreThan='+betaMoreThan+'&betaLowerThan='+betaLowerThan+'&sector='+sector+'&exchange='+exchange+'&industry'+industry+'&dividendLowerThan'+dividendLowerThan+'&dividendMoreThan='+dividendMoreThan+'&limit=600&apikey='+api_key
+			api_endpoint =api_endpoint_body+'?marketCapMoreThan='+marketCapMoreThan+'&marketCapLowerThan='+marketCapLowerThan+'&betaMoreThan='+betaMoreThan+'&betaLowerThan='+betaLowerThan+'&sector='+sector+'&exchange='+exchange+'&industry='+industry+'&dividendLowerThan='+dividendLowerThan+'&dividendMoreThan='+dividendMoreThan+'&limit=600&apikey='+api_key
 		else:
 			api_endpoint =api_endpoint_body+'?apikey='+api_key
 		try:
 			r = requests.get(api_endpoint)
 			print('-- API ENDPOINT IS : '+api_endpoint)
-			print('-- GET '+self.document+' from endpoint' )
 		except:
 			print('**** EXCEPTION in Get_data_from_api :: message from API endopoint: '+r.text)
 		return r.text
@@ -95,35 +94,35 @@ class Analyses:
 ##########
 #########
 	def Get_document_for(self,single_ticker, data_1, data_2, document ):
-		print('\n---- Starting the Get_document_for function...')
+		print('\n>>>> Starting the Get_document_for function...')
 		self.document = document
 		self.ticker = single_ticker
-		print('---- Requested document is '+self.document+' for'+self.ticker)
+		print('>>>> Requested document is '+self.document+' for'+self.ticker)
 		json_data = self.Get_data_from_api('quarter') #it is a string json format
 		load = json.loads(json_data) #list
 		df = pd.DataFrame(load)
 		self.Print_on_file(df, single_ticker, self.document )
-		print('---- '+document+' Loaded , Dataframe loaded')
 		date = df['date'].to_numpy()
 		df_1 = df[data_1].to_numpy()
 		df_2 = df[data_2].to_numpy()
 		date_order,df_1_order,df_2_order = self.Time_and_statistic_sorter(date,df_1,df_2)
 		#self.title_data = ['Earning Per Share','netIncomeRatio']
-		print('---- Closing the Get_document_for...')
+		print('>>>> Closing the Get_document_for...')
 		return date_order.tolist(), df_1_order.tolist(), df_2_order.tolist()
 
 
 	def Get_quote_for(self,single_ticker):
-		print('\n---- Starting the Get_quote_for function...')
+		print('\n>>>> Starting the Get_quote_for function...')
 		self.document = 'quote'
 		self.ticker = single_ticker
-		print('---- Requested document is '+self.document+' for '+self.ticker)
+		print('>>>> Requested document is '+self.document+' for '+self.ticker)
 		json_data = self.Get_data_from_api() #it is a string json format
+		#print(type(json_data))
+		#print('>>>> string json format is '+json_data)
 		load = json.loads(json_data) #list
 		df = pd.DataFrame(load)
 		#print(df)
 		self.Print_on_file(df, single_ticker, self.document )
-		print('---- quote Loaded , Dataframe loaded')
 		timestamp = df['timestamp'].to_numpy()
 		price = df['price'].to_numpy()
 		priceAvg50 = df['priceAvg50'].to_numpy()
@@ -132,8 +131,7 @@ class Analyses:
 		sharesOutstanding =df['sharesOutstanding'].to_numpy()
 		marketCap =df[ 'marketCap'].to_numpy()
 		#self.title_data = ['Earning Per Share','netIncomeRatio']
-		print(price)
-		print('---- Closing the Get_quote_for...')
+		print('>>>> Closing the Get_quote_for...')
 		price_str = str(price[0])
 		priceAvg50_str = str(priceAvg50[0])
 		priceAvg200_str = str(priceAvg200[0])
@@ -141,7 +139,7 @@ class Analyses:
 		sharesOutstanding_str =str(sharesOutstanding[0])
 		marketCap_str = str(marketCap[0])
 		dt = datetime.datetime.fromtimestamp(timestamp[0])
-		print('DATE TIME IS : '+str(dt))
+		#print('DATE TIME IS : '+str(dt))
 		self.today = str(dt)
 		return price_str[:6],priceAvg50_str[:6],priceAvg200_str[:6],eps_str[:6],sharesOutstanding_str[:6], marketCap_str[:6]
 
@@ -150,17 +148,14 @@ class Analyses:
 #################
 ### Take the RATIOS for Latest Report
 	def Ratios(self):
-		print('\n---- Starting the Ratios function...')
+		print('\n>>>> Starting the Ratios function...')
 		self.document = 'ratios'
-		print('---- Requested Ratios. Selected document is '+self.document+' for'+self.ticker)
+		print('>>>> Requested Ratios. Selected document is '+self.document+' for'+self.ticker)
 		ratios_data = self.Get_data_from_api('quarter') #it is a string json format
 		load = json.loads(ratios_data) #list
 		#print('Ratios json loaded')
 		df = pd.DataFrame(load)
-		#print(df)
 		self.Print_on_file(df, self.ticker, self.document )
-		print('---- Ratios Loaded , Dataframe loaded')
-		#print(df)
 		x_ax = df['date'].to_numpy()
 		y1_ax = df['currentRatio'].to_numpy()
 		y2_ax = df['quickRatio'].to_numpy()
@@ -192,20 +187,18 @@ class Analyses:
 
 
 
-#################
-### Take the METRICS for Latest Report
+
+
 	def Metrics(self):
-		print('\n---- Starting the Ratios function...')
+		print('\n>>>> Starting the Ratios function...')
 		self.document = 'metrics'
-		print('---- Requested Ratios. Selected document is '+self.document+' for'+self.ticker)
+		print('>>>> Requested Ratios. Selected document is '+self.document+' for'+self.ticker)
 		ratios_data = self.Get_data_from_api('quarter') #it is a string json format
 		load = json.loads(ratios_data) #list
 		#print('Ratios json loaded')
 		df = pd.DataFrame(load)
 		#print(df)
 		self.Print_on_file(df, self.ticker, self.document )
-		print('---- Ratios Loaded , Dataframe loaded')
-		#print(df)
 		y1_ax = df['bookValuePerShare'].to_numpy()
 		y2_ax = df['debtToAssets'].to_numpy()
 		y3_ax = df['debtToEquity'].to_numpy()
@@ -227,21 +220,18 @@ class Analyses:
 		return bookValuePerShare [:5], debtToAssets[:5], debtToEquity[:5],enterpriseValue[:5],enterpriseValueOverEBITDA[:5], freeCashFlowPerShare[:5], researchAndDdevelopementToRevenue[:5],roe[:5], roic[:5]
 
 
-
-#################
+##################
 ### Take the PROFILE for Latest Report
 	def Profile(self):
-		print('\n---- Starting the Profile function...')
+		print('\n>>>> Starting the Profile function...')
 		self.document = 'profile'
-		print('---- Requested Profile. Selected document is '+self.document+' for'+self.ticker)
+		print('>>>> Requested Profile. Selected document is '+self.document+' for'+self.ticker)
 		ratios_data = self.Get_data_from_api() #it is a string json format
 		load = json.loads(ratios_data) #list
 		#print('Ratios json loaded')
 		df = pd.DataFrame(load)
 		#print(df)
 		self.Print_on_file(df, self.ticker, self.document )
-		print('---- Profile Loaded , Dataframe loaded')
-		#print(df)
 		y1_ax = df['beta'].to_numpy()
 		y2_ax = df['volAvg'].to_numpy()
 		y3_ax = df['lastDiv'].to_numpy()
@@ -258,15 +248,33 @@ class Analyses:
 		sector= str(y7_ax[0]) 
 		return beta[:5],volAvg[:5],lastDiv[:5],dcf[:5],ipoDate[:4], industry,sector
 
+#################
+### Take the Industry_Ratio for Latest Report 
+	def Get_Industry_Ratios(self,industry):
+		#Start the stock screener and fill the ticker list
+		print('\n>>>>>> Starting the Get_Industry_Ratios function')
+		industry_api = industry.replace(' ','%20')
+		#print('>>>>>> API Industry name is :'+industry_api)
+		companies_list = []
+		df_companies = self.Stock_screener(['','','','','','','',industry_api,'NYSE,NASDAQ,AMEX,EURONEX'])
+		print('>>>>>> Industry is :'+industry)
+		print('>>>> Companies in the stame industry are:')
+		companies_list = df_companies['symbol'].tolist()
+		print(companies_list)
+		for i in range(len(companies_list)):
+			ticker = companies_list[i]
+			#TO DO, for each elem of the list calculate the average info
+		return 
+
+
 
 
 	def Stock_screener(self, criteria_list, yield_gain = None, divThr = None):
-		print('\n---- Starting the Stock screener function...')
+		print('\n>>>>>>>> Starting the Stock screener function...')
 		self.document = 'stock-screener'
-		print('---- Requested strock screen...')
 		ratios_data = self.Get_data_from_api(screener_list = criteria_list) #it is a string json format
 		load = json.loads(ratios_data) #list
-		print('Printing criteria list')
+		print('>>>>>>>>> Printing criteria list')
 		print(criteria_list)
 		df = pd.DataFrame(load)
 		#print(df)
@@ -279,7 +287,7 @@ class Analyses:
 		print(criteria)
 		self.ticker = criteria
 		self.Print_on_file(df, self.ticker, self.document )
-		print('---- Printed on file --------')
+		print('>>>>>>>>>> Stocke Screener result printed on file >>>>>>>>')
 		if (yield_gain == 1):
 			priceList=[]
 			lastDivList=[]
@@ -298,8 +306,8 @@ class Analyses:
 					#print(divYieldlastDiv[i])
 					new_list.append(load[i])
 					index_yield_pass.append(i)
-			print('==== Target Yield is '+divThr+' ====')
-			print('==== Number of items meeting the criteria '+str(len(index_yield_pass))+' ====')
+			print('========== Target Yield is '+divThr+' ====')
+			print('========== Number of items meeting the criteria '+str(len(index_yield_pass))+' ====')
 			new_load= new_list
 			new_df=pd.DataFrame(new_load)
 			self.ticker = 'Yield_finder_'+divThr+'_'+criteria
@@ -310,7 +318,10 @@ class Analyses:
 			#print(len(lastDivList))
 			#print(len(divYieldlastDiv))
 			#print(divYieldlastDiv) Ticker_list
-		return 
+			#print(type(new_load))
+			#print('>>>> Prining new_load ')
+			#print(new_load)
+		return df
 
 
 	def Ticker_list(self):
@@ -371,7 +382,7 @@ class Analyses:
 #
 	def Plot_statistic(self,tickers_dict, tickers_dict_2 = None, ticker_gui_list = None ):
 		color = ['b','g','r','c','m','y','k']
-		print('\n---- Trying to plot statistics ')
+		print('\n>>>> Trying to plot statistics ')
 		ticker_list = self.ticker.split(',')
 		if (len(ticker_list) == 1):
 			print('--Plotting statics for: '+str(ticker_list))
@@ -422,7 +433,7 @@ class Analyses:
 
 
 	def Multiple_plots(self,ticker_list, tickers_dict, tickers_dict_2, button ):
-		print('\n---- TRYING MULTI PLOT OPERATION '+str(ticker_list))
+		print('\n>>>> TRYING MULTI PLOT OPERATION '+str(ticker_list))
 		colors = ['b','g','r','c','m','y','k']
 		self.set_draw_settings()
 		fig, axs = plt.subplots(nrows=2,ncols=2, num=str(ticker_list)+' retrieved data with ' +button)
