@@ -50,12 +50,18 @@ class Analyses:
 			api_endpoint_body = api_endpoint_head+'enterprise-value/'
 		elif (self.document == 'metrics'):
 			api_endpoint_body = api_endpoint_head+'key-metrics/'
+		elif (self.document == 'financial-growth'):
+			api_endpoint_body = api_endpoint_head+'financial-growth/'
 		elif (self.document == 'ratios'):
 			api_endpoint_body = api_endpoint_head+'ratios/'
+		elif (self.document == 'ratios-ttm'):
+			api_endpoint_body = api_endpoint_head+'ratios-ttm/'
 		elif (self.document == 'list'):
-			api_endpoint_body = api_endpoint_head+'stock/list/'
+			api_endpoint_body = api_endpoint_head+'financial-statement-symbol-lists'
+			symbol=''
 		elif (self.document == 'financial-statement-symbol-lists'):
 			api_endpoint_body = api_endpoint_head+'financial-statement-symbol-lists'
+			symbol=''
 		elif (self.document =='stock-screener'):
 			api_endpoint_body = api_endpoint_head+'stock-screener'
 			marketCapLowerThan= screener_list[1]
@@ -69,17 +75,19 @@ class Analyses:
 			exchange=screener_list[8]
 			api_endpoint =api_endpoint_body+'?marketCapMoreThan='+marketCapMoreThan+'&marketCapLowerThan='+marketCapLowerThan+'&betaMoreThan='+betaMoreThan+'&betaLowerThan='+betaLowerThan+'&sector='+sector+'&exchange='+exchange+'&industry='+industry+'&dividendLowerThan='+dividendLowerThan+'&dividendMoreThan='+dividendMoreThan+'&limit=600&apikey='+api_key
 		elif (self.document =='quote'):
-			api_endpoint_body = api_endpoint_head+'quote/'+symbol
+			api_endpoint_body = api_endpoint_head+'quote/'
 		elif (self.document =='profile'):
-			api_endpoint_body = api_endpoint_head+'profile/'+symbol
+			api_endpoint_body = api_endpoint_head+'profile/'
 		else:
-			error
+			api_endpoint_body = api_endpoint_head
 		if (density == 'quarter'):
 			api_endpoint =api_endpoint_body+symbol+'?period=quarter&apikey='+api_key
 		elif (self.document == 'stock-screener'):
 			api_endpoint =api_endpoint_body+'?marketCapMoreThan='+marketCapMoreThan+'&marketCapLowerThan='+marketCapLowerThan+'&betaMoreThan='+betaMoreThan+'&betaLowerThan='+betaLowerThan+'&sector='+sector+'&exchange='+exchange+'&industry='+industry+'&dividendLowerThan='+dividendLowerThan+'&dividendMoreThan='+dividendMoreThan+'&limit=600&apikey='+api_key
-		else:
+		elif (self.document == 'list'):
 			api_endpoint =api_endpoint_body+'?apikey='+api_key
+		else:
+			api_endpoint =api_endpoint_body+symbol+'?apikey='+api_key
 		try:
 			r = requests.get(api_endpoint)
 			print('-- API ENDPOINT IS : '+api_endpoint)
@@ -98,7 +106,10 @@ class Analyses:
 		self.document = document
 		self.ticker = single_ticker
 		print('>>>> Requested document is '+self.document+' for'+self.ticker)
-		json_data = self.Get_data_from_api('quarter') #it is a string json format
+		if (self.document == 'financial-growth'):
+			json_data = self.Get_data_from_api(' ') #it is a string json format financial-growth
+		else:
+			json_data = self.Get_data_from_api('quarter') #it is a string json format financial-growth
 		load = json.loads(json_data) #list
 		df = pd.DataFrame(load)
 		self.Print_on_file(df, single_ticker, self.document )
@@ -143,32 +154,49 @@ class Analyses:
 		self.today = str(dt)
 		return price_str[:6],priceAvg50_str[:6],priceAvg200_str[:6],eps_str[:6],sharesOutstanding_str[:6], marketCap_str[:6]
 
-	
 
 #################
 ### Take the RATIOS for Latest Report
-	def Ratios(self):
+	def Ratios(self,ttm):
 		print('\n>>>> Starting the Ratios function...')
-		self.document = 'ratios'
+		if (ttm == True):
+			self.document = 'ratios-ttm'
+		else:
+			self.document = 'ratios'
 		print('>>>> Requested Ratios. Selected document is '+self.document+' for'+self.ticker)
 		ratios_data = self.Get_data_from_api('quarter') #it is a string json format
 		load = json.loads(ratios_data) #list
 		#print('Ratios json loaded')
 		df = pd.DataFrame(load)
 		self.Print_on_file(df, self.ticker, self.document )
-		x_ax = df['date'].to_numpy()
-		y1_ax = df['currentRatio'].to_numpy()
-		y2_ax = df['quickRatio'].to_numpy()
-		y3_ax = df['cashRatio'].to_numpy()
-		y4_ax = df['grossProfitMargin'].to_numpy()
-		y5_ax = df['operatingProfitMargin'].to_numpy()
-		y6_ax = df['netProfitMargin'].to_numpy()
-		y7_ax = df['returnOnAssets'].to_numpy()
-		y8_ax = df['returnOnEquity'].to_numpy()
-		y9_ax = df['debtRatio'].to_numpy()
-		y10_ax = df['debtEquityRatio'].to_numpy()
-		y11_ax = df['operatingCashFlowPerShare'].to_numpy()
-		y12_ax = df['freeCashFlowPerShare'].to_numpy()
+		if (ttm == True):
+			x_ax = df['dividendYielTTM'].to_numpy()
+			y1_ax = df['currentRatioTTM'].to_numpy()
+			y2_ax = df['quickRatioTTM'].to_numpy()
+			y3_ax = df['cashRatioTTM'].to_numpy()
+			y4_ax = df['grossProfitMarginTTM'].to_numpy()
+			y5_ax = df['operatingProfitMarginTTM'].to_numpy()
+			y6_ax = df['netProfitMarginTTM'].to_numpy()
+			y7_ax = df['returnOnAssetsTTM'].to_numpy()
+			y8_ax = df['returnOnEquityTTM'].to_numpy()
+			y9_ax = df['interestCoverageTTM'].to_numpy()
+			y10_ax = df['debtEquityRatioTTM'].to_numpy()
+			y11_ax = df['operatingCashFlowPerShareTTM'].to_numpy()
+			y12_ax = df['freeCashFlowPerShareTTM'].to_numpy()
+		else:
+			x_ax = df['date'].to_numpy()
+			y1_ax = df['currentRatio'].to_numpy()
+			y2_ax = df['quickRatio'].to_numpy()
+			y3_ax = df['cashRatio'].to_numpy()
+			y4_ax = df['grossProfitMargin'].to_numpy()
+			y5_ax = df['operatingProfitMargin'].to_numpy()
+			y6_ax = df['netProfitMargin'].to_numpy()
+			y7_ax = df['returnOnAssets'].to_numpy()
+			y8_ax = df['returnOnEquity'].to_numpy()
+			y9_ax = df['interestCoverage'].to_numpy()
+			y10_ax = df['debtEquityRatio'].to_numpy()
+			y11_ax = df['operatingCashFlowPerShare'].to_numpy()
+			y12_ax = df['freeCashFlowPerShare'].to_numpy()
 		print('-- Latest data is date on: '+str(x_ax[0]))
 		self.today = str(x_ax[0])
 		currentRatio = str(y1_ax[0])
@@ -179,25 +207,23 @@ class Analyses:
 		netProfitMargin = str(y6_ax[0])
 		returnOnAssets = str(y7_ax[0]) 
 		returnOnEquity= str(y8_ax[0])
-		debtRatio= str(y9_ax[0])
+		interestCoverage= str(y9_ax[0])
 		debtEquityRatio= str(y10_ax[0]) 
 		operatingCashFlowPerShare= str(y11_ax[0]) 
 		freeCashFlowPerShare= str(y12_ax[0]) 
-		return  currentRatio[:5], quickRatio[:5], cashRatio[:5],grossProfitMargin[:5],operatingProfitMargin[:5], netProfitMargin[:5], returnOnAssets[:5], returnOnEquity[:5], debtRatio[:5], debtEquityRatio[:5], operatingCashFlowPerShare[:5], freeCashFlowPerShare[:5] 
+		return  currentRatio[:5], quickRatio[:5], cashRatio[:5],grossProfitMargin[:5],operatingProfitMargin[:5], netProfitMargin[:5], returnOnAssets[:5], returnOnEquity[:5], interestCoverage[:5], debtEquityRatio[:5], operatingCashFlowPerShare[:5], freeCashFlowPerShare[:5] 
 
 
 
 
 
 	def Metrics(self):
-		print('\n>>>> Starting the Ratios function...')
+		print('\n>>>> Starting the Metrics function...')
 		self.document = 'metrics'
-		print('>>>> Requested Ratios. Selected document is '+self.document+' for'+self.ticker)
+		print('>>>> Requested Metrics. Selected document is '+self.document+' for'+self.ticker)
 		ratios_data = self.Get_data_from_api('quarter') #it is a string json format
 		load = json.loads(ratios_data) #list
-		#print('Ratios json loaded')
 		df = pd.DataFrame(load)
-		#print(df)
 		self.Print_on_file(df, self.ticker, self.document )
 		y1_ax = df['bookValuePerShare'].to_numpy()
 		y2_ax = df['debtToAssets'].to_numpy()
@@ -218,6 +244,121 @@ class Analyses:
 		roe= str(y8_ax[0])
 		roic= str(y9_ax[0])
 		return bookValuePerShare [:5], debtToAssets[:5], debtToEquity[:5],enterpriseValue[:5],enterpriseValueOverEBITDA[:5], freeCashFlowPerShare[:5], researchAndDdevelopementToRevenue[:5],roe[:5], roic[:5]
+
+
+	def IncomeStatement(self, history_year = ' '):
+		print('\n>>>> Starting the IncomeStatement function...')
+		self.document = 'income_statement'
+		print('>>>> Requested IncomeStatement. Selected document is '+self.document+' for'+self.ticker)
+		if (history_year == 'latest'):
+			quarter = 'quarter'
+		else:
+			quarter = ''
+		ratios_data = self.Get_data_from_api(quarter) #it is a string json format
+		load = json.loads(ratios_data) #list
+		df = pd.DataFrame(load)
+		self.Print_on_file(df, self.ticker, self.document )
+		y1_ax = df['revenue'].to_numpy()
+		y2_ax = df['netIncome'].to_numpy()
+		y3_ax = df['ebitda'].to_numpy()
+		y4_ax = df['depreciationAndAmortization'].to_numpy()
+		y5_ax = df['interestExpense'].to_numpy()
+		y6_ax = df['incomeTaxExpense'].to_numpy()
+		y7_ax = df['operatingIncome'].to_numpy()
+		y8_ax = df['date'].to_numpy()
+		y9_ax = df['period'].to_numpy()
+		#If quarted has been selected the "0" point to latest statement.
+		#Otherwise It points to last year data.
+		revenue= str(y1_ax[0])
+		netIncome= str(y2_ax[0])
+		ebitda= str(y3_ax[0])
+		depreciationAndAmortization= str(y4_ax[0])
+		interestExpense= str(y5_ax[0])
+		incomeTaxExpense= str(y6_ax[0])
+		operatingIncome= str(y7_ax[0]) 
+		date= str(y8_ax[0])
+		period= str(y9_ax[0])
+		return revenue , netIncome, ebitda,depreciationAndAmortization,interestExpense, incomeTaxExpense, operatingIncome,date, period
+
+
+	def BalanceSheet(self, history_year = ' '):
+		print('\n>>>> Starting the BalanceSheet function...')
+		self.document = 'balance_sheet'
+		print('>>>> Requested BalanceSheet. Selected document is '+self.document+' for'+self.ticker)
+		if (history_year == 'latest'):
+			quarter = 'quarter'
+		else:
+			quarter = ''
+		ratios_data = self.Get_data_from_api(quarter) #it is a string json format
+		load = json.loads(ratios_data) #list
+		df = pd.DataFrame(load)
+		self.Print_on_file(df, self.ticker, self.document )
+		y1_ax = df['totalAssets'].to_numpy()
+		y2_ax = df['totalLiabilities'].to_numpy()
+		y3_ax = df['totalCurrentAssets'].to_numpy()
+		y4_ax = df['totalCurrentLiabilities'].to_numpy()
+		y5_ax = df['totalNonCurrentAssets'].to_numpy()
+		y6_ax = df['shortTermDebt'].to_numpy()
+		y7_ax = df['longTermDebt'].to_numpy()
+		y8_ax = df['date'].to_numpy()
+		y9_ax = df['period'].to_numpy()
+		y10_ax = df['cashAndShortTermInvestments'].to_numpy()
+		y11_ax = df['retainedEarnings'].to_numpy()
+		y12_ax = df['propertyPlantEquipmentNet'].to_numpy()
+		#If quarted has been selected the "0" point to latest statement.
+		#Otherwise It points to last year data.
+		totalAssets= str(y1_ax[0])
+		totalLiabilities= str(y2_ax[0])
+		totalCurrentAssets= str(y3_ax[0])
+		totalCurrentLiabilities= str(y4_ax[0])
+		totalNonCurrentAssets= str(y5_ax[0])
+		shortTermDebt= str(y6_ax[0])
+		longTermDebt= str(y7_ax[0]) 
+		date= str(y8_ax[0])
+		period= str(y9_ax[0])
+		cashAndShortTermInvestments= str(y10_ax[0])
+		retainedEarnings= str(y11_ax[0])
+		propertyPlantEquipmentNet= str(y12_ax[0])
+		return date, period,totalAssets , totalLiabilities, totalCurrentAssets,totalCurrentLiabilities,totalNonCurrentAssets, shortTermDebt, longTermDebt, cashAndShortTermInvestments, retainedEarnings, propertyPlantEquipmentNet
+
+
+	def CashFlowStatement(self, history_year = ' '):
+		print('\n>>>> Starting the CashFlowStatement function...')
+		self.document = 'cash_flow'
+		print('>>>> Requested CashFlowStatement. Selected document is '+self.document+' for'+self.ticker)
+		if (history_year == 'latest'):
+			quarter = 'quarter'
+		else:
+			quarter = ''
+		ratios_data = self.Get_data_from_api(quarter) #it is a string json format
+		load = json.loads(ratios_data) #list
+		df = pd.DataFrame(load)
+		self.Print_on_file(df, self.ticker, self.document )
+		y1_ax = df['operatingCashFlow'].to_numpy()
+		y2_ax = df['capitalExpenditure'].to_numpy()
+		y3_ax = df['dividendsPaid'].to_numpy()
+		y4_ax = df['commonStockRepurchased'].to_numpy()
+		y5_ax = df['changeInWorkingCapital'].to_numpy()
+		y6_ax = df['netCashProvidedByOperatingActivities'].to_numpy()
+		y7_ax = df['commonStockIssued'].to_numpy()
+		y8_ax = df['date'].to_numpy()
+		y9_ax = df['period'].to_numpy()
+		y10_ax = df['capitalExpenditure'].to_numpy()
+		y11_ax = df['freeCashFlow'].to_numpy()
+		#If quarted has been selected the "0" point to latest statement.
+		#Otherwise It points to last year data.
+		operatingCashFlow= str(y1_ax[0])
+		capitalExpenditure= str(y2_ax[0])
+		dividendsPaid= str(y3_ax[0])
+		commonStockRepurchased= str(y4_ax[0])
+		changeInWorkingCapital= str(y5_ax[0])
+		netCashProvidedByOperatingActivities= str(y6_ax[0])
+		commonStockIssued= str(y7_ax[0]) 
+		date= str(y8_ax[0])
+		period= str(y9_ax[0])
+		capitalExpenditure= str(y10_ax[0])
+		freeCashFlow= str(y11_ax[0])
+		return date, period,operatingCashFlow , capitalExpenditure, dividendsPaid,commonStockRepurchased,changeInWorkingCapital, netCashProvidedByOperatingActivities, commonStockIssued, capitalExpenditure, freeCashFlow
 
 
 ##################
@@ -325,13 +466,6 @@ class Analyses:
 
 
 	def Ticker_list(self):
-		self.document = 'list'
-		self.ticker = 'Ticker_List'
-		ticker_available = self.Get_data_from_api() #it is a string json format
-		load = json.loads(ticker_available) #list
-		df = pd.DataFrame(load) #dataframe
-		#print(df)
-		self.Print_on_file(df, self.ticker, '') 
 		self.document = 'financial-statement-symbol-lists'
 		self.ticker = 'Financial_statement_Ticker_List'
 		ticker_available = self.Get_data_from_api() #it is a string json format
@@ -339,6 +473,7 @@ class Analyses:
 		df = pd.DataFrame(data ={"list":load}) #dataframe
 		#print(df)
 		self.Print_on_file(df, self.ticker, '') 
+		print(' >>>> Ticker list printed on file: saved_data/Financial_statement_Ticker_List.csv ')
 		return
 
 
@@ -439,7 +574,7 @@ class Analyses:
 		fig, axs = plt.subplots(nrows=2,ncols=2, num=str(ticker_list)+' retrieved data with ' +button)
 		print(self.statistic)
 		if (self.statistic == 'log'):
-			print('yes')
+			print('>>>> Plots are set with log scale')
 		myFmt = mdates.DateFormatter('%Y-%m-%d')
 		for index,ticker in enumerate(ticker_list):
 			color = colors[index]

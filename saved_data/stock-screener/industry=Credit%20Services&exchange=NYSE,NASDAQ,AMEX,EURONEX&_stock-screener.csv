@@ -1,0 +1,70 @@
+symbol,companyName,marketCap,sector,industry,beta,price,lastAnnualDividend,volume,exchange,exchangeShortName
+V,Visa Inc,434719097000.0,Financial Services,Credit Services,0.87907,198.01,1.15,7656960,New York Stock Exchange,NYSE
+MA,Mastercard Inc,329959375000.0,Financial Services,Credit Services,1.10259,329.61,1.46,3326029,New York Stock Exchange,NYSE
+PYPL,PayPal Holdings Inc,238226817000.0,Financial Services,Credit Services,1.07513,203.04,0.0,8140983,Nasdaq Global Select,NASDAQ
+AXP,American Express Co,81309303000.0,Financial Services,Credit Services,1.19997,100.98,1.68,3905963,New York Stock Exchange,NYSE
+COF,Capital One Financial Corp,35613041000.0,Financial Services,Credit Services,1.74964,77.99,1.6,2922247,New York Stock Exchange,NYSE
+DFS,Discover Financial Services,20836626400.0,Financial Services,Credit Services,1.8645,68.0,1.76,3008678,New York Stock Exchange,NYSE
+IX,Orix Corp Ads,16575811600.0,Financial Services,Credit Services,1.1786,63.61,3.52428,38380,New York Stock Exchange,NYSE
+SYF,Synchrony Financial,16200227800.0,Financial Services,Credit Services,1.75474,27.75,0.88,5047364,New York Stock Exchange,NYSE
+ALLY,Ally Financial Inc,10871760900.0,Financial Services,Credit Services,1.67563,29.08,0.74,4668993,New York Stock Exchange,NYSE
+WU,Western Union Co,9029758000.0,Financial Services,Credit Services,0.91793,21.97,0.85,4070163,New York Stock Exchange,NYSE
+SC,Santander Consumer USA Holdings Inc,6547435500.0,Financial Services,Credit Services,1.29338,21.39,0.88,861381,New York Stock Exchange,NYSE
+JSM,Navient Corporation,6068662300.0,Financial Services,Credit Services,1.022027,22.14,1.9723,16783,Nasdaq Global Select,NASDAQ
+CACC,Credit Acceptance Corp,5994476500.0,Financial Services,Credit Services,1.23013,339.64,0.0,164780,Nasdaq Global Select,NASDAQ
+OMF,OneMain Holdings Inc,5071998500.0,Financial Services,Credit Services,2.46057,37.76,1.16,814783,New York Stock Exchange,NYSE
+ORCC,Owl Rock Capital Corp,4508531700.0,Financial Services,Credit Services,0.0,11.72,1.26,1089475,NYSE,NYSE
+SLM,SLM Corp,3587275520.0,Financial Services,Credit Services,1.46412,9.56,0.12,4264161,Nasdaq Global Select,NASDAQ
+GDOT,Green Dot Corp,3190584060.0,Financial Services,Credit Services,1.14202,59.78,0.0,459364,New York Stock Exchange,NYSE
+NNI,Nelnet Inc,2537075200.0,Financial Services,Credit Services,0.69544,66.2,0.78,73586,New York Stock Exchange,NYSE
+HAWK,Blackhawk Network Holdings Inc.,2528400000.0,Financial Services,Credit Services,0.695775,45.15,0.0,1376939,Nasdaq Global Select,NASDAQ
+SLMBP,SLM Corporation Floating Rate Non-Cumulative Preferred Stock Series B,2415918590.0,Financial Services,Credit Services,1.417369,37.0,3.561,7972,Nasdaq Global Select,NASDAQ
+FCFS,FirstCash Inc,2341802500.0,Financial Services,Credit Services,0.57241,56.51,1.06,287330,New York Stock Exchange,NASDAQ
+ADS,Alliance Data Systems Corp,2319426300.0,Financial Services,Credit Services,2.58481,48.61,2.1,968158,New York Stock Exchange,NYSE
+QFIN,360 Finance Inc,1832407810.0,Financial Services,Credit Services,0.0,12.49,0.0,1310767,NasdaqGM,NASDAQ
+NAVI,Navient Corp,1750288640.0,Financial Services,Credit Services,1.88009,9.395,0.64,2377789,Nasdaq Global Select,NASDAQ
+PRAA,PRA Group Inc,1732932610.0,Financial Services,Credit Services,1.48375,38.02,0.0,322836,Nasdaq Global Select,NASDAQ
+GSBD,Goldman Sachs BDC Inc,1545631740.0,Financial Services,Credit Services,1.43054,15.23,1.8,154509,New York Stock Exchange,NYSE
+LX,Lexinfintech Holdings Ltd,1414325250.0,Financial Services,Credit Services,2.003963,7.82,0.0,1724801,NASDAQ Global Market,NASDAQ
+QIWI,Qiwi PLC,1019380290.0,Financial Services,Credit Services,1.03415,15.79,0.80641,332793,Nasdaq Global Select,NASDAQ
+PPDF,PPDAI Group Inc. American Depositary Shares each representing five Class A,802855740.0,Financial Services,Credit Services,1.843937,2.7,0.19,571969,New York Stock Exchange,NYSE
+WRLD,World Acceptance Corp,770023680.0,Financial Services,Credit Services,1.58655,100.31,0.0,72493,Nasdaq Global Select,NASDAQ
+AGM-A,Federal Agricultural Mortgage Corporation,728045440.0,Financial Services,Credit Services,1.189713,59.74,3.0,506,NYSE,NYSE
+AGM,Federal Agricultural Mortgage Corp,728043390.0,Financial Services,Credit Services,1.16517,69.18,3.0,48481,New York Stock Exchange,NYSE
+OCSL,Oaktree Specialty Lending Corp,680841600.0,Financial Services,Credit Services,1.40284,4.83,0.38,424398,Nasdaq Global Select,NASDAQ
+FINV,FinVolution Group,669581570.0,Financial Services,Credit Services,1.45828,2.19,0.0,974344,NYSE,NYSE
+ENVA,Enova International Inc,618734020.0,Financial Services,Credit Services,1.68062,17.41,0.0,398440,New York Stock Exchange,NYSE
+TCAP,Triangle Capital Corporation,548211148.83,Financial Services,Credit Services,0.804025,11.79,1.2,446301,New York Stock Exchange,NYSE
+OPRT,Oportun Financial Corp,401768640.0,Financial Services,Credit Services,0.0,14.7,0.0,80027,NasdaqGS,NASDAQ
+QD,Qudian Inc,388190080.0,Financial Services,Credit Services,1.503048,1.53,0.0,2594730,New York Stock Exchange,NYSE
+BBDC,Barings BDC Inc,386572128.0,Financial Services,Credit Services,0.60406,8.06,0.61,105320,NYSE,NYSE
+LC,LendingClub Corp,368304320.0,Financial Services,Credit Services,1.19369,5.15,0.0,1091992,New York Stock Exchange,NYSE
+CURO,CURO Group Holdings Corp,343434816.0,Financial Services,Credit Services,3.500566,8.4,0.0,219167,New York Stock Exchange,NYSE
+MGI,MoneyGram International Inc,334579840.0,Financial Services,Credit Services,2.41368,4.73,0.0,1968672,Nasdaq Global Select,NASDAQ
+YRD,Yiren Digital Ltd,309973696.0,Financial Services,Credit Services,1.39424,3.34,0.0,88084,New York Stock Exchange,NYSE
+EZPW,EZCORP Inc,273136288.0,Financial Services,Credit Services,1.6828,4.96,0.0,391650,Nasdaq Global Select,NASDAQ
+RM,Regional Management Corp,245788336.0,Financial Services,Credit Services,1.47448,21.68,0.0,46421,New York Stock Exchange,NYSE
+DNJR,Golden Bull Ltd,214126080.0,Financial Services,Credit Services,1.878376,4.9,0.0,123422,NASDAQ Capital Market,NASDAQ
+ATLC,Atlanticus Holdings Corp,197725392.0,Financial Services,Credit Services,0.68281,12.36,0.0,9306,Nasdaq Global Select,NASDAQ
+SNFCA,Security National Financial Corp,135485648.0,Financial Services,Credit Services,0.78383,7.09,0.0,43961,NASDAQ Global Market,NASDAQ
+XYF,X Financial,134827552.0,Financial Services,Credit Services,0.0,0.84,0.0,445076,NYSE,NYSE
+ELVT,Elevate Credit Inc,112577088.0,Financial Services,Credit Services,2.99354,2.76,0.0,366092,New York Stock Exchange,NYSE
+ONDK,On Deck Capital Inc,107997632.0,Financial Services,Credit Services,1.84039,1.83,0.0,1771067,New York Stock Exchange,NYSE
+JT,Jianpu Technology Inc,107800944.0,Financial Services,Credit Services,1.38098,0.6376,0.0,340326,New York Stock Exchange,NYSE
+CPSS,Consumer Portfolio Services Inc,87994160.0,Financial Services,Credit Services,2.89541,3.91,0.0,127670,NASDAQ Global Market,NASDAQ
+MRLN,Marlin Business Services Corp,87527528.0,Financial Services,Credit Services,0.66779,7.33,0.56,48846,Nasdaq Global Select,NASDAQ
+ASFI,Asta Funding Inc,85906304.0,Financial Services,Credit Services,0.58314,13.08,0.0,6142,Nasdaq Global Select,NASDAQ
+MFIN,Medallion Financial Corp,63281820.0,Financial Services,Credit Services,2.41967,2.55,0.0,61024,Nasdaq Global Select,NASDAQ
+NICK,Nicholas Financial Inc,62166000.0,Financial Services,Credit Services,0.66954,7.97,0.0,4296,Nasdaq Global Select,NASDAQ
+PT,Pintec Technology Holdings Ltd,50471808.0,Financial Services,Credit Services,0.0,1.17,0.0,139752,NasdaqGM,NASDAQ
+AIHS,Senmiao Technology Ltd,50296208.0,Financial Services,Credit Services,1.032524,1.16,0.0,6310941,NASDAQ Capital Market,NASDAQ
+XRF,China Rapid Finance Limited American Depositary Shares each representing one Class A,41315300.0,Financial Services,Credit Services,1.263826,3.05,0.0,292181,New York Stock Exchange,NYSE
+HX,Hexindai Inc,40220788.0,Financial Services,Credit Services,0.615475,2.3,0.0,859689,NASDAQ Global Market,NASDAQ
+FPAY,FlexShopper Inc,35456604.0,Financial Services,Credit Services,0.94188,1.66,0.0,187580,NASDAQ Capital Market,NASDAQ
+LYL,Dragon Victory International Ltd,33578916.0,Financial Services,Credit Services,0.45,2.94,0.0,1448170,NASDAQ Capital Market,NASDAQ
+CLDC,China Lending Corporation,30596964.01,Financial Services,Credit Services,-0.550855,1.26,0.0,8949,NASDAQ Capital Market,NASDAQ
+DXF,Dunxin Financial Holdings Ltd,30451074.0,Financial Services,Credit Services,2.08993,1.46,0.0,541412,NYSE American,AMEX
+CCCR,China Commercial Credit Inc.,18750000.0,Financial Services,Credit Services,0.087852,1.25,0.0,104208,NASDAQ Capital Market,NASDAQ
+LMFA,LM Funding America Inc,9356032.0,Financial Services,Credit Services,1.53403,0.64,0.0,3116189,NASDAQ Capital Market,NASDAQ
+GEK,General Electric Capital Corporation 4.70% Notes due May 16 2053,0.0,Financial Services,Credit Services,-0.038385,24.5,1.175,71721,New York Stock Exchange,NYSE
+TCCA,Triangle Capital Corporation 6.375% Senior Notes due 2022,0.0,Financial Services,Credit Services,0.098353,25.1,1.59376,7094,New York Stock Exchange,NYSE

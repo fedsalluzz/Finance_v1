@@ -1,0 +1,2 @@
+symbol,name,price,changesPercentage,change,dayLow,dayHigh,yearHigh,yearLow,marketCap,priceAvg50,priceAvg200,volume,avgVolume,exchange,open,previousClose,eps,pe,earningsAnnouncement,sharesOutstanding,timestamp
+PYPL,"PayPal Holdings, Inc.",203.04,-0.44,-0.89,201.21,206.2071,215.83,82.07,238226817024.0,193.21771,169.89946,6644745,8140983,NASDAQ,206.24,203.93,2.179,93.18036,2020-11-03T00:00:00.000+0000,1173299926,1603574238

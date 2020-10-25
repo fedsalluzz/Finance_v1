@@ -1,0 +1,2 @@
+symbol,name,price,changesPercentage,change,dayLow,dayHigh,yearHigh,yearLow,marketCap,priceAvg50,priceAvg200,volume,avgVolume,exchange,open,previousClose,eps,pe,earningsAnnouncement,sharesOutstanding,timestamp
+AMD,"Advanced Micro Devices, Inc.",81.96,3.2,2.54,79.33,81.99,94.28,32.03,96225959936.0,80.770294,66.79331,46557675,57036646,NASDAQ,80.93,79.42,0.514,159.45525,2020-10-27T20:00:00.000+0000,1174060029,1603645618

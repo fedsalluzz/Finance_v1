@@ -95,11 +95,11 @@ class GUI:
 			self.buttonYears.grid(column=3, row=i,sticky = W, pady = 2)
 
 		#Create the button
-		self.buttonGrowth = tk.Button(self.frame, text=" Growth ", fg="black", font="none 9 bold", command=self.BalanceSheet_click)
+		self.buttonGrowth = tk.Button(self.frame, text=" Financial Growth % ", fg="black", font="none 9 bold", command=self.Growth_click)
 		self.buttonGrowth.grid(row=6, column=1,sticky = E, pady = 2)
 		#Create the button
-		self.buttonExtra = tk.Button(self.frame, text=" EGO ", fg="black", font="none 9 bold", command=self.BalanceSheet_click)
-		self.buttonExtra.grid(row=6, column=2,sticky = E, pady = 2)
+		self.Cash_growth = tk.Button(self.frame, text=" Cash Flow Growth % ", fg="black", font="none 9 bold", command=self.Cash_Flow_Growth_click)
+		self.Cash_growth.grid(row=6, column=2,sticky = E, pady = 2)
 		#Create the button
 		self.buttonExtra2 = tk.Button(self.frame, text=" ES ", fg="black", font="none 9 bold", command=self.BalanceSheet_click)
 		self.buttonExtra2.grid(row=6, column=3,sticky = E, pady = 2)
@@ -120,18 +120,18 @@ class GUI:
 		self.buttonDebt = tk.Button(self.frame, text="Debt Figures", fg="black", font="none 9 bold", command=self.DebtFigures_click)
 		self.buttonDebt.grid(row=9, column=3,sticky = W, pady = 2)
 		#Create the button 
-		self.buttonANALYZE = tk.Button(self.frame, text="  Analyze  ", fg="black", font="none 9 bold", command=self.ANALYZE_click)
+		self.buttonANALYZE = tk.Button(self.frame, text="  Fundamentals  ", fg="black", font="none 9 bold", command=self.Fundamentals_click)
 		self.buttonANALYZE.grid(row=10, column=3,sticky = W, pady = 2)
 		#Create the button
 		self.buttonStockScreener= tk.Button(self.frame, text="Stocks Screener", fg="black", font="none 9 bold", command=self.StockScreener_click)
 		self.buttonStockScreener.grid(row=12, column=2,sticky = W, pady = 2)
 		#Create the button
-		self.buttonNOW = tk.Button(self.frame, text="  CLICK NOW  ", fg="black", font="none 9 bold", command=self.NOW_click)
+		self.buttonNOW = tk.Button(self.frame, text="  Analyze Stock ", fg="black", font="none 9 bold", command=self.Analyze_stock)
 		self.buttonNOW.grid(row=12, column=3,sticky = W, pady = 2)
 		#Create a Label and text entry box  for Directory
 		self.labelDirectory = tk.Label (self.frame, text=" Program Directory ", bg="black" , fg="white", font="none 12 bold") .grid(row=2, column=0,sticky = W, pady = 2)
 		#Button Yield and label with entry
-		self.buttonYield= tk.Button(self.frame, text=" $ $ $ ", fg="black", font="none 9 bold", command=self.YieldSearch_click)
+		self.buttonYield= tk.Button(self.frame, text=" Div Yeld Screener ", fg="black", font="none 9 bold", command=self.YieldSearch_click)
 		self.buttonYield.grid(row=13, column=2,sticky = W, pady = 2)
 		self.labelYield = tk.Label (self.frame, text=" Yield target ", bg="black" , fg="white", font="none 12 bold") .grid(row=13, column=0,sticky = W, pady = 2)
 		self.textYield = tk.Entry(self.frame, width=20, bg="white")
@@ -152,6 +152,51 @@ class GUI:
 ############################# CLICK FUNCTIONS ###############################################
 #############################################################################################
 
+
+	def Cash_Flow_Growth_click(self):
+		tickers_dict_eps = dict()
+		tickers_dict_debt = dict()
+		entered_tickers=self.textTicker.get()
+		entered_years = self.buttonYears_var.get() 
+		print('\n---- CLICK EVENT Cash_Flow_Growth_click ---- Selected ticker is/are: '+entered_tickers)
+		ticker_list = entered_tickers.split(',')
+		print('-- You selected '+str(len(ticker_list))+' tickers \n')
+		for ticker in ticker_list:
+			print('---- Collecting data for '+str(ticker))
+			Growth = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey, statistic = '%')
+			(date,operatingCashFlowGrowth, freeCashFlowGrowth) = Growth.Get_document_for(ticker,'operatingCashFlowGrowth','freeCashFlowGrowth','financial-growth' ) 
+			(date_2,rdexpenseGrowth, debtGrowth) = Growth.Get_document_for(ticker, 'rdexpenseGrowth', 'debtGrowth', document = 'financial-growth' ) 
+			tickers_dict_eps[ticker] = { 'x' : date , 'y1' : operatingCashFlowGrowth, 'y2' : freeCashFlowGrowth} 
+			tickers_dict_debt[ticker] = { 'x' : date_2 , 'y1' : rdexpenseGrowth, 'y2' : debtGrowth}
+			#print(tickers_dict_eps
+		Growth.title_data = ['operatingCashFlowGrowth','freeCashFlowGrowth','rdexpenseGrowth','debtGrowth']
+		plot = Growth.Multiple_plots(ticker_list, tickers_dict_eps, tickers_dict_debt, 'Growth' ) 
+
+
+
+
+	def Growth_click(self):
+		tickers_dict_eps = dict()
+		tickers_dict_debt = dict()
+		entered_tickers=self.textTicker.get()
+		entered_years = self.buttonYears_var.get() 
+		print('\n---- CLICK EVENT Growth_click ---- Selected ticker is/are: '+entered_tickers)
+		ticker_list = entered_tickers.split(',')
+		print('-- You selected '+str(len(ticker_list))+' tickers \n')
+		for ticker in ticker_list:
+			print('---- Collecting data for '+str(ticker))
+			Growth = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey, statistic = '%')
+			(date,revenueGrowth, operatingIncomeGrowth) = Growth.Get_document_for(ticker,'revenueGrowth','operatingIncomeGrowth','financial-growth' ) 
+			(date_2,netIncomeGrowth, epsdilutedGrowth) = Growth.Get_document_for(ticker, 'netIncomeGrowth', 'epsdilutedGrowth', document = 'financial-growth' ) 
+			tickers_dict_eps[ticker] = { 'x' : date , 'y1' : revenueGrowth, 'y2' : operatingIncomeGrowth} 
+			tickers_dict_debt[ticker] = { 'x' : date_2 , 'y1' : netIncomeGrowth, 'y2' : epsdilutedGrowth}
+			#print(tickers_dict_eps
+		Growth.title_data = ['revenueGrowth','operatingIncomeGrowth','netIncomeGrowth','epsdilutedGrowth']
+		plot = Growth.Multiple_plots(ticker_list, tickers_dict_eps, tickers_dict_debt, 'Growth' ) 
+
+
+
+
 	def BalanceSheet_click(self):
 		tickers_dict_eps = dict()
 		tickers_dict_debt = dict()
@@ -169,7 +214,7 @@ class GUI:
 			tickers_dict_debt[ticker] = { 'x' : date_2 , 'y1' : shortTermDebt, 'y2' : longTermDebt}
 			#print(tickers_dict_eps
 		BalanceSheet.title_data = ['totalCurrentLiabilities','totalCurrentAssets','shortTermDebt','longTermDebt']
-		plot = BalanceSheet.Multiple_plots(ticker_list, tickers_dict_eps, tickers_dict_debt, 'BalanceSheet' )
+		plot = BalanceSheet.Multiple_plots(ticker_list, tickers_dict_eps, tickers_dict_debt, 'BalanceSheet' ) 
 
 
 
@@ -228,13 +273,13 @@ class GUI:
 		#print('-- You selected '+str(len(ticker_list))+' tickers \n')
 		for ticker in ticker_list:
 			print('---- Collecting data for '+str(ticker))
-			IncomeStatement = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey, statistic = '%')
-			(date,grossProfitRatio, operatingIncome) = IncomeStatement.Get_document_for(ticker, 'grossProfitRatio', 'operatingIncomeRatio',document = 'income_statement') 
-			(date_2,returnOnTangibleAssets ,roic) =  IncomeStatement.Get_document_for(ticker, 'returnOnTangibleAssets', 'roic',document = 'metrics') 
+			Profitability = Analyses(ticker=entered_tickers,period = entered_years,api_key =self.apikey, statistic = '%')
+			(date,grossProfitRatio, operatingIncome) = Profitability.Get_document_for(ticker, 'grossProfitRatio', 'operatingIncomeRatio',document = 'income_statement') 
+			(date_2,returnOnTangibleAssets ,roic) =  Profitability.Get_document_for(ticker, 'returnOnTangibleAssets', 'roic',document = 'metrics') 
 			tickers_dict_eps[ticker] = { 'x' : date , 'y1' : grossProfitRatio, 'y2' : operatingIncome} 
 			tickers_dict_debt[ticker] = { 'x' : date_2 , 'y1' : returnOnTangibleAssets , 'y2' : roic}
-		IncomeStatement.title_data = ['grossProfitRatio','operatingIncomeRatio','returnOnTangibleAssets','roic ']
-		plot = IncomeStatement.Multiple_plots(ticker_list, tickers_dict_eps, tickers_dict_debt, 'Profitability' )
+		Profitability.title_data = ['grossProfitRatio','operatingIncomeRatio','returnOnTangibleAssets','roic ']
+		plot = Profitability.Multiple_plots(ticker_list, tickers_dict_eps, tickers_dict_debt, 'Profitability' )
 
 
 
@@ -258,12 +303,12 @@ class GUI:
 
 	
 	
-	def ANALYZE_click(self):
+	def Fundamentals_click(self):
 		tickers_dict_eps = dict()
 		tickers_dict_debt = dict()
 		entered_tickers=self.textTicker.get()
 		entered_years = self.buttonYears_var.get() 
-		print('\n---- CLICK EVENT ANALYZE ---- Selected ticker is/are: '+entered_tickers)
+		print('\n---- CLICK Fundamentals_click---- Selected ticker is/are: '+entered_tickers)
 		ticker_list = entered_tickers.split(',')
 		for ticker in ticker_list:
 			print('---- Collecting data for '+str(ticker))
@@ -280,11 +325,11 @@ class GUI:
 		plot = a.Multiple_plots(ticker_list, tickers_dict_eps, tickers_dict_debt, 'Analyze')
 			
 
-	def NOW_click(self):
+	def Analyze_stock(self):
 		tickers_quote= dict()
 		entered_tickers=self.textTicker.get()
 		entered_years = self.buttonYears_var.get()
-		print('\n---- CLICK EVENT  NOW_click ---- Selected ticker is/are: '+entered_tickers)
+		print('\n---- CLICK EVENT  Analyze_stock ---- Selected ticker is/are: '+entered_tickers)
 		ticker_list = entered_tickers.split(',')
 		print('---- You selected '+str(len(ticker_list))+' tickers')
 		for ticker in ticker_list:
@@ -293,8 +338,9 @@ class GUI:
 			price,priceAvg50,priceAvg200,eps,sharesOutstanding,marketCap = Quote.Get_quote_for(ticker) 
 			today = Quote.today
 			#Thoise values are evaluated at the latest date
-			currentRatio,quickRatio, cashRatio, grossProfitMargin,operatingProfitMargin,netProfitMargin,returnOnAssets,returnOnEquity,unused_0,unused_1,operatingCashFlowPerShare,freeCashFlowPerShare =  Quote.Ratios() #return 12 strings
+			currentRatio,quickRatio, cashRatio, grossProfitMargin,operatingProfitMargin,netProfitMargin,returnOnAssets,returnOnEquity,interestCoverage,unused_1,operatingCashFlowPerShare,freeCashFlowPerShare =  Quote.Ratios(ttm = False) #return 12 strings
 			latest_ratio_date = Quote.today
+			currentRatio_ttm,quickRatio_ttm, cashRatio_ttm, grossProfitMargin_ttm,operatingProfitMargin_ttm,netProfitMargin_ttm,returnOnAssets_ttm,returnOnEquity_ttm,unused_0,unused_1,operatingCashFlowPerShare_ttm,freeCashFlowPerShare_ttm =  Quote.Ratios(ttm = True) #return 12 strings for TTM
 			bookValuePerShare,debtToAssets,debtToEquity,enterpriseValue,enterpriseValueOverEBITDA,freeCashFlowPerShare,researchAndDdevelopementToRevenue,roe,roic = Quote.Metrics()
 			beta,volAvg,lastDiv,dcf,ipoDate,industry,sector= Quote.Profile()
 			tickers_quote[ticker] = { 'Today' : today ,
@@ -315,21 +361,32 @@ class GUI:
 				'roic' :roic ,
 				'sharesOutstanding' :sharesOutstanding, 
 				'Latest report date': latest_ratio_date,
-				'currentRatio':currentRatio ,
-				'quickRatio':quickRatio ,
-				'debtToAssets' :debtToAssets ,
-				'debtToEquity' :debtToEquity ,
-				'cashRatio':cashRatio ,
 				'grossProfitMargin':grossProfitMargin ,
 				'operatingProfitMargin':operatingProfitMargin,
 				'netProfitMargin':netProfitMargin, 
 				'returnOnAssets' : returnOnAssets, 
 				'returnOnEquity' : returnOnEquity,
 				'researchAndDdevelopementToRevenue' :researchAndDdevelopementToRevenue ,
+				'currentRatio':currentRatio ,
+				'quickRatio':quickRatio ,
+				'debtToAssets' :debtToAssets ,
+				'debtToEquity' :debtToEquity ,
+				'cashRatio':cashRatio ,
+				'interestCoverage' :interestCoverage ,
 				'operatingCashFlowPerShare' :operatingCashFlowPerShare, 
 				'freeCashFlowPerShare' :freeCashFlowPerShare,
 				'enterpriseValue' :enterpriseValue ,
-				'enterpriseValueOverEBITDA' :enterpriseValueOverEBITDA }
+				'enterpriseValueOverEBITDA' :enterpriseValueOverEBITDA,
+				'grossProfitMargin_ttm' :grossProfitMargin_ttm,
+				'operatingProfitMargin_ttm' :operatingProfitMargin_ttm,
+				'netProfitMargin_ttm' :netProfitMargin_ttm,
+				'returnOnAssets_ttm' :returnOnAssets_ttm,
+				'returnOnEquity_ttm' :returnOnEquity_ttm,
+				'currentRatio_ttm' :currentRatio_ttm,
+				'quickRatio_ttm' :quickRatio_ttm,
+				'cashRatio_ttm' :cashRatio_ttm,
+				'operatingCashFlowPerShare_ttm' :operatingCashFlowPerShare_ttm,
+				'freeCashFlowPerShare_ttm' :freeCashFlowPerShare_ttm }
 		index_for_dataframe = Quote.title_data = ['Today' ,
 			'beta',
 			'volAvg',
@@ -348,11 +405,18 @@ class GUI:
 			'roic' ,
 			'sharesOutstanding' ,
 			'Latest report date',
+			'grossProfitMargin',
+			'operatingProfitMargin',
+			'netProfitMargin', 
+			'returnOnAssets' ,
+			'returnOnEquity' ,
+			'researchAndDdevelopementToRevenue',
 			'currentRatio',
 			'quickRatio',
 			'debtToAssets',
 			'debtToEquity',
 			'cashRatio',
+			'interestCoverage',
 			'grossProfitMargin',
 			'operatingProfitMargin',
 			'netProfitMargin', 
@@ -362,24 +426,120 @@ class GUI:
  			'operatingCashFlowPerShare', 
 			'freeCashFlowPerShare',
 			'enterpriseValue',
-			'enterpriseValueOverEBITDA' ]
-		#print('Dict is '+str(tickers_quote))
+			'enterpriseValueOverEBITDA', 
+			'grossProfitMargin_ttm' ,
+			'operatingProfitMargin_ttm' ,
+			'netProfitMargin_ttm' ,
+			'returnOnAssets_ttm' ,
+			'returnOnEquity_ttm' ,
+			'currentRatio_ttm' ,
+			'quickRatio_ttm' ,
+			'cashRatio_ttm' ,
+			'operatingCashFlowPerShare_ttm' ,
+			'freeCashFlowPerShare_ttm' ]
 		mydict = tickers_quote
-		#with open('dict.csv', 'w') as csv_file:  
-    		#	writer = csv.writer(csv_file)
-    		#	for key, value in mydict.items():
-       		#		writer.writerow([key, value])
 		frame = pd.DataFrame(tickers_quote, columns = entered_tickers.split(","), index=index_for_dataframe)
 		print('Frame is '+str(frame)) 
 		if(len(entered_tickers) > 1):
-			f = open("saved_data/dataframe/"+entered_tickers.replace(',','_')+"_now_click.log","w")
+			f = open("saved_data/dataframe/"+entered_tickers.replace(',','_')+"_analyses_stock.log","w")
 			print(frame,file = f)
-			frame.to_csv(r'saved_data/csv/'+entered_tickers.replace(',','_')+'_now_click.csv', index = index_for_dataframe)
-		print('-- NOW_click printed on files for: '+entered_tickers)
+			frame.to_csv(r'saved_data/csv/'+entered_tickers.replace(',','_')+'_analyses_stock.csv', index = index_for_dataframe)
+		print('-- Analyze_stock printed on files for: '+entered_tickers)
 		Quote.Get_Industry_Ratios(industry)
+		self.CashFlowCalculator()
 		#Quote.Get_History_data()
 
-		
+
+
+
+
+	def CashFlowCalculator(self):
+		tickers_quote= dict()
+		entered_tickers=self.textTicker.get()
+		entered_years = self.buttonYears_var.get()
+		print('\n----   CashFlowCalculator ---- Selected ticker is/are: '+entered_tickers)
+		ticker_list = entered_tickers.split(',')
+		print('---- You selected '+str(len(ticker_list))+' tickers')
+		for ticker in ticker_list:
+			print('---- Collecting data for '+str(ticker))
+			Quote = Analyses(ticker,period = entered_years,api_key =self.apikey, statistic = ' ')
+			price,priceAvg50,priceAvg200,eps,sharesOutstanding,marketCap = Quote.Get_quote_for(ticker) 
+			#Thoise values are evaluated at the latest date
+			revenue,netIncome,ebitda,depreciationAndAmortization,interestExpense,incomeTaxExpense,operatingIncome,date,period =  Quote.IncomeStatement( history_year = 'latest') #return 12 strings
+			date, period,totalAssets , totalLiabilities, totalCurrentAssets,totalCurrentLiabilities,totalNonCurrentAssets, shortTermDebt, longTermDebt, cashAndShortTermInvestments, retainedEarnings, propertyPlantEquipmentNet = Quote.BalanceSheet( history_year = 'latest') #return 14 strings
+			date, period,operatingCashFlow , capitalExpenditure, dividendsPaid,commonStockRepurchased,changeInWorkingCapital, netCashProvidedByOperatingActivities, commonStockIssued, capitalExpenditure, freeCashFlow = Quote.CashFlowStatement( history_year = 'latest') #return 14 strings
+			latest_ratio_date = Quote.today
+			tickers_quote[ticker] = {'date': date, 
+				'period' :period, 
+				'price':price, 
+				'sharesOutstanding':sharesOutstanding, 
+				'revenue':revenue , 
+				'netIncome': netIncome, 
+				'ebitda': ebitda, 
+				'depreciationAndAmortization': depreciationAndAmortization, 
+				'interestExpense': interestExpense, 
+				'incomeTaxExpense': incomeTaxExpense, 
+				'operatingIncome': operatingIncome,
+				'totalAssets': totalAssets,
+				'totalLiabilities': totalLiabilities,
+				'totalCurrentAssets':totalCurrentAssets ,
+				'totalCurrentLiabilities': totalCurrentLiabilities,
+				'totalNonCurrentAssets': totalNonCurrentAssets,
+				'shortTermDebt': shortTermDebt,
+				'longTermDebt': longTermDebt,
+				'cashAndShortTermInvestments': cashAndShortTermInvestments,
+				'retainedEarnings':retainedEarnings,
+				'operatingCashFlow':operatingCashFlow,
+				'capitalExpenditure':capitalExpenditure,
+				'dividendsPaid':dividendsPaid,
+				'commonStockRepurchased':commonStockRepurchased,
+				'changeInWorkingCapital':changeInWorkingCapital,
+				'netCashProvidedByOperatingActivities':netCashProvidedByOperatingActivities,
+				'commonStockIssued':commonStockIssued,
+				'capitalExpenditure':capitalExpenditure,
+				'freeCashFlow':freeCashFlow,
+				'propertyPlantEquipmentNet':propertyPlantEquipmentNet }
+		index_for_dataframe = Quote.title_data = ['date', 
+			'period',
+			'price', 
+			'sharesOutstanding', 
+			'revenue', 
+			'netIncome', 
+			'ebitda', 
+			'depreciationAndAmortization', 
+			'interestExpense', 
+			'incomeTaxExpense', 
+			'operatingIncome',
+			'totalAssets',
+			'totalLiabilities',
+			'totalCurrentAssets',
+			'totalCurrentLiabilities',
+			'totalNonCurrentAssets',
+			'shortTermDebt',
+			'longTermDebt',
+			'cashAndShortTermInvestments',
+			'retainedEarnings',
+			'operatingCashFlow',
+			'capitalExpenditure',
+			'dividendsPaid',
+			'commonStockRepurchased',
+			'changeInWorkingCapital',
+			'netCashProvidedByOperatingActivities',
+			'commonStockIssued',
+			'capitalExpenditure',
+			'freeCashFlow',
+			'propertyPlantEquipmentNet']
+		mydict = tickers_quote
+		frame = pd.DataFrame(tickers_quote, columns = entered_tickers.split(","), index=index_for_dataframe)
+		print('Frame is '+str(frame)) 
+		if(len(entered_tickers) > 1):
+			f = open("saved_data/dataframe/"+entered_tickers.replace(',','_')+"_cashflowcalculator.log","w")
+			print(frame,file = f)
+			frame.to_csv(r'saved_data/csv/'+entered_tickers.replace(',','_')+'_cashflowcalculator.csv', index = index_for_dataframe)
+		print('-- CashFlowCalculator printed on files for: '+entered_tickers)
+
+
+
 	def StockScreener_click(self):  
 		tickers_dict_eps = dict()
 		tickers_dict_debt = dict()
